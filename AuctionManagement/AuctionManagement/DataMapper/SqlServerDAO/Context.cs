@@ -6,11 +6,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
 
     class Context : DbContext
     {
-        //private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(ApplicationContext));
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(Context));
 
         public Context() : base("connString")
         {
-            //Log.Info("ApplicationContext instance created!");
+            Log.Info("ApplicationContext instance created!");
         }
         public DbSet<Auction> Auctions { get; set; }
 

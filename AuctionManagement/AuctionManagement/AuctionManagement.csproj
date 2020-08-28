@@ -58,7 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Const\Config.cs" />
+    <Compile Include="Const\Configuration.cs" />
     <Compile Include="DataMapper\DaoFactoryMethod.cs" />
     <Compile Include="DataMapper\IAuctionDataServices.cs" />
     <Compile Include="DataMapper\IAuctionHistoryDataServices.cs" />

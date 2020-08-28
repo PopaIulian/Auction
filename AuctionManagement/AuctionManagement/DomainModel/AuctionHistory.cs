@@ -20,6 +20,10 @@ namespace AuctionManagement.DomainModel
 
         public double Price { get; set; }
 
+        [Required]
+        [StringLength(20)]
+        public string Currency { get; set; }
+
         public virtual Auction Auction { get; set; }
 
         public virtual Person Person { get; set; }

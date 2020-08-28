@@ -1,17 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
 
     class CategoryServices :ICategoryServices
     {
-        ///private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(AuthorServices));
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(CategoryServices));
 
         public static ICategoryDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.CategoryDataServices;
 

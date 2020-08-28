@@ -12,7 +12,7 @@ namespace AuctionManagement.Services.ServicesImplementation
     class ConfigServices : IConfigServices
     {
 
-        ///private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(AuthorServices));
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(ConfigServices));
 
         public static IConfigDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.ConfigDataServices;
 

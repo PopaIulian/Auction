@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using System;
     using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
@@ -13,9 +10,8 @@ namespace AuctionManagement.Services.ServicesImplementation
 
     public class PersonServices : IPersonServices
     {
-        //private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(PersonServices));
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(PersonServices));
 
-        /// <summary>Gets or sets the data services.</summary>
         public static IPersonDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.PersonDataServices;
 
         public bool AddPerson(Person person)

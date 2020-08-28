@@ -6,33 +6,27 @@ namespace AuctionManagement.DomainModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Person")]
-    public partial class Person
+    [Table("Product")]
+    public partial class Product
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Person()
+        public Product()
         {
             Auctions = new HashSet<Auction>();
-            AuctionHistories = new HashSet<AuctionHistory>();
         }
 
         [Key]
-        public int IdPerson { get; set; }
+        public int IdProduct { get; set; }
 
         [Required]
         [StringLength(20)]
-        public string Username { get; set; }
+        public string ObjectName { get; set; }
 
-        [Required]
-        [StringLength(20)]
-        public string PersonRole { get; set; }
-
-        public int Score { get; set; }
+        public int? CategoryName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auction> Auctions { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuctionHistory> AuctionHistories { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

@@ -52,23 +52,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataMapper\DaoFactoryMethod.cs" />
+    <Compile Include="DataMapper\IAuctionDataServices.cs" />
+    <Compile Include="DataMapper\IAuctionHistoryDataServices.cs" />
+    <Compile Include="DataMapper\ICategoryDataServices.cs" />
+    <Compile Include="DataMapper\IConfigDataServices.cs" />
+    <Compile Include="DataMapper\IDaoFactory.cs" />
+    <Compile Include="DataMapper\IProductDataServices.cs" />
+    <Compile Include="DataMapper\IPersonDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\Context.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlAuctionHistoryDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlAuctionDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlCategoryDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlConfigDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlProductDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlPersonDataServices.cs" />
+    <Compile Include="DataMapper\SqlServerDAO\SqlServerDaoFactory.cs" />
     <Compile Include="DomainModel\Auction.cs" />
     <Compile Include="DomainModel\AuctionHistory.cs" />
     <Compile Include="DomainModel\Category.cs" />
     <Compile Include="DomainModel\Config.cs" />
-    <Compile Include="DomainModel\FirstModel.cs" />
-    <Compile Include="DomainModel\Object.cs" />
+    <Compile Include="DomainModel\Model.cs" />
     <Compile Include="DomainModel\Person.cs" />
+    <Compile Include="DomainModel\Product.cs" />
     <Compile Include="DomainModel\sysdiagram.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IAuctionHistoryServices.cs" />
+    <Compile Include="Services\IAuctionServices.cs" />
+    <Compile Include="Services\ICategoryServices.cs" />
+    <Compile Include="Services\IConfigServices.cs" />
+    <Compile Include="Services\IProductServices.cs" />
+    <Compile Include="Services\IPersonServices.cs" />
+    <Compile Include="Services\ServicesImplementation\PersonServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

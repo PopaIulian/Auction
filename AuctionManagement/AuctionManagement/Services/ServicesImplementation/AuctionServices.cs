@@ -15,12 +15,13 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <summary>Gets or sets the data services.</summary>
         public static IAuctionDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.AuctionDataServices;
 
-        public static IConfigDataServices ConfigServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.ConfigDataServices;
+
+
 
         public bool AddAuction(Auction auction)
         {
             var validator = new AuctionValidator();
-            validator.AddAuctionValidator(ConfigServices.GettAllConfigurations());
+            validator.InsertAuctionValidator();
             ValidationResult results = validator.Validate(auction);
 
             bool isValid = results.IsValid;
@@ -64,7 +65,7 @@ namespace AuctionManagement.Services.ServicesImplementation
 
         public Auction GetAuctionById(int id)
         {
-            return GetAuctionById(id);
+            return DataServices.GetAuctionById(id);
         }
 
         public IList<Auction> GetListOfAuctions()

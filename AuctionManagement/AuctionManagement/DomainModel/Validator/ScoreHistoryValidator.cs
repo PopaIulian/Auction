@@ -12,7 +12,6 @@ namespace AuctionManagement.DomainModel.Validator
             RuleFor(x => x.IdScoreHistory).NotEmpty().WithErrorCode("This field is required.");
             RuleFor(x => x.DateScore).NotEmpty().WithErrorCode("This field is required.");
             RuleFor(x => x.PersonId).NotEmpty().WithErrorCode("This field is required.");
-            RuleFor(x => x.PersonRateId).NotEmpty().WithErrorCode("This field is required.");
             RuleFor(x => x.Score).NotEmpty().WithErrorCode("This field is required.");
 
         }

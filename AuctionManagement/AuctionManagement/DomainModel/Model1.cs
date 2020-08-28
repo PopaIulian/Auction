@@ -5,10 +5,10 @@ namespace AuctionManagement.DomainModel
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
 
-    public partial class MyModel : DbContext
+    public partial class Model1 : DbContext
     {
-        public MyModel()
-            : base("name=MyModel1")
+        public Model1()
+            : base("name=Model1")
         {
         }
 
@@ -33,8 +33,13 @@ namespace AuctionManagement.DomainModel
 
             modelBuilder.Entity<Auction>()
                 .HasMany(e => e.AuctionHistories)
-                .WithOptional(e => e.Auction)
-                .HasForeignKey(e => e.AuctionId);
+                .WithRequired(e => e.Auction)
+                .HasForeignKey(e => e.AuctionId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<AuctionHistory>()
+                .Property(e => e.Currency)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Category>()
                 .Property(e => e.CategoryName)
@@ -70,19 +75,14 @@ namespace AuctionManagement.DomainModel
 
             modelBuilder.Entity<Person>()
                 .HasMany(e => e.AuctionHistories)
-                .WithOptional(e => e.Person)
-                .HasForeignKey(e => e.UserId);
+                .WithRequired(e => e.Person)
+                .HasForeignKey(e => e.UserId)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Person>()
                 .HasMany(e => e.ScoreHistories)
                 .WithRequired(e => e.Person)
                 .HasForeignKey(e => e.PersonId)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Person>()
-                .HasMany(e => e.ScoreHistories1)
-                .WithRequired(e => e.Person1)
-                .HasForeignKey(e => e.PersonRateId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Product>()

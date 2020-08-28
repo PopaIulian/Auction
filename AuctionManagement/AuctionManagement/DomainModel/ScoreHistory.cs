@@ -16,12 +16,8 @@ namespace AuctionManagement.DomainModel
 
         public int PersonId { get; set; }
 
-        public int PersonRateId { get; set; }
-
         public int Score { get; set; }
 
         public virtual Person Person { get; set; }
-
-        public virtual Person Person1 { get; set; }
     }
 }

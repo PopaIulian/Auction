@@ -19,5 +19,7 @@ namespace AuctionManagement.DataMapper
         void UpdateAuctionHistory(AuctionHistory auctionHistory);
 
         void DeleteAuctionHistory(AuctionHistory auctionHistory);
+
+        AuctionHistory GetLastAuctionInfo(int auctionId);
     }
 }

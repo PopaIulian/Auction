@@ -45,5 +45,7 @@ namespace AuctionManagement.Services
         /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         /// <returns>The <see cref="bool"/>.</returns>
         bool DeleteAuctionHistory(AuctionHistory auctionHistory);
+
+        AuctionHistory GetLastAuctionInfo(int auctionId);
     }
 }

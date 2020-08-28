@@ -57,5 +57,14 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
                 context.SaveChanges();
             }
         }
+
+        public AuctionHistory GetLastAuctionInfo(int auctionId)
+        {
+            using (Context context = new Context())
+            {
+                return context.AuctionsHistory.Where(auctionHistory => auctionHistory.AuctionId == auctionId).Last();
+            }
+        }
+
     }
 }

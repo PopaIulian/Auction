@@ -23,7 +23,7 @@ namespace AuctionManagement.DomainModel
         [StringLength(20)]
         public string CategoryName { get; set; }
 
-        public int ParentId { get; set; }
+        public int? ParentId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Category> Category1 { get; set; }

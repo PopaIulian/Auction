@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AuctionManagement.Services.ServicesImplementation
 {
-    class Product
+    class ProductServices
     {
     }
 }

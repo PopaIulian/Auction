@@ -12,9 +12,9 @@ namespace AuctionManagement.DomainModel
         [Key]
         public int IdAuctionHistory { get; set; }
 
-        public int? AuctionId { get; set; }
+        public int AuctionId { get; set; }
 
-        public int? UserId { get; set; }
+        public int UserId { get; set; }
 
         public DateTime Auctiondate { get; set; }
 

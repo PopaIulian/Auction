@@ -14,6 +14,8 @@ namespace AuctionManagement.DomainModel
         {
             Auctions = new HashSet<Auction>();
             AuctionHistories = new HashSet<AuctionHistory>();
+            ScoreHistories = new HashSet<ScoreHistory>();
+            ScoreHistories1 = new HashSet<ScoreHistory>();
         }
 
         [Key]
@@ -29,10 +31,18 @@ namespace AuctionManagement.DomainModel
 
         public int Score { get; set; }
 
+        public DateTime? DateWrongScore { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Auction> Auctions { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AuctionHistory> AuctionHistories { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ScoreHistory> ScoreHistories { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ScoreHistory> ScoreHistories1 { get; set; }
     }
 }

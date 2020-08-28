@@ -10,7 +10,7 @@ namespace AuctionManagement.DomainModel
     public partial class Config
     {
         [Key]
-        [StringLength(10)]
+        [StringLength(20)]
         public string IdConfig { get; set; }
 
         public int ValueConfig { get; set; }

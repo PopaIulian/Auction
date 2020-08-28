@@ -16,7 +16,6 @@ namespace AuctionManagement.DomainModel
 
         public int? UserId { get; set; }
 
-        [Column(TypeName = "date")]
         public DateTime Auctiondate { get; set; }
 
         public double Price { get; set; }

@@ -24,6 +24,6 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
 
         public DbSet<Person> Persons { get; set; }
 
-        
+        public DbSet<ScoreHistory> ScoreHistories { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 using NUnit.Framework;
 
-namespace Tests
+namespace AuctionTests
 {
     public class Tests
     {
@@ -9,10 +9,6 @@ namespace Tests
         {
         }
 
-        [Test]
-        public void Test1()
-        {
-            Assert.Pass();
-        }
+     
     }
 }

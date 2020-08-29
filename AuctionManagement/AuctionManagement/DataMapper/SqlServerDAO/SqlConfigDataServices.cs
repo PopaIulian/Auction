@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="config">The config<see cref="Config"/>.</param>
         public void AddConfig(Config config)
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.Model1 context = new DomainModel.Model1())
             {
                 context.Configs.Add(config);
                 context.SaveChanges();
@@ -32,11 +32,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="config">The config<see cref="Config"/>.</param>
         public void DeleteConfig(Config config)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 Config toBeDeleted = new Config { IdConfig = config.IdConfig };
-                context.Configurations.Attach(toBeDeleted);
-                context.Configurations.Remove(toBeDeleted);
+                context.Configs.Attach(toBeDeleted);
+                context.Configs.Remove(toBeDeleted);
                 context.SaveChanges();
             }
         }
@@ -48,9 +48,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Config"/>.</returns>
         public Config GetConfigById(string id)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                return context.Configurations.Where(config => config.IdConfig == id).SingleOrDefault();
+                return context.Configs.Where(config => config.IdConfig == id).SingleOrDefault();
             }
         }
 
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Config}"/>.</returns>
         public IList<Config> GetAllConfigurations()
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.Model1 context = new DomainModel.Model1())
             {
                 var res =  context.Configs.Select(config => config).ToList();
                 return res;
@@ -73,9 +73,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="config">The config<see cref="Config"/>.</param>
         public void UpdateConfig(Config config)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                Config toBeUpdated = context.Configurations.Find(config.IdConfig);
+                Config toBeUpdated = context.Configs.Find(config.IdConfig);
 
                 if (toBeUpdated != null)
                 {

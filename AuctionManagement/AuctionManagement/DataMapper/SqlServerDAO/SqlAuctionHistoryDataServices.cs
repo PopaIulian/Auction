@@ -19,9 +19,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         public void AddAuctionHistory(AuctionHistory auctionHistory)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                context.AuctionsHistory.Add(auctionHistory);
+                context.AuctionHistories.Add(auctionHistory);
                 context.SaveChanges();
             }
         }
@@ -32,11 +32,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         public void DeleteAuctionHistory(AuctionHistory auctionHistory)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 AuctionHistory toBeDeleted = new AuctionHistory { IdAuctionHistory = auctionHistory.IdAuctionHistory };
-                context.AuctionsHistory.Attach(toBeDeleted);
-                context.AuctionsHistory.Remove(toBeDeleted);
+                context.AuctionHistories.Attach(toBeDeleted);
+                context.AuctionHistories.Remove(toBeDeleted);
                 context.SaveChanges();
             }
         }
@@ -48,9 +48,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="AuctionHistory"/>.</returns>
         public AuctionHistory GetAuctionHistoryById(int id)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                return context.AuctionsHistory.Where(auctionHistory => auctionHistory.IdAuctionHistory == id).SingleOrDefault();
+                return context.AuctionHistories.Where(auctionHistory => auctionHistory.IdAuctionHistory == id).SingleOrDefault();
             }
         }
 
@@ -60,9 +60,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{AuctionHistory}"/>.</returns>
         public IList<AuctionHistory> GetAllAuctionsHistory()
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                return context.AuctionsHistory.Select(auctionHistory => auctionHistory).ToList();
+                return context.AuctionHistories.Select(auctionHistory => auctionHistory).ToList();
             }
         }
 
@@ -72,9 +72,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         public void UpdateAuctionHistory(AuctionHistory auctionHistory)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                AuctionHistory toBeUpdated = context.AuctionsHistory.Find(auctionHistory.IdAuctionHistory);
+                AuctionHistory toBeUpdated = context.AuctionHistories.Find(auctionHistory.IdAuctionHistory);
 
                 if (toBeUpdated != null)
                 {
@@ -91,9 +91,12 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="AuctionHistory"/>.</returns>
         public AuctionHistory GetLastAuctionInfo(int auctionId)
         {
-            using (Context context = new Context())
+            
+            using (Model1 context = new Model1())
             {
-                return context.AuctionsHistory.Where(auctionHistory => auctionHistory.AuctionId == auctionId).Last();
+                var res = context.AuctionHistories.Select(auctionHistory => auctionHistory).ToList();
+                //var res2= context.AuctionHistories.Where(auctionHistory => auctionHistory.AuctionId == auctionId);
+                return res.Last();
             }
         }
     }

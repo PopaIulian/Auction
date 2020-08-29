@@ -19,9 +19,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="person">The person<see cref="Person"/>.</param>
         public void AddPerson(Person person)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                context.Persons.Add(person);
+                context.People.Add(person);
                 context.SaveChanges();
             }
         }
@@ -32,11 +32,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="person">The person<see cref="Person"/>.</param>
         public void DeletePerson(Person person)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 Person toBeDeleted = new Person { IdPerson = person.IdPerson };
-                context.Persons.Attach(toBeDeleted);
-                context.Persons.Remove(toBeDeleted);
+                context.People.Attach(toBeDeleted);
+                context.People.Remove(toBeDeleted);
                 context.SaveChanges();
             }
         }
@@ -48,9 +48,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Person"/>.</returns>
         public Person GetPersonById(int id)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                return context.Persons.Where(person => person.IdPerson == id).SingleOrDefault();
+                return context.People.Where(person => person.IdPerson == id).SingleOrDefault();
             }
         }
 
@@ -60,9 +60,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Person}"/>.</returns>
         public IList<Person> GetAllPersons()
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                return context.Persons.Select(person => person).ToList();
+                return context.People.Select(person => person).ToList();
             }
         }
 
@@ -72,9 +72,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="person">The person<see cref="Person"/>.</param>
         public void UpdatePerson(Person person)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
-                Person toBeUpdated = context.Persons.Find(person.IdPerson);
+                Person toBeUpdated = context.People.Find(person.IdPerson);
 
                 if (toBeUpdated != null)
                 {

@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿
 
-namespace AuctionManagementTest.DomainModel
+namespace AuctionTests.DomainModelTest
 {
     using System;
     using NUnit.Framework;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 
     public class AuctionTest
-    {
+    { 
 
         [Test]
-        public void TestAuthorValidatorWithValidValues1()
+        public void TestAuctionValidatorWithValidValues1()
         {
             Auction test = new Auction()
             {
@@ -32,11 +29,11 @@ namespace AuctionManagementTest.DomainModel
             var results = validator.Validate(test);
 
             bool isValid = results.IsValid;
-            NUnit.Framework.Assert.IsTrue(isValid);
+            Assert.IsTrue(isValid);
         }
 
         [Test]
-        public void TestAuthorValidatorWithValidValues2()
+        public void TestAuctionValidatorWithValidValues2()
         {
             Auction test = new Auction()
             {
@@ -54,11 +51,11 @@ namespace AuctionManagementTest.DomainModel
             var results = validator.Validate(test);
 
             bool isValid = results.IsValid;
-            NUnit.Framework.Assert.IsFalse(isValid);
+            Assert.IsFalse(isValid);
         }
 
         [Test]
-        public void TestAuthorValidatorWithValidValues3()
+        public void TestAuctionValidatorWithValidValues3()
         {
             Auction test = new Auction()
             {
@@ -79,7 +76,7 @@ namespace AuctionManagementTest.DomainModel
             NUnit.Framework.Assert.IsFalse(isValid);
         }
         [Test]
-        public void TestAuthorValidatorWithValidValues4()
+        public void TestAuctionValidatorWithValidValues4()
         {
             Auction test = new Auction()
             {
@@ -102,7 +99,7 @@ namespace AuctionManagementTest.DomainModel
         }
 
         [Test]
-        public void TestAuthorValidatorWithValidValues5()
+        public void TestAuctionValidatorWithValidValues5()
         {
             Auction test = new Auction()
             {
@@ -125,7 +122,7 @@ namespace AuctionManagementTest.DomainModel
         }
 
         [Test]
-        public void TestAuthorValidatorWithValidValues6()
+        public void TestAuctionValidatorWithValidValues6()
         {
             Auction test = new Auction()
             {
@@ -148,7 +145,7 @@ namespace AuctionManagementTest.DomainModel
         }
 
         [Test]
-        public void TestAuthorValidatorWithValidValues7()
+        public void TestAuctionValidatorWithValidValues7()
         {
             Auction test = new Auction()
             {
@@ -167,7 +164,7 @@ namespace AuctionManagementTest.DomainModel
             NUnit.Framework.Assert.IsFalse(isValid);
         }
         [Test]
-        public void TestAuthorValidatorWithValidValues8()
+        public void TestAuctionValidatorWithValidValues8()
         {
             Auction test = new Auction()
             {
@@ -182,7 +179,7 @@ namespace AuctionManagementTest.DomainModel
             NUnit.Framework.Assert.IsFalse(isValid);
         }
         [Test]
-        public void TestAuthorValidatorWithValidValues9()
+        public void TestAuctionValidatorWithValidValues9()
         {
             Auction test = new Auction()
             {
@@ -190,6 +187,27 @@ namespace AuctionManagementTest.DomainModel
             };
 
             AuctionValidator validator = new AuctionValidator();
+            var results = validator.Validate(test);
+
+            bool isValid = results.IsValid;
+            NUnit.Framework.Assert.IsFalse(isValid);
+        }
+
+        [Test]
+        public void TestAuctionValidatorWithValidValues10()
+        {
+            Auction test = new Auction()
+            {
+                IdAuction = 1,
+                ObjectId = 1,
+                Currency = "ron",
+                UserId = 2,
+                Price = 34
+            };
+
+            AuctionValidator validator = new AuctionValidator();
+            validator.InsertAuctionValidator();
+
             var results = validator.Validate(test);
 
             bool isValid = results.IsValid;

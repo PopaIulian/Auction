@@ -13,7 +13,7 @@ namespace AuctionManagement
     {
         static void Main(string[] args)
         {
-            IAuctionServices service = new AuctionServices();
+            IAuctionHistoryServices service = new AuctionHistoryServices();
             Auction auction = new Auction();
             auction.IdAuction = 4;
             auction.ObjectId = 3;
@@ -22,9 +22,20 @@ namespace AuctionManagement
             auction.Currency = "ebfu3";
             auction.StartDate = DateTime.Now;
             auction.EndDate = DateTime.Now;
-            service.AddAuction(auction);
+// service.AddAuction(auction);
+            AuctionHistory test = new AuctionHistory()
+            {
+                IdAuctionHistory = 1,
+                UserId = 2,
+                AuctionId = 1,
 
-            int x;
+                Auctiondate = DateTime.Now,
+                Price = 100,
+                Currency = "ron"
+            };
+            service.AddAuctionHistory(test);
+
+       
             Console.Read();
         }
     }

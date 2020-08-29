@@ -23,6 +23,11 @@ namespace AuctionManagement.Const
 
         public const string NUMBER_PAUSE_AUCTION_DAYS = "non_auction_days";
 
+
+        public const string OFFER_OBJECT_ROLE = "bidder";
+
+        public const string AUCTION_ROLE = "applicant";
+
         public static int GetConfigValue(IList<Config> configuration, string textValue)
         {
             foreach (var config in configuration)

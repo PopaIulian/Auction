@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void AddAuction(Auction auction)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 context.Auctions.Add(auction);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void DeleteAuction(Auction auction)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 Auction toBeDeleted = new Auction { IdAuction = auction.IdAuction };
                 context.Auctions.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Auction"/>.</returns>
         public Auction GetAuctionById(int id)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 return context.Auctions.Where(auction => auction.IdAuction == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Auction}"/>.</returns>
         public IList<Auction> GetAllAuctions()
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 return context.Auctions.Select(auction => auction).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void UpdateAuction(Auction auction)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 Auction toBeUpdated = context.Auctions.Find(auction.IdAuction);
 

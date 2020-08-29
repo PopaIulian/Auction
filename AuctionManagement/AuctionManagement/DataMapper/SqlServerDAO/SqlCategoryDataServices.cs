@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="category">The category<see cref="Category"/>.</param>
         public void AddCategory(Category category)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 context.Categories.Add(category);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="category">The category<see cref="Category"/>.</param>
         public void DeleteCategory(Category category)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 Category toBeDeleted = new Category { IdCategory = category.IdCategory };
                 context.Categories.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Category"/>.</returns>
         public Category GetCategoryById(int id)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 return context.Categories.Where(category => category.IdCategory == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Category}"/>.</returns>
         public IList<Category> GetAllCategories()
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 return context.Categories.Select(category => category).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="category">The category<see cref="Category"/>.</param>
         public void UpdateCategory(Category category)
         {
-            using (Context context = new Context())
+            using (Model1 context = new Model1())
             {
                 Category toBeUpdated = context.Categories.Find(category.IdCategory);
 

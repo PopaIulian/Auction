@@ -1,12 +1,22 @@
-﻿
+﻿// <copyright file="SqlCategoryDataServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
+
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
-  using System.Collections.Generic;
+    using System.Collections.Generic;
     using System.Linq;
     using AuctionManagement.DomainModel;
 
-    class SqlCategoryDataServices : ICategoryDataServices
+    /// <summary>
+    /// Defines the <see cref="SqlCategoryDataServices" />.
+    /// </summary>
+    internal class SqlCategoryDataServices : ICategoryDataServices
     {
+        /// <summary>
+        /// The AddCategory.
+        /// </summary>
+        /// <param name="category">The category<see cref="Category"/>.</param>
         public void AddCategory(Category category)
         {
             using (Context context = new Context())
@@ -16,6 +26,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The DeleteCategory.
+        /// </summary>
+        /// <param name="category">The category<see cref="Category"/>.</param>
         public void DeleteCategory(Category category)
         {
             using (Context context = new Context())
@@ -27,6 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The GetCategoryById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="Category"/>.</returns>
         public Category GetCategoryById(int id)
         {
             using (Context context = new Context())
@@ -35,7 +54,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-        public IList<Category> GettAllCategories()
+        /// <summary>
+        /// The GetAllCategories.
+        /// </summary>
+        /// <returns>The <see cref="IList{Category}"/>.</returns>
+        public IList<Category> GetAllCategories()
         {
             using (Context context = new Context())
             {
@@ -43,21 +66,22 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The UpdateCategory.
+        /// </summary>
+        /// <param name="category">The category<see cref="Category"/>.</param>
         public void UpdateCategory(Category category)
         {
             using (Context context = new Context())
             {
                 Category toBeUpdated = context.Categories.Find(category.IdCategory);
 
-                if (toBeUpdated == null)
+                if (toBeUpdated != null)
                 {
-                    return;
+                    context.Entry(toBeUpdated).CurrentValues.SetValues(category);
+                    context.SaveChanges();
                 }
-                context.Entry(toBeUpdated).CurrentValues.SetValues(category);
-                context.SaveChanges();
             }
         }
     }
 }
-
- 

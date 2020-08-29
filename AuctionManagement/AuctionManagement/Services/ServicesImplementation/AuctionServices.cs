@@ -70,7 +70,7 @@ namespace AuctionManagement.Services.ServicesImplementation
 
         public IList<Auction> GetListOfAuctions()
         {
-            return DataServices.GettAllAuctions();
+            return DataServices.GetAllAuctions();
         }
 
         public bool UpdateAuction(Auction auction)

@@ -31,7 +31,7 @@ namespace AuctionManagement.Services.ServicesImplementation
 
         public IList<Category> GetListOfCategories()
         {
-            return DataServices.GettAllCategories();
+            return DataServices.GetAllCategories();
         }
 
         public bool UpdateCategory(Category category)

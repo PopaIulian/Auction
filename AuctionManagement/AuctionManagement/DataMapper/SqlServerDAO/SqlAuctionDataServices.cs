@@ -1,12 +1,22 @@
-﻿
+﻿// <copyright file="SqlAuctionDataServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
     using System.Collections.Generic;
     using System.Linq;
     using AuctionManagement.DomainModel;
-    class SqlAuctionDataServices : IAuctionDataServices
+
+    /// <summary>
+    /// Defines the <see cref="SqlAuctionDataServices" />.
+    /// </summary>
+    internal class SqlAuctionDataServices : IAuctionDataServices
     {
+        /// <summary>
+        /// The AddAuction.
+        /// </summary>
+        /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void AddAuction(Auction auction)
         {
             using (Context context = new Context())
@@ -16,6 +26,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The DeleteAuction.
+        /// </summary>
+        /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void DeleteAuction(Auction auction)
         {
             using (Context context = new Context())
@@ -27,6 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The GetAuctionById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="Auction"/>.</returns>
         public Auction GetAuctionById(int id)
         {
             using (Context context = new Context())
@@ -35,7 +54,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-        public IList<Auction> GettAllAuctions()
+        /// <summary>
+        /// The GetAllAuctions.
+        /// </summary>
+        /// <returns>The <see cref="IList{Auction}"/>.</returns>
+        public IList<Auction> GetAllAuctions()
         {
             using (Context context = new Context())
             {
@@ -43,20 +66,22 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The UpdateAuction.
+        /// </summary>
+        /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void UpdateAuction(Auction auction)
         {
             using (Context context = new Context())
             {
                 Auction toBeUpdated = context.Auctions.Find(auction.IdAuction);
 
-                if (toBeUpdated == null)
+                if (toBeUpdated != null)
                 {
-                    return;
+                    context.Entry(toBeUpdated).CurrentValues.SetValues(auction);
+                    context.SaveChanges();
                 }
-                context.Entry(toBeUpdated).CurrentValues.SetValues(auction);
-                context.SaveChanges();
             }
         }
     }
 }
-

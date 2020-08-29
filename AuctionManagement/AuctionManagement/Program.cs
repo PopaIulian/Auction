@@ -23,6 +23,9 @@ namespace AuctionManagement
             auction.StartDate = DateTime.Now;
             auction.EndDate = DateTime.Now;
             service.AddAuction(auction);
+
+            int x;
+            Console.Read();
         }
     }
 }

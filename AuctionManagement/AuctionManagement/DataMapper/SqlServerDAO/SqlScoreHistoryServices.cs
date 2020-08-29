@@ -1,4 +1,6 @@
-﻿
+﻿// <copyright file="SqlScoreHistoryServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
@@ -6,8 +8,15 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
     using System.Linq;
     using AuctionManagement.DomainModel;
 
-    class SqlScoreHistoryServices : IScoreHistoryDataServices
+    /// <summary>
+    /// Defines the <see cref="SqlScoreHistoryServices" />.
+    /// </summary>
+    internal class SqlScoreHistoryServices : IScoreHistoryDataServices
     {
+        /// <summary>
+        /// The AddScoreHistory.
+        /// </summary>
+        /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         public void AddScoreHistory(ScoreHistory scoreHistory)
         {
             using (Context context = new Context())
@@ -17,6 +26,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The DeleteScoreHistory.
+        /// </summary>
+        /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         public void DeleteScoreHistory(ScoreHistory scoreHistory)
         {
             using (Context context = new Context())
@@ -28,6 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The GetScoreHistoryById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="ScoreHistory"/>.</returns>
         public ScoreHistory GetScoreHistoryById(int id)
         {
             using (Context context = new Context())
@@ -36,7 +54,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-        public IList<ScoreHistory> GettAllScoreHistories()
+        /// <summary>
+        /// The GetAllScoreHistories.
+        /// </summary>
+        /// <returns>The <see cref="IList{ScoreHistory}"/>.</returns>
+        public IList<ScoreHistory> GetAllScoreHistories()
         {
             using (Context context = new Context())
             {
@@ -44,21 +66,22 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The UpdateScoreHistory.
+        /// </summary>
+        /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         public void UpdateScoreHistory(ScoreHistory scoreHistory)
         {
             using (Context context = new Context())
             {
                 ScoreHistory toBeUpdated = context.ScoreHistories.Find(scoreHistory.IdScoreHistory);
 
-                if (toBeUpdated == null)
+                if (toBeUpdated != null)
                 {
-                    return;
+                    context.Entry(toBeUpdated).CurrentValues.SetValues(scoreHistory);
+                    context.SaveChanges();
                 }
-                context.Entry(toBeUpdated).CurrentValues.SetValues(scoreHistory);
-                context.SaveChanges();
             }
         }
     }
 }
-
- 

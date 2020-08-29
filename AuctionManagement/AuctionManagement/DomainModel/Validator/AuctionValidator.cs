@@ -31,7 +31,8 @@ namespace AuctionManagement.DomainModel.Validator
         public void InsertAuctionValidator()
         {
             RuleFor(x => x).Must(args => this.CompareDate(args.StartDate, args.EndDate)).WithErrorCode("The dates are not corect.");
-            int minPrice = Configuration.GetConfigValue(ConfigServices.GettAllConfigurations(), Configuration.INITIAL_SCORE);
+
+            int minPrice = Configuration.GetConfigValue(ConfigServices.GetAllConfigurations(), Configuration.INITIAL_SCORE);
             RuleFor(x => x).Must(args => this.CompareStartPrice(minPrice, args.Price)).WithErrorCode("The price is too low.");
         }
 

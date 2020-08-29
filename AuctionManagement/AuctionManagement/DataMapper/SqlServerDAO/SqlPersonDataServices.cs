@@ -1,12 +1,22 @@
-﻿
+﻿// <copyright file="SqlPersonDataServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
+
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
     using System.Collections.Generic;
     using System.Linq;
     using AuctionManagement.DomainModel;
 
-    class SqlPersonDataServices : IPersonDataServices
+    /// <summary>
+    /// Defines the <see cref="SqlPersonDataServices" />.
+    /// </summary>
+    internal class SqlPersonDataServices : IPersonDataServices
     {
+        /// <summary>
+        /// The AddPerson.
+        /// </summary>
+        /// <param name="person">The person<see cref="Person"/>.</param>
         public void AddPerson(Person person)
         {
             using (Context context = new Context())
@@ -16,6 +26,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The DeletePerson.
+        /// </summary>
+        /// <param name="person">The person<see cref="Person"/>.</param>
         public void DeletePerson(Person person)
         {
             using (Context context = new Context())
@@ -27,6 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The GetPersonById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="Person"/>.</returns>
         public Person GetPersonById(int id)
         {
             using (Context context = new Context())
@@ -35,7 +54,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-        public IList<Person> GettAllPersons()
+        /// <summary>
+        /// The GetAllPersons.
+        /// </summary>
+        /// <returns>The <see cref="IList{Person}"/>.</returns>
+        public IList<Person> GetAllPersons()
         {
             using (Context context = new Context())
             {
@@ -43,20 +66,22 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The UpdatePerson.
+        /// </summary>
+        /// <param name="person">The person<see cref="Person"/>.</param>
         public void UpdatePerson(Person person)
         {
             using (Context context = new Context())
             {
                 Person toBeUpdated = context.Persons.Find(person.IdPerson);
 
-                if (toBeUpdated == null)
+                if (toBeUpdated != null)
                 {
-                    return;
+                    context.Entry(toBeUpdated).CurrentValues.SetValues(person);
+                    context.SaveChanges();
                 }
-                context.Entry(toBeUpdated).CurrentValues.SetValues(person);
-                context.SaveChanges();
             }
         }
     }
 }
-

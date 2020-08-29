@@ -35,7 +35,7 @@ namespace AuctionManagement.Services.ServicesImplementation
 
         public IList<Config> GetListOfConfigurations()
         {
-            return DataServices.GettAllConfigurations();
+            return DataServices.GetAllConfigurations();
         }
 
         public bool UpdateConfig(Config config)

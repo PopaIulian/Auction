@@ -1,13 +1,22 @@
-﻿
+﻿// <copyright file="SqlProductDataServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
-  using System.Collections.Generic;
+    using System.Collections.Generic;
     using System.Linq;
     using AuctionManagement.DomainModel;
 
-    class SqlProductDataServices : IProductDataServices
+    /// <summary>
+    /// Defines the <see cref="SqlProductDataServices" />.
+    /// </summary>
+    internal class SqlProductDataServices : IProductDataServices
     {
+        /// <summary>
+        /// The AddObject.
+        /// </summary>
+        /// <param name="product">The product<see cref="Product"/>.</param>
         public void AddObject(Product product)
         {
             using (Context context = new Context())
@@ -17,6 +26,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The DeleteObject.
+        /// </summary>
+        /// <param name="product">The product<see cref="Product"/>.</param>
         public void DeleteObject(Product product)
         {
             using (Context context = new Context())
@@ -28,6 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The GetObjectById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="Product"/>.</returns>
         public Product GetObjectById(int id)
         {
             using (Context context = new Context())
@@ -36,7 +54,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-        public IList<Product> GettAllObjects()
+        /// <summary>
+        /// The GetAllObjects.
+        /// </summary>
+        /// <returns>The <see cref="IList{Product}"/>.</returns>
+        public IList<Product> GetAllObjects()
         {
             using (Context context = new Context())
             {
@@ -44,18 +66,21 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The UpdateObject.
+        /// </summary>
+        /// <param name="product">The product<see cref="Product"/>.</param>
         public void UpdateObject(Product product)
         {
             using (Context context = new Context())
             {
                 Product toBeUpdated = context.Products.Find(product.IdProduct);
 
-                if (toBeUpdated == null)
+                if (toBeUpdated != null)
                 {
-                    return;
+                    context.Entry(toBeUpdated).CurrentValues.SetValues(product);
+                    context.SaveChanges();
                 }
-                context.Entry(toBeUpdated).CurrentValues.SetValues(product);
-                context.SaveChanges();
             }
         }
     }

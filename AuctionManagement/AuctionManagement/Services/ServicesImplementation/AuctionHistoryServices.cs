@@ -19,7 +19,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         public bool AddAuctionHistory(AuctionHistory auctionHistory)
         {
             var validator = new AuctionHistoryValidator();
-            validator.InsertAuctionHistoryValidator(DataServices.GetLastAuctionInfo(auctionHistory.AuctionId).Price);
+            validator.InsertAuctionHistoryValidator(DataServices.GetLastAuctionInfo(auctionHistory.AuctionId));
             ValidationResult results = validator.Validate(auctionHistory);
 
             bool isValid = results.IsValid;
@@ -73,7 +73,7 @@ namespace AuctionManagement.Services.ServicesImplementation
 
         public IList<AuctionHistory> GetListOfAuctionHistory()
         {
-            return DataServices.GettAllAuctionsHistory();
+            return DataServices.GetAllAuctionsHistory();
         }
 
         public bool UpdateAuctionHistory(AuctionHistory auctionHistory)

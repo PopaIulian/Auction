@@ -1,12 +1,22 @@
-﻿
+﻿// <copyright file="SqlAuctionHistoryDataServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
     using System.Collections.Generic;
     using System.Linq;
     using AuctionManagement.DomainModel;
-    class SqlAuctionHistoryDataServices : IAuctionHistoryDataServices
+
+    /// <summary>
+    /// Defines the <see cref="SqlAuctionHistoryDataServices" />.
+    /// </summary>
+    internal class SqlAuctionHistoryDataServices : IAuctionHistoryDataServices
     {
+        /// <summary>
+        /// The AddAuctionHistory.
+        /// </summary>
+        /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         public void AddAuctionHistory(AuctionHistory auctionHistory)
         {
             using (Context context = new Context())
@@ -16,6 +26,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The DeleteAuctionHistory.
+        /// </summary>
+        /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         public void DeleteAuctionHistory(AuctionHistory auctionHistory)
         {
             using (Context context = new Context())
@@ -27,6 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The GetAuctionHistoryById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="AuctionHistory"/>.</returns>
         public AuctionHistory GetAuctionHistoryById(int id)
         {
             using (Context context = new Context())
@@ -35,7 +54,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-        public IList<AuctionHistory> GettAllAuctionsHistory()
+        /// <summary>
+        /// The GetAllAuctionsHistory.
+        /// </summary>
+        /// <returns>The <see cref="IList{AuctionHistory}"/>.</returns>
+        public IList<AuctionHistory> GetAllAuctionsHistory()
         {
             using (Context context = new Context())
             {
@@ -43,21 +66,29 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
+        /// <summary>
+        /// The UpdateAuctionHistory.
+        /// </summary>
+        /// <param name="auctionHistory">The auctionHistory<see cref="AuctionHistory"/>.</param>
         public void UpdateAuctionHistory(AuctionHistory auctionHistory)
         {
             using (Context context = new Context())
             {
                 AuctionHistory toBeUpdated = context.AuctionsHistory.Find(auctionHistory.IdAuctionHistory);
 
-                if (toBeUpdated == null)
+                if (toBeUpdated != null)
                 {
-                    return;
+                    context.Entry(toBeUpdated).CurrentValues.SetValues(auctionHistory);
+                    context.SaveChanges();
                 }
-                context.Entry(toBeUpdated).CurrentValues.SetValues(auctionHistory);
-                context.SaveChanges();
             }
         }
 
+        /// <summary>
+        /// The GetLastAuctionInfo.
+        /// </summary>
+        /// <param name="auctionId">The auctionId<see cref="int"/>.</param>
+        /// <returns>The <see cref="AuctionHistory"/>.</returns>
         public AuctionHistory GetLastAuctionInfo(int auctionId)
         {
             using (Context context = new Context())
@@ -65,6 +96,5 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
                 return context.AuctionsHistory.Where(auctionHistory => auctionHistory.AuctionId == auctionId).Last();
             }
         }
-
     }
 }

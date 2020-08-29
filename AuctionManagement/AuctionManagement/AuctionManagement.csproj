@@ -81,7 +81,6 @@
     <Compile Include="DomainModel\AuctionHistory.cs" />
     <Compile Include="DomainModel\Category.cs" />
     <Compile Include="DomainModel\Config.cs" />
-    <Compile Include="DomainModel\Model.cs" />
     <Compile Include="DomainModel\Model1.cs" />
     <Compile Include="DomainModel\Person.cs" />
     <Compile Include="DomainModel\Product.cs" />

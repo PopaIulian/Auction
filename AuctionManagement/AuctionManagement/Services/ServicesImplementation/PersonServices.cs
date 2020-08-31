@@ -6,6 +6,8 @@ namespace AuctionManagement.Services.ServicesImplementation
 {
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using FluentValidation.Results;
     using System;
     using System.Collections.Generic;
 
@@ -14,25 +16,33 @@ namespace AuctionManagement.Services.ServicesImplementation
     /// </summary>
     public class PersonServices : IPersonServices
     {
-        /// <summary>
-        /// Defines the Log.
-        /// </summary>
+      
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(PersonServices));
 
-        /// <summary>
-        /// Gets or sets the DataServices.
-        /// </summary>
+      
         public static IPersonDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.PersonDataServices;
 
-        /// <summary>
-        /// The AddPerson.
-        /// </summary>
-        /// <param name="person">The person<see cref="Person"/>.</param>
-        /// <returns>The <see cref="bool"/>.</returns>
+       
         public bool AddPerson(Person person)
         {
-           
-            return true;
+            var validator = new PersonValidator();
+            ValidationResult results = validator.Validate(person);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The auction is valid!");
+                DataServices.AddPerson(person);
+                Log.Info("The auction was added to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The auction is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -42,7 +52,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool DeletePerson(Person person)
         {
-            throw new NotImplementedException();
+            var validator = new PersonValidator();
+            ValidationResult results = validator.Validate(person);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The auction is valid!");
+                DataServices.DeletePerson(person);
+                Log.Info("The auction was deleted to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The auction is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -51,7 +78,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="IList{Person}"/>.</returns>
         public IList<Person> GetListOfPersons()
         {
-            throw new NotImplementedException();
+            return DataServices.GetAllPersons();
         }
 
         /// <summary>
@@ -61,7 +88,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="Person"/>.</returns>
         public Person GetPersonById(int id)
         {
-            throw new NotImplementedException();
+            return DataServices.GetPersonById(id);
         }
 
         /// <summary>
@@ -71,7 +98,25 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool UpdatePerson(Person person)
         {
-            throw new NotImplementedException();
+            var validator = new PersonValidator();
+            ValidationResult results = validator.Validate(person);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The auction is valid!");
+                DataServices.UpdatePerson(person);
+                Log.Info("The auction was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The auction is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
     }
 }
+

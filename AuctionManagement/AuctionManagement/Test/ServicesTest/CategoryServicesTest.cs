@@ -127,7 +127,7 @@ namespace AuctionManagement.Test.ServicesTest
         /// The TestGetListOfAuctions.
         /// </summary>
         [Test]
-        public void TestGetListOfAuctions()
+        public void TestGetListOfCategories()
         {
             ICategoryServices categoryServices = new CategoryServices();
             Mock<ICategoryDataServices> mock = new Mock<ICategoryDataServices>();
@@ -171,7 +171,7 @@ namespace AuctionManagement.Test.ServicesTest
             var result = categoryServices.GetCategoryById(1);
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as Category).IdCategory, 10);
+            Assert.AreEqual((result as Category).IdCategory, 1);
         }
 
         /// <summary>

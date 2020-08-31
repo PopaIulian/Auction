@@ -5,6 +5,7 @@
 namespace AuctionTests.DataMapper
 {
     using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
@@ -93,6 +94,34 @@ namespace AuctionTests.DataMapper
             obj.GetConfigById("initial_score");
 
             mock.Verify(o => o.GetConfigById("initial_score"), Times.Once());
+        }
+
+        [Test]
+        public void TestAllAuctionOperation()
+        {
+            Config test = new Config()
+            {
+                IdConfig = "text",
+                ValueConfig = 5
+            };
+
+            SqlConfigDataServices service = new SqlConfigDataServices();
+
+            service.AddConfig(test);
+
+            Config elem = service.GetConfigById("test");
+            Assert.AreEqual(elem.ValueConfig, test.ValueConfig);
+
+            var elems = service.GetAllConfigurations();
+            Assert.IsNotEmpty(elems);
+
+            Config newElem = new Config()
+            {
+                IdConfig = "text",
+                ValueConfig = 55
+            };
+            service.UpdateConfig(newElem);
+            service.DeleteConfig(test);
         }
     }
 }

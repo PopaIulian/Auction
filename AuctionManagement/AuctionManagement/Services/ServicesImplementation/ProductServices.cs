@@ -2,8 +2,12 @@
 // Popa Iulian
 // </copyright>
 
+using AuctionManagement.DomainModel.Validator;
+using FluentValidation.Results;
+
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using System.Collections.Generic;
 
@@ -12,6 +16,17 @@ namespace AuctionManagement.Services.ServicesImplementation
     /// </summary>
     internal class ProductServices : IProductServices
     {
+
+        /// <summary>
+        /// Defines the Log.
+        /// </summary>
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(ProductServices));
+
+        /// <summary>
+        /// Gets or sets the DataServices.
+        /// </summary>
+        public static IProductDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.ProductDataServices;
+
         /// <summary>
         /// The AddProduct.
         /// </summary>
@@ -19,7 +34,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool AddProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            var validator = new ProductValidator();
+            ValidationResult results = validator.Validate(product);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The auction is valid!");
+                DataServices.AddObject(product);
+                Log.Info("The auction was added to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The auction is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -29,7 +61,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool DeleteProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            var validator = new ProductValidator();
+            ValidationResult results = validator.Validate(product);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The auction is valid!");
+                DataServices.DeleteObject(product);
+                Log.Info("The auction was deleted to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The auction is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -38,7 +87,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="IList{Product}"/>.</returns>
         public IList<Product> GetListOfProducts()
         {
-            throw new System.NotImplementedException();
+            return DataServices.GetAllObjects();
         }
 
         /// <summary>
@@ -48,7 +97,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="Product"/>.</returns>
         public Product GetProductById(int id)
         {
-            throw new System.NotImplementedException();
+            return DataServices.GetObjectById(id);
         }
 
         /// <summary>
@@ -58,7 +107,25 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool UpdateProduct(Product product)
         {
-            throw new System.NotImplementedException();
+            var validator = new ProductValidator();
+            ValidationResult results = validator.Validate(product);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The auction is valid!");
+                DataServices.UpdateObject(product);
+                Log.Info("The auction was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The auction is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
     }
 }
+

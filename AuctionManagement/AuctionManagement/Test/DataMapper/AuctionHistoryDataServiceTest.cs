@@ -5,9 +5,11 @@
 namespace AuctionManagement.Test.DataMapper
 {
     using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryDataServiceTest" />.
@@ -94,5 +96,37 @@ namespace AuctionManagement.Test.DataMapper
 
             mock.Verify(o => o.GetAuctionHistoryById(1), Times.Once());
         }
+
+        //[Test]
+        //public void TestAllAuctionOperation()
+        //{
+        //    AuctionHistory test = new AuctionHistory()
+        //    {
+        //        UserId = 6,
+        //        Auctiondate = DateTime.Now.AddDays(3),
+        //        AuctionId = 1,
+        //        Price = 1030,
+        //        Currency = "euro"
+        //    };
+
+        //    SqlAuctionHistoryDataServices service = new SqlAuctionHistoryDataServices();
+
+        //    service.AddAuctionHistory(test);
+
+        //    AuctionHistory elem = service.GetAuctionHistoryById(1);
+        //    Assert.AreEqual(elem.Price, test.Price);
+
+        //    var elems = service.GetAllAuctionsHistory();
+        //    Assert.IsNotEmpty(elems);
+
+        //    AuctionHistory newElem = new AuctionHistory()
+        //    {
+        //        UserId = 6,
+        //        AuctionId = 145,
+               
+        //    };
+        //    service.UpdateAuctionHistory(newElem);
+        //    service.DeleteAuctionHistory(test);
+        //}
     }
 }

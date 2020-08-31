@@ -168,7 +168,7 @@ namespace PersonManagement.Test.ServicesTest
             var result = personServices.GetPersonById(1);
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as Person).IdPerson, 10);
+            Assert.AreEqual((result as Person).IdPerson, 1);
         }
 
         /// <summary>

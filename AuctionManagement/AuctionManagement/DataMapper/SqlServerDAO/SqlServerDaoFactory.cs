@@ -32,16 +32,13 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <summary>
         /// Gets the ObjectDataServices.
         /// </summary>
-        public IProductDataServices ObjectDataServices { get => new SqlProductDataServices(); }
+        public IProductDataServices ProductDataServices { get => new SqlProductDataServices(); }
 
         /// <summary>
         /// Gets the PersonDataServices.
         /// </summary>
         public IPersonDataServices PersonDataServices { get => new SqlPersonDataServices(); }
 
-        /// <summary>
-        /// Gets the ScoreHistoryServices.
-        /// </summary>
         public IScoreHistoryDataServices ScoreHistoryServices { get => new SqlScoreHistoryServices(); }
     }
 }

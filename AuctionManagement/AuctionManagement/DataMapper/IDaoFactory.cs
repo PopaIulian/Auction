@@ -30,13 +30,18 @@ namespace AuctionManagement.DataMapper
         IConfigDataServices ConfigDataServices { get; }
 
         /// <summary>
-        /// Gets the ObjectDataServices.
+        /// Gets the ProductDataServices.
         /// </summary>
-        IProductDataServices ObjectDataServices { get; }
+        IProductDataServices ProductDataServices { get; }
 
         /// <summary>
         /// Gets the PersonDataServices.
         /// </summary>
         IPersonDataServices PersonDataServices { get; }
+
+        /// <summary>
+        /// Gets the ScoreHistoryServices.
+        /// </summary>
+        IScoreHistoryDataServices ScoreHistoryServices { get; }
     }
 }

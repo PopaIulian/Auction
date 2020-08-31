@@ -2,12 +2,14 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionTests.DataMapper
+namespace ScoreHistoryTests.DataMapper
 {
-    using AuctionManagement.DataMapper;
-    using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
+    using AuctionManagement.DomainModel;
+    using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryDataServiceTest" />.
@@ -94,5 +96,35 @@ namespace AuctionTests.DataMapper
 
             mock.Verify(o => o.GetScoreHistoryById(1), Times.Once());
         }
+
+        //[Test]
+        //public void TestAllScoreHistoryOperation()
+        //{
+        //    ScoreHistory test = new ScoreHistory()
+        //    {
+        //        IdScoreHistory = 1,
+        //        DateScore = DateTime.Now,
+        //        PersonId = 2,
+        //        Score = 56
+        //    };
+
+        //    IScoreHistoryDataServices service = new SqlScoreHistoryServices();
+
+        //    service.AddScoreHistory(test);
+
+        //    ScoreHistory elem = service.GetScoreHistoryById(1);
+        //    Assert.AreEqual(elem.PersonId, test.PersonId);
+
+        //    var elems = service.GetAllScoreHistories();
+        //    Assert.IsNotEmpty(elems);
+
+        //    ScoreHistory newElem = new ScoreHistory()
+        //    {
+        //        IdScoreHistory = 1,
+        //        Score = 59
+        //    };
+        //    service.UpdateScoreHistory(newElem);
+        //    service.DeleteScoreHistory(test);
+        //}
     }
 }

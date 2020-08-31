@@ -6,6 +6,8 @@ namespace AuctionManagement.Services.ServicesImplementation
 {
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using FluentValidation.Results;
     using System.Collections.Generic;
 
     /// <summary>
@@ -30,8 +32,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool AddConfig(Config config)
         {
-            DataServices.AddConfig(config);
-            return true;
+            var validator = new ConfigValidator();
+            ValidationResult results = validator.Validate(config);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The config is valid!");
+                DataServices.AddConfig(config);
+                Log.Info("The config was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The config is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -41,8 +59,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool DeleteConfig(Config config)
         {
-            DataServices.DeleteConfig(config);
-            return true;
+            var validator = new ConfigValidator();
+            ValidationResult results = validator.Validate(config);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The config is valid!");
+                DataServices.DeleteConfig(config);
+                Log.Info("The config was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The config is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -71,8 +105,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool UpdateConfig(Config config)
         {
-            DataServices.UpdateConfig(config);
-            return true;
+            var validator = new ConfigValidator();
+            ValidationResult results = validator.Validate(config);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The config is valid!");
+                DataServices.UpdateConfig(config);
+                Log.Info("The config was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The config is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
     }
 }

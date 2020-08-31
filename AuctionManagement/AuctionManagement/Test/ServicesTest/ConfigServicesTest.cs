@@ -165,7 +165,7 @@ namespace AuctionManagement.Test.ServicesTest
             var result = configServices.GetConfigById("id");
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as Config).IdConfig, 10);
+            Assert.AreEqual((result as Config).IdConfig, "text");
         }
 
         /// <summary>

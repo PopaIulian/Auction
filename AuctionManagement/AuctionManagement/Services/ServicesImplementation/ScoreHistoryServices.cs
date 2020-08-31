@@ -6,6 +6,8 @@ namespace AuctionManagement.Services.ServicesImplementation
 {
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using FluentValidation.Results;
     using System;
     using System.Collections.Generic;
 
@@ -14,10 +16,10 @@ namespace AuctionManagement.Services.ServicesImplementation
     /// </summary>
     internal class ScoreHistoryServices : IScoreHistoryServices
     {
-        /// <summary>
-        /// Gets or sets the DataServices.
-        /// </summary>
-        public static IScoreHistoryDataServices DataServices { get; set; }
+        private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(AuctionServices));
+
+        public static IScoreHistoryDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.ScoreHistoryServices;
+
 
         /// <summary>
         /// The AddScoreHistory.
@@ -26,7 +28,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool AddScoreHistory(ScoreHistory scoreHistory)
         {
-            throw new NotImplementedException();
+            var validator = new ScoreHistoryValidator();
+            ValidationResult results = validator.Validate(scoreHistory);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The score history is valid!");
+                DataServices.AddScoreHistory(scoreHistory);
+                Log.Info("The score history was added to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The score history is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -36,7 +55,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool DeleteScoreHistory(ScoreHistory scoreHistory)
         {
-            throw new NotImplementedException();
+            var validator = new ScoreHistoryValidator();
+            ValidationResult results = validator.Validate(scoreHistory);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The score history is valid!");
+                DataServices.DeleteScoreHistory(scoreHistory);
+                Log.Info("The score history was deleted to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The score history is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -45,7 +81,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="IList{ScoreHistory}"/>.</returns>
         public IList<ScoreHistory> GetListOfScoreHistories()
         {
-            throw new NotImplementedException();
+            return DataServices.GetAllScoreHistories();
         }
 
         /// <summary>
@@ -55,7 +91,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="ScoreHistory"/>.</returns>
         public ScoreHistory GetScoreHistoryById(int id)
         {
-            throw new NotImplementedException();
+            return DataServices.GetScoreHistoryById(id);
         }
 
         /// <summary>
@@ -65,7 +101,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool UpdateScoreHistory(ScoreHistory scoreHistory)
         {
-            throw new NotImplementedException();
+            var validator = new ScoreHistoryValidator();
+            ValidationResult results = validator.Validate(scoreHistory);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The history score is valid!");
+                DataServices.UpdateScoreHistory(scoreHistory);
+                Log.Info("The history score was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The score history is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
     }
 }

@@ -5,6 +5,7 @@
 namespace AuctionTests.DataMapper
 {
     using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
@@ -93,6 +94,35 @@ namespace AuctionTests.DataMapper
             obj.GetPersonById(1);
 
             mock.Verify(o => o.GetPersonById(1), Times.Once());
+        }
+
+        [Test]
+        public void TestAllAuctionOperation()
+        {
+            Person test = new Person()
+            {
+                IdPerson = 1,
+                Username = "name",
+                PersonRole = "bidder"
+            };
+
+            IPersonDataServices service = new SqlPersonDataServices();
+
+            service.AddPerson(test);
+
+            Person elem = service.GetPersonById(1);
+            Assert.AreEqual(elem.Username, test.Username);
+
+            var elems = service.GetAllPersons();
+            Assert.IsNotEmpty(elems);
+
+            Person newElem = new Person()
+            {
+                IdPerson = 1,
+                Username = "new_name"
+            };
+            service.UpdatePerson(newElem);
+            service.DeletePerson(test);
         }
     }
 }

@@ -5,6 +5,7 @@
 namespace AuctionTests.DataMapper
 {
     using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
@@ -93,6 +94,35 @@ namespace AuctionTests.DataMapper
             obj.GetCategoryById(1);
 
             mock.Verify(o => o.GetCategoryById(1), Times.Once());
+        }
+
+        [Test]
+        public void TestAllAuctionOperation()
+        {
+            Category test = new Category()
+            {
+                IdCategory = 1,
+                CategoryName = "name",
+                ParentId = 2,
+            };
+
+            SqlCategoryDataServices service = new SqlCategoryDataServices();
+
+            service.AddCategory(test);
+
+            Category elem = service.GetCategoryById(1);
+            Assert.AreEqual(elem.CategoryName, test.CategoryName);
+
+            var elems = service.GetAllCategories();
+            Assert.IsNotEmpty(elems);
+
+            Category newElem = new Category()
+            {
+                IdCategory = 1,
+                CategoryName = "new_name",
+            };
+            service.UpdateCategory(newElem);
+            service.UpdateCategory(test);
         }
     }
 }

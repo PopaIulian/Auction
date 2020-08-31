@@ -183,7 +183,7 @@ namespace AuctionManagement.Test.ServicesTest
             var result = auctionHistoryServices.GetAuctionHistoryById(1);
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as AuctionHistory).IdAuctionHistory, 10);
+            Assert.AreEqual((result as AuctionHistory).IdAuctionHistory, 5);
         }
 
         /// <summary>

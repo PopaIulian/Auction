@@ -29,8 +29,8 @@ namespace AuctionTests.ServicesTest
                 IdAuction = 1,
                 ObjectId = 1,
                 Currency = "ron",
-                StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddMonths(3),
+                StartDate = DateTime.Now.AddHours(2),
+                EndDate = DateTime.Now.AddMonths(1),
                 UserId = 2,
                 Price = 34
             };
@@ -188,7 +188,7 @@ namespace AuctionTests.ServicesTest
             var result = auctionServices.GetAuctionById(1);
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as Auction).IdAuction, 10);
+            Assert.AreEqual((result as Auction).IdAuction, 1);
         }
 
         /// <summary>

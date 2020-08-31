@@ -6,6 +6,8 @@ namespace AuctionManagement.Services.ServicesImplementation
 {
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using FluentValidation.Results;
     using System.Collections.Generic;
 
     /// <summary>
@@ -30,8 +32,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool AddCategory(Category category)
         {
-            DataServices.AddCategory(category);
-            return true;
+            var validator = new CategoryValidator();
+            ValidationResult results = validator.Validate(category);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The category is valid!");
+                DataServices.AddCategory(category);
+                Log.Info("The category was added to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The category is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -41,8 +59,24 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool DeleteCategory(Category category)
         {
-            DataServices.DeleteCategory(category);
-            return true;
+            var validator = new CategoryValidator();
+            ValidationResult results = validator.Validate(category);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The category is valid!");
+                DataServices.DeleteCategory(category);
+                Log.Info("The category was deleted to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The category is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
 
         /// <summary>
@@ -71,8 +105,25 @@ namespace AuctionManagement.Services.ServicesImplementation
         /// <returns>The <see cref="bool"/>.</returns>
         public bool UpdateCategory(Category category)
         {
-            DataServices.UpdateCategory(category);
-            return true;
+            var validator = new CategoryValidator();
+            ValidationResult results = validator.Validate(category);
+
+            bool isValid = results.IsValid;
+
+            if (isValid)
+            {
+                Log.Info("The category is valid!");
+                DataServices.UpdateCategory(category);
+                Log.Info("The category was updated to the database!");
+            }
+            else
+            {
+                IList<ValidationFailure> failures = results.Errors;
+                Log.Error($"The category is not valid. The following errors occurred: {failures}");
+            }
+
+            return isValid;
         }
     }
 }
+

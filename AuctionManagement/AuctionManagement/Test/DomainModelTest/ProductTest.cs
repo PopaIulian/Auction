@@ -1,13 +1,21 @@
-﻿
+﻿// <copyright file="ProductTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.Test.DomainModelTest
 {
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
+
+    /// <summary>
+    /// Defines the <see cref="ProductTest" />.
+    /// </summary>
     internal class ProductTest
     {
-        
+        /// <summary>
+        /// The TestProductWithValidValues1.
+        /// </summary>
         [Test]
         public void TestProductWithValidValues1()
         {
@@ -16,7 +24,6 @@ namespace AuctionManagement.Test.DomainModelTest
                 IdProduct = 1,
                 ObjectName = "name",
                 CategoryName = 2
-
             };
 
             ProductValidator validator = new ProductValidator();
@@ -26,7 +33,9 @@ namespace AuctionManagement.Test.DomainModelTest
             Assert.IsTrue(isValid);
         }
 
-       
+        /// <summary>
+        /// The TestProductWithValidValues2.
+        /// </summary>
         [Test]
         public void TestProductWithValidValues2()
         {
@@ -44,14 +53,15 @@ namespace AuctionManagement.Test.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
-       
+        /// <summary>
+        /// The TestProductWithValidValues3.
+        /// </summary>
         [Test]
         public void TestProductWithValidValues3()
         {
             Product test = new Product()
             {
                 IdProduct = 1
-
             };
 
             ProductValidator validator = new ProductValidator();
@@ -61,7 +71,9 @@ namespace AuctionManagement.Test.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
-        
+        /// <summary>
+        /// The TestProductProperty1.
+        /// </summary>
         [Test]
         public void TestProductProperty1()
         {
@@ -77,7 +89,9 @@ namespace AuctionManagement.Test.DomainModelTest
             Assert.AreEqual(test.CategoryName, 2);
         }
 
-       
+        /// <summary>
+        /// The TestProductProperty2.
+        /// </summary>
         [Test]
         public void TestProductProperty2()
         {
@@ -86,12 +100,10 @@ namespace AuctionManagement.Test.DomainModelTest
                 IdProduct = 1,
                 ObjectName = "name",
                 CategoryName = 2
-
             };
             Assert.AreNotEqual(test.IdProduct, 45);
             Assert.AreNotEqual(test.ObjectName, "name_v2");
             Assert.AreNotEqual(test.CategoryName, 5);
         }
-
     }
 }

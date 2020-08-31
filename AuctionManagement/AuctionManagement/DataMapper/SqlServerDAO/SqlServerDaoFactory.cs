@@ -35,7 +35,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         public IConfigDataServices ConfigDataServices { get => new SqlConfigDataServices(); }
 
         /// <summary>
-        /// Gets the ObjectDataServices.
+        /// Gets the ProductDataServices.
         /// </summary>
         public IProductDataServices ProductDataServices { get => new SqlProductDataServices(); }
 
@@ -44,6 +44,9 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// </summary>
         public IPersonDataServices PersonDataServices { get => new SqlPersonDataServices(); }
 
+        /// <summary>
+        /// Gets the ScoreHistoryServices.
+        /// </summary>
         public IScoreHistoryDataServices ScoreHistoryServices { get => new SqlScoreHistoryServices(); }
     }
 }

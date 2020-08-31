@@ -4,11 +4,11 @@
 
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using FluentValidation.Results;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryServices" />.

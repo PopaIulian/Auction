@@ -1,27 +1,73 @@
+// <copyright file="Model1.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
+
 namespace AuctionManagement.DomainModel
 {
-    using System;
     using System.Data.Entity;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Linq;
 
+    /// <summary>
+    /// Defines the <see cref="Model1" />.
+    /// </summary>
     public partial class Model1 : DbContext
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Model1"/> class.
+        /// </summary>
         public Model1()
             : base("name=Model2")
         {
         }
 
+        /// <summary>
+        /// Gets or sets the Auctions.
+        /// </summary>
         public virtual DbSet<Auction> Auctions { get; set; }
-        public virtual DbSet<AuctionHistory> AuctionHistories { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<CategoryParent> CategoryParents { get; set; }
-        public virtual DbSet<Config> Configs { get; set; }
-        public virtual DbSet<Person> People { get; set; }
-        public virtual DbSet<Product> Products { get; set; }
-        public virtual DbSet<ScoreHistory> ScoreHistories { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
 
+        /// <summary>
+        /// Gets or sets the AuctionHistories.
+        /// </summary>
+        public virtual DbSet<AuctionHistory> AuctionHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Categories.
+        /// </summary>
+        public virtual DbSet<Category> Categories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the CategoryParents.
+        /// </summary>
+        public virtual DbSet<CategoryParent> CategoryParents { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Configurations.
+        /// </summary>
+        public virtual DbSet<Config> Configs { get; set; }
+
+        /// <summary>
+        /// Gets or sets the People.
+        /// </summary>
+        public virtual DbSet<Person> People { get; set; }
+
+        /// <summary>
+        /// Gets or sets the Products.
+        /// </summary>
+        public virtual DbSet<Product> Products { get; set; }
+
+        /// <summary>
+        /// Gets or sets the ScoreHistories.
+        /// </summary>
+        public virtual DbSet<ScoreHistory> ScoreHistories { get; set; }
+
+        /// <summary>
+        /// Gets or sets the system diagrams.
+        /// </summary>
+        public virtual DbSet<Sysdiagram> Sysdiagrams { get; set; }
+
+        /// <summary>
+        /// The OnModelCreating.
+        /// </summary>
+        /// <param name="modelBuilder">The modelBuilder<see cref="DbModelBuilder"/>.</param>
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Auction>()

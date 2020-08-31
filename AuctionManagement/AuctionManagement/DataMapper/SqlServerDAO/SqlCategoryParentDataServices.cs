@@ -1,15 +1,22 @@
-﻿using AuctionManagement.DomainModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="SqlCategoryParentDataServices.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
-    class SqlCategoryParentDataServices : ICategoryParentDataServices
+    using System.Collections.Generic;
+    using System.Linq;
+    using AuctionManagement.DomainModel;
+
+    /// <summary>
+    /// Defines the <see cref="SqlCategoryParentDataServices" />.
+    /// </summary>
+    internal class SqlCategoryParentDataServices : ICategoryParentDataServices
     {
-       
+        /// <summary>
+        /// The AddCategoryParent.
+        /// </summary>
+        /// <param name="categoryParent">The categoryParent<see cref="CategoryParent"/>.</param>
         public void AddCategoryParent(CategoryParent categoryParent)
         {
             using (Model1 context = new Model1())
@@ -18,7 +25,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
                 context.SaveChanges();
             }
         }
-        
+
+        /// <summary>
+        /// The DeleteCategoryParent.
+        /// </summary>
+        /// <param name="categoryParent">The categoryParent<see cref="CategoryParent"/>.</param>
         public void DeleteCategoryParent(CategoryParent categoryParent)
         {
             using (Model1 context = new Model1())
@@ -30,7 +41,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-      
+        /// <summary>
+        /// The GetCategoryParentById.
+        /// </summary>
+        /// <param name="id">The id<see cref="int"/>.</param>
+        /// <returns>The <see cref="CategoryParent"/>.</returns>
         public CategoryParent GetCategoryParentById(int id)
         {
             using (Model1 context = new Model1())
@@ -39,7 +54,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-      
+        /// <summary>
+        /// The GetAllCategoriesParent.
+        /// </summary>
+        /// <returns>The <see cref="IList{CategoryParent}"/>.</returns>
         public IList<CategoryParent> GetAllCategoriesParent()
         {
             using (Model1 context = new Model1())
@@ -48,7 +66,10 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
             }
         }
 
-       
+        /// <summary>
+        /// The UpdateCategoryParent.
+        /// </summary>
+        /// <param name="categoryParent">The categoryParent<see cref="CategoryParent"/>.</param>
         public void UpdateCategoryParent(CategoryParent categoryParent)
         {
             using (Model1 context = new Model1())
@@ -61,6 +82,6 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
                     context.SaveChanges();
                 }
             }
-        }       
+        }
     }
 }

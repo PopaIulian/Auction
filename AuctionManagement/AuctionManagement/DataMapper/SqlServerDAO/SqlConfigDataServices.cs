@@ -62,8 +62,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         {
             using (DomainModel.Model1 context = new DomainModel.Model1())
             {
-                var res =  context.Configs.Select(config => config).ToList();
-                return res;
+                return context.Configs.Select(config => config).ToList();
             }
         }
 

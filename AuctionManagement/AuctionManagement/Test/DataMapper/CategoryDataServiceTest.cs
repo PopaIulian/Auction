@@ -67,10 +67,10 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
-        /// The GetAllCategorysTest.
+        /// The GetAllCategoriesTest.
         /// </summary>
         [Test]
-        public void GetAllCategorysTest()
+        public void GetAllCategoriesTest()
         {
             Mock<ICategoryDataServices> mock = new Mock<ICategoryDataServices>();
             mock.Setup(m => m.GetAllCategories());
@@ -96,6 +96,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetCategoryById(1), Times.Once());
         }
 
+        /// <summary>
+        /// The TestAllAuctionOperation.
+        /// </summary>
         [Test]
         public void TestAllAuctionOperation()
         {

@@ -14,13 +14,12 @@ namespace AuctionManagement.DomainModel.Validator
     /// </summary>
     public class AuctionValidator : AbstractValidator<Auction>
     {
+         /// <summary>
         /// <summary>
         /// Gets or sets the ConfigServices.
-        /// </summary>
         private IConfigDataServices ConfigServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.ConfigDataServices;
 
-        /* private IAuctionHistoryDataServices AuctionHistoryServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.AuctionHistoryDataServices;*/
-        /// <summary>
+        /// </summary>
         /// Initializes a new instance of the <see cref="AuctionValidator"/> class.
         /// </summary>
         public AuctionValidator()
@@ -41,7 +40,7 @@ namespace AuctionManagement.DomainModel.Validator
         {
             RuleFor(x => x).Must(args => this.CompareDate(args.StartDate, args.EndDate)).WithErrorCode("The dates are not corect.");
 
-            int minPrice = Configuration.GetConfigValue(ConfigServices.GetAllConfigurations(), Configuration.INITIAL_SCORE);
+            int minPrice = Configuration.GetConfigValue(ConfigServices.GetAllConfigurations(), Configuration.InitialScore);
             RuleFor(x => x).Must(args => this.CompareStartPrice(minPrice, args.Price)).WithErrorCode("The price is too low.");
         }
 
@@ -53,9 +52,7 @@ namespace AuctionManagement.DomainModel.Validator
         /// <returns>The <see cref="bool"/>.</returns>
         private bool CompareDate(DateTime startDate, DateTime endDate)
         {
-            if (startDate >= endDate || startDate < endDate.AddMonths(-4) || startDate < DateTime.Now)
-                return false;
-            return true;
+            return startDate >= endDate || startDate < endDate.AddMonths(-4) || startDate < DateTime.Now;
         }
 
         /// <summary>

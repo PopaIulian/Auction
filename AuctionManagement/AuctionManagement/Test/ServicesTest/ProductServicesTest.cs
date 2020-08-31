@@ -1,4 +1,6 @@
-﻿
+﻿// <copyright file="ProductServicesTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace ProductManagement.Test.ServicesTest
 {
@@ -10,10 +12,14 @@ namespace ProductManagement.Test.ServicesTest
     using NUnit.Framework;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// Defines the <see cref="ProductServicesTest" />.
+    /// </summary>
     internal class ProductServicesTest
     {
-
-
+        /// <summary>
+        /// The TestAddProductWithValidData.
+        /// </summary>
         [Test]
         public void TestAddProductWithValidData()
         {
@@ -24,8 +30,8 @@ namespace ProductManagement.Test.ServicesTest
                 CategoryName = 2
             };
 
-            IProductServices ProductServices = new ProductServices();
-            bool result = ProductServices.AddProduct(test);
+            IProductServices productServices = new ProductServices();
+            bool result = productServices.AddProduct(test);
 
             Assert.IsTrue(result);
         }
@@ -75,8 +81,8 @@ namespace ProductManagement.Test.ServicesTest
         {
             Product test = new Product();
 
-            IProductServices ProductServices = new ProductServices();
-            bool result = ProductServices.DeleteProduct(test);
+            IProductServices productServices = new ProductServices();
+            bool result = productServices.DeleteProduct(test);
 
             Assert.IsFalse(result);
         }
@@ -92,11 +98,10 @@ namespace ProductManagement.Test.ServicesTest
                 IdProduct = 1,
                 ObjectName = "name",
                 CategoryName = 2
-
             };
 
-            IProductServices ProductServices = new ProductServices();
-            bool result = ProductServices.UpdateProduct(test);
+            IProductServices productServices = new ProductServices();
+            bool result = productServices.UpdateProduct(test);
 
             Assert.IsTrue(result);
         }
@@ -109,8 +114,8 @@ namespace ProductManagement.Test.ServicesTest
         {
             Product test = new Product();
 
-            IProductServices ProductServices = new ProductServices();
-            bool result = ProductServices.UpdateProduct(test);
+            IProductServices productServices = new ProductServices();
+            bool result = productServices.UpdateProduct(test);
 
             Assert.IsFalse(result);
         }
@@ -150,7 +155,6 @@ namespace ProductManagement.Test.ServicesTest
             IProductServices productServices = new ProductServices();
             Mock<IProductDataServices> mock = new Mock<IProductDataServices>();
             mock.Setup(m => m.GetObjectById(1)).Returns(
-
             new Product()
             {
                 IdProduct = 1,
@@ -187,5 +191,3 @@ namespace ProductManagement.Test.ServicesTest
         }
     }
 }
-
-

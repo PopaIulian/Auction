@@ -67,7 +67,7 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
-        /// The GetAllConfigsTest.
+        /// The Get all configurations Test.
         /// </summary>
         [Test]
         public void GetAllConfigsTest()
@@ -96,6 +96,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetConfigById("initial_score"), Times.Once());
         }
 
+        /// <summary>
+        /// The TestAllAuctionOperation.
+        /// </summary>
         [Test]
         public void TestAllAuctionOperation()
         {

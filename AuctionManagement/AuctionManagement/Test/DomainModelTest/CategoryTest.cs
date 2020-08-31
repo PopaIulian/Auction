@@ -23,7 +23,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdCategory = 1,
                 CategoryName = "name"
-
             };
 
             CategoryValidator validator = new CategoryValidator();
@@ -43,7 +42,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdCategory = 1,
                 CategoryName = "nametooooooooooooooooooooooooooooooooooooooooooooolong",
-
             };
 
             CategoryValidator validator = new CategoryValidator();
@@ -63,7 +61,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdCategory = 1,
                 CategoryName = "name"
-
             };
 
             CategoryValidator validator = new CategoryValidator();
@@ -72,8 +69,6 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsTrue(isValid);
         }
-
-        
 
         /// <summary>
         /// The TestCategoryProperty1.
@@ -101,7 +96,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdCategory = 1,
                 CategoryName = "name"
-
             };
             Assert.AreNotEqual(test.IdCategory, 45);
             Assert.AreNotEqual(test.CategoryName, "name_v2");

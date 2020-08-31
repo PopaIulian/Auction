@@ -4,22 +4,26 @@
 
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using FluentValidation.Results;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryServices" />.
     /// </summary>
     internal class ScoreHistoryServices : IScoreHistoryServices
     {
+        /// <summary>
+        /// Defines the Log.
+        /// </summary>
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(AuctionServices));
 
+        /// <summary>
+        /// Gets or sets the DataServices.
+        /// </summary>
         public static IScoreHistoryDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.ScoreHistoryServices;
-
 
         /// <summary>
         /// The AddScoreHistory.

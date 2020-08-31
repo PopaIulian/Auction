@@ -4,13 +4,13 @@
 
 namespace CategoryManagement.Test.ServicesTest
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="CategoryServicesTest" />.
@@ -29,8 +29,8 @@ namespace CategoryManagement.Test.ServicesTest
                 CategoryName = "name"
             };
 
-            ICategoryServices CategoryServices = new CategoryServices();
-            bool result = CategoryServices.AddCategory(test);
+            ICategoryServices categoryServices = new CategoryServices();
+            bool result = categoryServices.AddCategory(test);
 
             Assert.IsTrue(result);
         }
@@ -79,8 +79,8 @@ namespace CategoryManagement.Test.ServicesTest
         {
             Category test = new Category();
 
-            ICategoryServices CategoryServices = new CategoryServices();
-            bool result = CategoryServices.DeleteCategory(test);
+            ICategoryServices categoryServices = new CategoryServices();
+            bool result = categoryServices.DeleteCategory(test);
 
             Assert.IsFalse(result);
         }
@@ -95,11 +95,10 @@ namespace CategoryManagement.Test.ServicesTest
             {
                 IdCategory = 1,
                 CategoryName = "name"
-
             };
 
-            ICategoryServices CategoryServices = new CategoryServices();
-            bool result = CategoryServices.UpdateCategory(test);
+            ICategoryServices categoryServices = new CategoryServices();
+            bool result = categoryServices.UpdateCategory(test);
 
             Assert.IsTrue(result);
         }
@@ -112,14 +111,14 @@ namespace CategoryManagement.Test.ServicesTest
         {
             Category test = new Category();
 
-            ICategoryServices CategoryServices = new CategoryServices();
-            bool result = CategoryServices.UpdateCategory(test);
+            ICategoryServices categoryServices = new CategoryServices();
+            bool result = categoryServices.UpdateCategory(test);
 
             Assert.IsFalse(result);
         }
 
         /// <summary>
-        /// The TestGetListOfCategorys.
+        /// The TestGetListOfCategories.
         /// </summary>
         [Test]
         public void TestGetListOfCategories()

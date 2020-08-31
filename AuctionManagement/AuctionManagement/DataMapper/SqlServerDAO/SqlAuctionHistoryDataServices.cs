@@ -91,12 +91,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="AuctionHistory"/>.</returns>
         public AuctionHistory GetLastAuctionInfo(int auctionId)
         {
-            
             using (Model1 context = new Model1())
             {
-                var res = context.AuctionHistories.Select(auctionHistory => auctionHistory).ToList();
-                ///var res2= context.AuctionHistories.Where(auctionHistory => auctionHistory.AuctionId == auctionId);
-                return res.Last();
+                return context.AuctionHistories.Select(auctionHistory => auctionHistory).ToList().Last();
+                /*var res2= context.AuctionHistories.Where(auctionHistory => auctionHistory.AuctionId == auctionId);
+                return res.Last();*/
             }
         }
     }

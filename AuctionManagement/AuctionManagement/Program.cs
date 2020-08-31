@@ -25,7 +25,7 @@ namespace AuctionManagement
                 UserId = 2,
                 AuctionId = 1,
 
-                Auctiondate = DateTime.Now,
+                AuctionDate = DateTime.Now,
                 Price = 100,
                 Currency = "ron"
             };

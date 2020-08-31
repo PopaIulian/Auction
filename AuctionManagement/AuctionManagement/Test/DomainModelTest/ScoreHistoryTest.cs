@@ -4,10 +4,10 @@
 
 namespace AuctionTests.DomainModelTest
 {
+    using System;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
-    using System;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryTest" />.
@@ -45,7 +45,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdScoreHistory = 1,
                 Score = 56
-
             };
 
             ScoreHistoryValidator validator = new ScoreHistoryValidator();
@@ -65,7 +64,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdScoreHistory = 1,
                 DateScore = DateTime.Now,
-
             };
 
             ScoreHistoryValidator validator = new ScoreHistoryValidator();
@@ -86,7 +84,6 @@ namespace AuctionTests.DomainModelTest
                 IdScoreHistory = 1,
                 DateScore = DateTime.Now,
                 Score = 56
-
             };
 
             ScoreHistoryValidator validator = new ScoreHistoryValidator();
@@ -127,8 +124,8 @@ namespace AuctionTests.DomainModelTest
                 DateScore = DateTime.Now,
                 PersonId = 2,
                 Score = 56
-
             };
+
             Assert.AreNotEqual(test.IdScoreHistory, 45);
             Assert.AreNotEqual(test.PersonId, 4);
             Assert.AreNotEqual(test.Score, 86);

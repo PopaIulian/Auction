@@ -1,4 +1,6 @@
-﻿
+﻿// <copyright file="CategoryParentServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.Test.ServicesTest
 {
@@ -10,7 +12,10 @@ namespace AuctionManagement.Test.ServicesTest
     using NUnit.Framework;
     using System.Collections.Generic;
 
-    class CategoryParentParentServiceTest
+    /// <summary>
+    /// Defines the <see cref="CategoryParentParentServiceTest" />.
+    /// </summary>
+    internal class CategoryParentParentServiceTest
     {
         /// <summary>
         /// The TestAddCategoryParentWithValidData.
@@ -25,8 +30,8 @@ namespace AuctionManagement.Test.ServicesTest
                 ParentId = 3
             };
 
-            ICategoryParentServices CategoryParentServices = new CategoryParentServices();
-            bool result = CategoryParentServices.AddCategoryParent(test);
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            bool result = categoryParentServices.AddCategoryParent(test);
 
             Assert.IsTrue(result);
         }
@@ -76,8 +81,8 @@ namespace AuctionManagement.Test.ServicesTest
         {
             CategoryParent test = new CategoryParent();
 
-            ICategoryParentServices CategoryParentServices = new CategoryParentServices();
-            bool result = CategoryParentServices.DeleteCategoryParent(test);
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            bool result = categoryParentServices.DeleteCategoryParent(test);
 
             Assert.IsFalse(result);
         }
@@ -93,11 +98,10 @@ namespace AuctionManagement.Test.ServicesTest
                 IdCategoryParent = 1,
                 CategoryId = 2,
                 ParentId = 3
-
             };
 
-            ICategoryParentServices CategoryParentServices = new CategoryParentServices();
-            bool result = CategoryParentServices.UpdateCategoryParent(test);
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            bool result = categoryParentServices.UpdateCategoryParent(test);
 
             Assert.IsTrue(result);
         }
@@ -110,8 +114,8 @@ namespace AuctionManagement.Test.ServicesTest
         {
             CategoryParent test = new CategoryParent();
 
-            ICategoryParentServices CategoryParentServices = new CategoryParentServices();
-            bool result = CategoryParentServices.UpdateCategoryParent(test);
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            bool result = categoryParentServices.UpdateCategoryParent(test);
 
             Assert.IsFalse(result);
         }
@@ -132,7 +136,6 @@ namespace AuctionManagement.Test.ServicesTest
                 IdCategoryParent = 1,
                 CategoryId = 2,
                 ParentId = 3
-
             }
         });
 

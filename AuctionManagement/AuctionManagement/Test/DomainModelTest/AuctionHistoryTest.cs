@@ -4,10 +4,10 @@
 
 namespace AuctionTests.DomainModelTest
 {
+    using System;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
-    using System;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryTest" />.
@@ -24,7 +24,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuctionHistory = 1,
                 UserId = 2,
-                Auctiondate = DateTime.Now,
+                AuctionDate = DateTime.Now,
                 AuctionId = 1,
                 Price = 100,
                 Currency = "ron"
@@ -47,7 +47,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuctionHistory = 2,
                 UserId = 2,
-                Auctiondate = DateTime.Now,
+                AuctionDate = DateTime.Now,
                 AuctionId = 1,
                 Price = 1000,
                 Currency = "euro"
@@ -127,7 +127,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuctionHistory = 5,
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"
@@ -141,10 +141,10 @@ namespace AuctionTests.DomainModelTest
         }
 
         /// <summary>
-        /// The TestAuctionHistoryPropery1.
+        /// The TestAuction History Property1.
         /// </summary>
         [Test]
-        public void TestAuctionHistoryPropery1()
+        public void TestAuctionHistoryProperty1()
         {
             AuctionHistory test = new AuctionHistory()
             {
@@ -164,12 +164,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuctionHistory = 1,
                 UserId = 2,
-                Auctiondate = DateTime.Now,
+                AuctionDate = DateTime.Now,
                 AuctionId = 1,
                 Price = 100,
                 Currency = "ron"
             };
-
 
             Assert.AreEqual(test.AuctionId, 1);
             Assert.AreEqual(test.Price, 100);
@@ -186,12 +185,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuctionHistory = 1,
                 UserId = 2,
-                Auctiondate = DateTime.Now,
+                AuctionDate = DateTime.Now,
                 AuctionId = 1,
                 Price = 100,
                 Currency = "ron"
             };
-
 
             Assert.AreNotEqual(test.AuctionId, 10);
             Assert.AreNotEqual(test.Price, 1004);

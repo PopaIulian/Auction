@@ -1,14 +1,16 @@
-﻿using AuctionManagement.DomainModel;
-using AuctionManagement.DomainModel.Validator;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="CategoryParentTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DomainModelTest
 {
+    using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using NUnit.Framework;
+
+    /// <summary>
+    /// Defines the <see cref="CategoryParentTest" />.
+    /// </summary>
     internal class CategoryParentTest
     {
         /// <summary>
@@ -31,6 +33,9 @@ namespace AuctionTests.DomainModelTest
             NUnit.Framework.Assert.IsTrue(isValid);
         }
 
+        /// <summary>
+        /// The TestCategoryWithValidValues2.
+        /// </summary>
         [Test]
         public void TestCategoryWithValidValues2()
         {
@@ -65,8 +70,6 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsFalse(isValid);
         }
-
-
 
         /// <summary>
         /// The TestCategoryProperty1.
@@ -104,4 +107,3 @@ namespace AuctionTests.DomainModelTest
         }
     }
 }
-

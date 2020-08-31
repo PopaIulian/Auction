@@ -4,10 +4,10 @@
 
 namespace AuctionTests.DomainModelTest
 {
+    using System;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
-    using System;
 
     /// <summary>
     /// Defines the <see cref="AuctionTest" />.

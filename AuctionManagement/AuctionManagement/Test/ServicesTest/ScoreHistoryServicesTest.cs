@@ -30,11 +30,10 @@ namespace AuctionManagement.Test.ServicesTest
                 DateScore = DateTime.Now,
                 PersonId = 2,
                 Score = 56
-
             };
 
-            IScoreHistoryServices ScoreHistoryServices = new ScoreHistoryServices();
-            bool result = ScoreHistoryServices.AddScoreHistory(test);
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            bool result = scoreHistoryServices.AddScoreHistory(test);
 
             Assert.IsTrue(result);
         }
@@ -65,7 +64,6 @@ namespace AuctionManagement.Test.ServicesTest
                 DateScore = DateTime.Now,
                 PersonId = 2,
                 Score = 56
-
             };
 
             IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
@@ -86,8 +84,8 @@ namespace AuctionManagement.Test.ServicesTest
         {
             ScoreHistory test = new ScoreHistory();
 
-            IScoreHistoryServices ScoreHistoryServices = new ScoreHistoryServices();
-            bool result = ScoreHistoryServices.DeleteScoreHistory(test);
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            bool result = scoreHistoryServices.DeleteScoreHistory(test);
 
             Assert.IsFalse(result);
         }
@@ -107,8 +105,8 @@ namespace AuctionManagement.Test.ServicesTest
 
             };
 
-            IScoreHistoryServices ScoreHistoryServices = new ScoreHistoryServices();
-            bool result = ScoreHistoryServices.UpdateScoreHistory(test);
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            bool result = scoreHistoryServices.UpdateScoreHistory(test);
 
             Assert.IsTrue(result);
         }
@@ -121,8 +119,8 @@ namespace AuctionManagement.Test.ServicesTest
         {
             ScoreHistory test = new ScoreHistory();
 
-            IScoreHistoryServices ScoreHistoryServices = new ScoreHistoryServices();
-            bool result = ScoreHistoryServices.UpdateScoreHistory(test);
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            bool result = scoreHistoryServices.UpdateScoreHistory(test);
 
             Assert.IsFalse(result);
         }

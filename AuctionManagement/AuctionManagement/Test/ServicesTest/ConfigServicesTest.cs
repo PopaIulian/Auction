@@ -30,8 +30,8 @@ namespace AuctionManagement.Test.ServicesTest
 
             };
 
-            IConfigServices ConfigServices = new ConfigServices();
-            bool result = ConfigServices.AddConfig(test);
+            IConfigServices configServices = new ConfigServices();
+            bool result = configServices.AddConfig(test);
 
             Assert.IsTrue(result);
         }
@@ -60,7 +60,6 @@ namespace AuctionManagement.Test.ServicesTest
             {
                 IdConfig = "text",
                 ValueConfig = 3
-
             };
 
             IConfigServices configServices = new ConfigServices();
@@ -81,8 +80,8 @@ namespace AuctionManagement.Test.ServicesTest
         {
             Config test = new Config();
 
-            IConfigServices ConfigServices = new ConfigServices();
-            bool result = ConfigServices.DeleteConfig(test);
+            IConfigServices configServices = new ConfigServices();
+            bool result = configServices.DeleteConfig(test);
 
             Assert.IsFalse(result);
         }
@@ -97,11 +96,10 @@ namespace AuctionManagement.Test.ServicesTest
             {
                 IdConfig = "text",
                 ValueConfig = 3
-
             };
 
-            IConfigServices ConfigServices = new ConfigServices();
-            bool result = ConfigServices.UpdateConfig(test);
+            IConfigServices configServices = new ConfigServices();
+            bool result = configServices.UpdateConfig(test);
 
             Assert.IsTrue(result);
         }
@@ -114,8 +112,8 @@ namespace AuctionManagement.Test.ServicesTest
         {
             Config test = new Config();
 
-            IConfigServices ConfigServices = new ConfigServices();
-            bool result = ConfigServices.UpdateConfig(test);
+            IConfigServices configServices = new ConfigServices();
+            bool result = configServices.UpdateConfig(test);
 
             Assert.IsFalse(result);
         }

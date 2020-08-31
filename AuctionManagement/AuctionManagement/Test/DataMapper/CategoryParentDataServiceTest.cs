@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace AuctionManagement.Test.DataMapper
 {
     using AuctionManagement.DataMapper;
@@ -12,7 +7,6 @@ namespace AuctionManagement.Test.DataMapper
     using Moq;
     using NUnit.Framework;
 
-   
     internal class CategoryParentParentDataServiceTest
     {
         /// <summary>
@@ -21,15 +15,15 @@ namespace AuctionManagement.Test.DataMapper
         [Test]
         public void AddCategoryParentTest()
         {
-            CategoryParent CategoryParent = new Mock<CategoryParent>().Object;
+            CategoryParent categoryParent = new Mock<CategoryParent>().Object;
 
             Mock<ICategoryParentDataServices> mock = new Mock<ICategoryParentDataServices>();
-            mock.Setup(m => m.AddCategoryParent(CategoryParent));
+            mock.Setup(m => m.AddCategoryParent(categoryParent));
 
             ICategoryParentDataServices obj = mock.Object;
-            obj.AddCategoryParent(CategoryParent);
+            obj.AddCategoryParent(categoryParent);
 
-            mock.Verify(o => o.AddCategoryParent(CategoryParent), Times.Once());
+            mock.Verify(o => o.AddCategoryParent(categoryParent), Times.Once());
         }
 
         /// <summary>
@@ -38,15 +32,15 @@ namespace AuctionManagement.Test.DataMapper
         [Test]
         public void DeleteCategoryParentTest()
         {
-            CategoryParent CategoryParent = new Mock<CategoryParent>().Object;
+            CategoryParent categoryParent = new Mock<CategoryParent>().Object;
 
             Mock<ICategoryParentDataServices> mock = new Mock<ICategoryParentDataServices>();
-            mock.Setup(m => m.DeleteCategoryParent(CategoryParent));
+            mock.Setup(m => m.DeleteCategoryParent(categoryParent));
 
             ICategoryParentDataServices obj = mock.Object;
-            obj.DeleteCategoryParent(CategoryParent);
+            obj.DeleteCategoryParent(categoryParent);
 
-            mock.Verify(o => o.DeleteCategoryParent(CategoryParent), Times.Once());
+            mock.Verify(o => o.DeleteCategoryParent(categoryParent), Times.Once());
         }
 
         /// <summary>
@@ -55,15 +49,15 @@ namespace AuctionManagement.Test.DataMapper
         [Test]
         public void UpdateCategoryParentTest()
         {
-            CategoryParent CategoryParent = new Mock<CategoryParent>().Object;
+            CategoryParent categoryParent = new Mock<CategoryParent>().Object;
 
             Mock<ICategoryParentDataServices> mock = new Mock<ICategoryParentDataServices>();
-            mock.Setup(m => m.UpdateCategoryParent(CategoryParent));
+            mock.Setup(m => m.UpdateCategoryParent(categoryParent));
 
             ICategoryParentDataServices obj = mock.Object;
-            obj.UpdateCategoryParent(CategoryParent);
+            obj.UpdateCategoryParent(categoryParent);
 
-            mock.Verify(o => o.UpdateCategoryParent(CategoryParent), Times.Once());
+            mock.Verify(o => o.UpdateCategoryParent(categoryParent), Times.Once());
         }
 
         /// <summary>

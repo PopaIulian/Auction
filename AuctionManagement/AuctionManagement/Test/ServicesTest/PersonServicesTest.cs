@@ -4,13 +4,13 @@
 
 namespace PersonManagement.Test.ServicesTest
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="PersonServicesTest" />.
@@ -30,8 +30,8 @@ namespace PersonManagement.Test.ServicesTest
                 PersonRole = "bidder"
             };
 
-            IPersonServices PersonServices = new PersonServices();
-            bool result = PersonServices.AddPerson(test);
+            IPersonServices personServices = new PersonServices();
+            bool result = personServices.AddPerson(test);
 
             Assert.IsTrue(result);
         }
@@ -81,8 +81,8 @@ namespace PersonManagement.Test.ServicesTest
         {
             Person test = new Person();
 
-            IPersonServices PersonServices = new PersonServices();
-            bool result = PersonServices.DeletePerson(test);
+            IPersonServices personServices = new PersonServices();
+            bool result = personServices.DeletePerson(test);
 
             Assert.IsFalse(result);
         }
@@ -101,8 +101,8 @@ namespace PersonManagement.Test.ServicesTest
 
             };
 
-            IPersonServices PersonServices = new PersonServices();
-            bool result = PersonServices.UpdatePerson(test);
+            IPersonServices personServices = new PersonServices();
+            bool result = personServices.UpdatePerson(test);
 
             Assert.IsTrue(result);
         }
@@ -115,8 +115,8 @@ namespace PersonManagement.Test.ServicesTest
         {
             Person test = new Person();
 
-            IPersonServices PersonServices = new PersonServices();
-            bool result = PersonServices.UpdatePerson(test);
+            IPersonServices personServices = new PersonServices();
+            bool result = personServices.UpdatePerson(test);
 
             Assert.IsFalse(result);
         }

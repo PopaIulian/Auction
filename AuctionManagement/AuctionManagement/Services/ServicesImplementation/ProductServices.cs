@@ -2,21 +2,19 @@
 // Popa Iulian
 // </copyright>
 
-using AuctionManagement.DomainModel.Validator;
-using FluentValidation.Results;
-
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
-    using System.Collections.Generic;
+    using AuctionManagement.DomainModel.Validator;
+    using FluentValidation.Results;
 
     /// <summary>
     /// Defines the <see cref="ProductServices" />.
     /// </summary>
     internal class ProductServices : IProductServices
     {
-
         /// <summary>
         /// Defines the Log.
         /// </summary>
@@ -128,4 +126,3 @@ namespace AuctionManagement.Services.ServicesImplementation
         }
     }
 }
-

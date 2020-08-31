@@ -96,6 +96,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAuctionById(1), Times.Once());
         }
 
+        /// <summary>
+        /// The TestAllAuctionOperation.
+        /// </summary>
         [Test]
         public void TestAllAuctionOperation()
         {

@@ -4,13 +4,13 @@
 
 namespace AuctionManagement.Test.ServicesTest
 {
+    using System;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -28,7 +28,7 @@ namespace AuctionManagement.Test.ServicesTest
             {
                 IdAuctionHistory = 5,
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"
@@ -46,10 +46,10 @@ namespace AuctionManagement.Test.ServicesTest
         [Test]
         public void TestAddAuctionHistoryWithInvalidData()
         {
-            AuctionHistory AuctionHistory = new AuctionHistory();
+            AuctionHistory auctionHistory = new AuctionHistory();
 
             IAuctionHistoryServices readerServices = new AuctionHistoryServices();
-            bool result = readerServices.AddAuctionHistory(AuctionHistory);
+            bool result = readerServices.AddAuctionHistory(auctionHistory);
 
             Assert.IsFalse(result);
         }
@@ -64,7 +64,7 @@ namespace AuctionManagement.Test.ServicesTest
             {
                 IdAuctionHistory = 5,
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"
@@ -86,10 +86,10 @@ namespace AuctionManagement.Test.ServicesTest
         [Test]
         public void TestDeleteAuctionHistoryWithInvalidData()
         {
-            AuctionHistory AuctionHistory = new AuctionHistory();
+            AuctionHistory auctionHistory = new AuctionHistory();
 
             IAuctionHistoryServices auctionHistoryServices = new AuctionHistoryServices();
-            bool result = auctionHistoryServices.DeleteAuctionHistory(AuctionHistory);
+            bool result = auctionHistoryServices.DeleteAuctionHistory(auctionHistory);
 
             Assert.IsFalse(result);
         }
@@ -104,7 +104,7 @@ namespace AuctionManagement.Test.ServicesTest
             {
                 IdAuctionHistory = 5,
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"
@@ -145,7 +145,7 @@ namespace AuctionManagement.Test.ServicesTest
             {
                  IdAuctionHistory = 5,
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"
@@ -173,7 +173,7 @@ namespace AuctionManagement.Test.ServicesTest
             {
                 IdAuctionHistory = 5,
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"
@@ -198,7 +198,7 @@ namespace AuctionManagement.Test.ServicesTest
             new AuctionHistory()
             {
                 UserId = 6,
-                Auctiondate = DateTime.Now.AddDays(3),
+                AuctionDate = DateTime.Now.AddDays(3),
                 AuctionId = 1,
                 Price = 1030,
                 Currency = "euro"

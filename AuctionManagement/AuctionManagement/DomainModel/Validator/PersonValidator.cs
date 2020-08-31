@@ -32,7 +32,7 @@ namespace AuctionManagement.DomainModel.Validator
         /// <returns>The <see cref="bool"/>.</returns>
         private bool CompareRole(string role)
         {
-            return (role == Configuration.AUCTION_ROLE || role == Configuration.OFFER_OBJECT_ROLE);
+            return role == Configuration.AuctionRole || role == Configuration.OfferObjectRole;
         }
     }
 }

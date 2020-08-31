@@ -4,25 +4,32 @@
 
 namespace AuctionManagement.Services.ServicesImplementation
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using FluentValidation.Results;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="PersonServices" />.
     /// </summary>
     public class PersonServices : IPersonServices
     {
-      
+        /// <summary>
+        /// Defines the Log.
+        /// </summary>
         private static readonly log4net.ILog Log = log4net.LogManager.GetLogger(typeof(PersonServices));
 
-      
+        /// <summary>
+        /// Gets or sets the DataServices.
+        /// </summary>
         public static IPersonDataServices DataServices { get; set; } = DaoFactoryMethod.CurrentDAOFactory.PersonDataServices;
 
-       
+        /// <summary>
+        /// The AddPerson.
+        /// </summary>
+        /// <param name="person">The person<see cref="Person"/>.</param>
+        /// <returns>The <see cref="bool"/>.</returns>
         public bool AddPerson(Person person)
         {
             var validator = new PersonValidator();
@@ -119,4 +126,3 @@ namespace AuctionManagement.Services.ServicesImplementation
         }
     }
 }
-

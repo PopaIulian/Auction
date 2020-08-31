@@ -4,11 +4,11 @@
 
 namespace AuctionTests.DomainModelTest
 {
+    using System.Collections.Generic;
     using AuctionManagement.Const;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="ConfigTest" />.
@@ -25,7 +25,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "text",
                 ValueConfig = 3
-
             };
 
             ConfigValidator validator = new ConfigValidator();
@@ -45,7 +44,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "text toooooooooooooooooooooooooooooooooooooo long",
                 ValueConfig = 3
-
             };
 
             ConfigValidator validator = new ConfigValidator();
@@ -64,7 +62,6 @@ namespace AuctionTests.DomainModelTest
             Config test = new Config()
             {
                 IdConfig = "text"
-
             };
 
             ConfigValidator validator = new ConfigValidator();
@@ -84,12 +81,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "avg_number_score",
                 ValueConfig = 3
-
             };
             IList<Config> list = new List<Config>();
             list.Add(test);
 
-            int value = Configuration.GetConfigValue(list, Configuration.AVERAGE_NUMBER_SCORE);
+            int value = Configuration.GetConfigValue(list, Configuration.AverageNumberScore);
 
             Assert.AreEqual(value, test.ValueConfig);
         }
@@ -104,12 +100,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "random text",
                 ValueConfig = 3
-
             };
             IList<Config> list = new List<Config>();
             list.Add(test);
 
-            int value = Configuration.GetConfigValue(list, Configuration.AVERAGE_NUMBER_SCORE);
+            int value = Configuration.GetConfigValue(list, Configuration.AverageNumberScore);
 
             Assert.AreEqual(value, 0);
         }
@@ -123,12 +118,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "min_score",
                 ValueConfig = 3
-
             };
             IList<Config> list = new List<Config>();
             list.Add(test);
 
-            int value = Configuration.GetConfigValue(list, Configuration.AVERAGE_NUMBER_SCORE);
+            int value = Configuration.GetConfigValue(list, Configuration.AverageNumberScore);
 
             Assert.AreNotEqual(value, 0);
         }
@@ -143,12 +137,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "bidder",
                 ValueConfig = 3
-
             };
             IList<Config> list = new List<Config>();
             list.Add(test);
 
-            int value = Configuration.GetConfigValue(list, Configuration.INITIAL_SCORE);
+            int value = Configuration.GetConfigValue(list, Configuration.InitialScore);
 
             Assert.AreEqual(value, 0);
         }
@@ -163,12 +156,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "max_auction",
                 ValueConfig = 30
-
             };
             IList<Config> list = new List<Config>();
             list.Add(test);
 
-            int value = Configuration.GetConfigValue(list, Configuration.MAX_RANGE_AUCTION_PERSON);
+            int value = Configuration.GetConfigValue(list, Configuration.MaxRangeAuctionPerson);
 
             Assert.AreEqual(value, test.ValueConfig);
         }
@@ -199,7 +191,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdConfig = "text",
                 ValueConfig = 5
-
             };
             Assert.AreNotEqual(test.IdConfig, "t");
             Assert.AreNotEqual(test.ValueConfig, 7);

@@ -6,10 +6,8 @@ namespace ScoreHistoryTests.DataMapper
 {
     using Moq;
     using NUnit.Framework;
-    using AuctionManagement.DomainModel;
     using AuctionManagement.DataMapper;
-    using AuctionManagement.DataMapper.SqlServerDAO;
-    using System;
+    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryDataServiceTest" />.

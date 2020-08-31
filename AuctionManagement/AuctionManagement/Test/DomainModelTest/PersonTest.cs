@@ -24,7 +24,6 @@ namespace AuctionTests.DomainModelTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "bidder"
-
             };
 
             PersonValidator validator = new PersonValidator();
@@ -45,7 +44,6 @@ namespace AuctionTests.DomainModelTest
                 IdPerson = 1,
                 Username = "nametoooooooooooooooooooo long",
                 PersonRole = "bidder"
-
             };
 
             PersonValidator validator = new PersonValidator();
@@ -65,7 +63,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdPerson = 1,
                 Username = "name"
-
             };
 
             PersonValidator validator = new PersonValidator();
@@ -86,8 +83,6 @@ namespace AuctionTests.DomainModelTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "anything"
-
-
             };
 
             PersonValidator validator = new PersonValidator();
@@ -106,7 +101,6 @@ namespace AuctionTests.DomainModelTest
             Person test = new Person()
             {
                 IdPerson = 1
-
             };
 
             PersonValidator validator = new PersonValidator();
@@ -127,7 +121,6 @@ namespace AuctionTests.DomainModelTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "applicant"
-
             };
 
             PersonValidator validator = new PersonValidator();
@@ -166,7 +159,6 @@ namespace AuctionTests.DomainModelTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "role"
-
             };
             Assert.AreNotEqual(test.IdPerson, 45);
             Assert.AreNotEqual(test.Username, "name_v2");

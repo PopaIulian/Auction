@@ -22,8 +22,7 @@ namespace AuctionTests.DomainModelTest
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
 
             };
 
@@ -44,7 +43,6 @@ namespace AuctionTests.DomainModelTest
             {
                 IdCategory = 1,
                 CategoryName = "nametooooooooooooooooooooooooooooooooooooooooooooolong",
-                ParentId = 2,
 
             };
 
@@ -75,25 +73,7 @@ namespace AuctionTests.DomainModelTest
             NUnit.Framework.Assert.IsTrue(isValid);
         }
 
-        /// <summary>
-        /// The TestCategoryWithValidValues4.
-        /// </summary>
-        [Test]
-        public void TestCategoryWithValidValues4()
-        {
-            Category test = new Category()
-            {
-                IdCategory = 1,
-                ParentId = 2,
-
-            };
-
-            CategoryValidator validator = new CategoryValidator();
-            var results = validator.Validate(test);
-
-            bool isValid = results.IsValid;
-            NUnit.Framework.Assert.IsFalse(isValid);
-        }
+        
 
         /// <summary>
         /// The TestCategoryProperty1.
@@ -104,13 +84,11 @@ namespace AuctionTests.DomainModelTest
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
             };
 
             Assert.AreEqual(test.IdCategory, 1);
             Assert.AreEqual(test.CategoryName, "name");
-            Assert.AreEqual(test.ParentId, 2);
         }
 
         /// <summary>
@@ -122,13 +100,11 @@ namespace AuctionTests.DomainModelTest
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
 
             };
             Assert.AreNotEqual(test.IdCategory, 45);
             Assert.AreNotEqual(test.CategoryName, "name_v2");
-            Assert.AreNotEqual(test.ParentId, 24);
         }
     }
 }

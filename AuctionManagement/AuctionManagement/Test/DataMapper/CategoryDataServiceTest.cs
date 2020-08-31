@@ -102,8 +102,7 @@ namespace AuctionTests.DataMapper
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
             };
 
             SqlCategoryDataServices service = new SqlCategoryDataServices();

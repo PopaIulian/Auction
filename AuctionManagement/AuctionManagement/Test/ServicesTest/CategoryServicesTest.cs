@@ -2,7 +2,7 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.ServicesTest
+namespace CategoryManagement.Test.ServicesTest
 {
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
@@ -18,17 +18,15 @@ namespace AuctionManagement.Test.ServicesTest
     internal class CategoryServicesTest
     {
         /// <summary>
-        /// The TestAddAuctionWithValidData.
+        /// The TestAddCategoryWithValidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionWithValidData()
+        public void TestAddCategoryWithValidData()
         {
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
-
+                CategoryName = "name"
             };
 
             ICategoryServices CategoryServices = new CategoryServices();
@@ -38,10 +36,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestAddAuctionWithInvalidData.
+        /// The TestAddCategoryWithInvalidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionWithInvalidData()
+        public void TestAddCategoryWithInvalidData()
         {
             Category test = new Category();
 
@@ -52,17 +50,15 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestDeleteAuctionWithValidData.
+        /// The TestDeleteCategoryWithValidData.
         /// </summary>
         [Test]
-        public void TestDeleteAuctionWithValidData()
+        public void TestDeleteCategoryWithValidData()
         {
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
-
+                CategoryName = "name"
             };
 
             ICategoryServices categoryServices = new CategoryServices();
@@ -76,10 +72,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestDeleteAuctionWithInvalidData.
+        /// The TestDeleteCategoryWithInvalidData.
         /// </summary>
         [Test]
-        public void TestDeleteAuctionWithInvalidData()
+        public void TestDeleteCategoryWithInvalidData()
         {
             Category test = new Category();
 
@@ -98,8 +94,7 @@ namespace AuctionManagement.Test.ServicesTest
             Category test = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
 
             };
 
@@ -110,10 +105,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestUpdateAuctionWithInvalidData.
+        /// The TestUpdateCategoryWithInvalidData.
         /// </summary>
         [Test]
-        public void TestUpdateAuctionWithInvalidData()
+        public void TestUpdateCategoryWithInvalidData()
         {
             Category test = new Category();
 
@@ -124,7 +119,7 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestGetListOfAuctions.
+        /// The TestGetListOfCategorys.
         /// </summary>
         [Test]
         public void TestGetListOfCategories()
@@ -137,8 +132,7 @@ namespace AuctionManagement.Test.ServicesTest
                      new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
 
             }
         });
@@ -147,14 +141,14 @@ namespace AuctionManagement.Test.ServicesTest
             var result = categoryServices.GetListOfCategories();
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as List<Auction>).Count, 1);
+            Assert.AreEqual((result as List<Category>).Count, 1);
         }
 
         /// <summary>
-        /// The TestGetAuctionById.
+        /// The TestGetCategoryById.
         /// </summary>
         [Test]
-        public void TestGetAuctionById()
+        public void TestGetCategoryById()
         {
             ICategoryServices categoryServices = new CategoryServices();
             Mock<ICategoryDataServices> mock = new Mock<ICategoryDataServices>();
@@ -163,8 +157,7 @@ namespace AuctionManagement.Test.ServicesTest
             new Category()
             {
                 IdCategory = 1,
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
             });
 
             CategoryServices.DataServices = mock.Object;
@@ -175,18 +168,17 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestGetAuctionByIdWithInvalidId.
+        /// The TestGetCategoryByIdWithInvalidId.
         /// </summary>
         [Test]
-        public void TestGetAuctionByIdWithInvalidId()
+        public void TestGetCategoryByIdWithInvalidId()
         {
             ICategoryServices categoryServices = new CategoryServices();
             Mock<ICategoryDataServices> mock = new Mock<ICategoryDataServices>();
             mock.Setup(m => m.GetCategoryById(10)).Returns(
             new Category()
             {
-                CategoryName = "name",
-                ParentId = 2,
+                CategoryName = "name"
             });
 
             CategoryServices.DataServices = mock.Object;

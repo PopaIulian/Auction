@@ -101,11 +101,12 @@
     <Compile Include="DataMapper\SqlServerDAO\SqlPersonDataServices.cs" />
     <Compile Include="DataMapper\SqlServerDAO\SqlScoreHistoryServices.cs" />
     <Compile Include="DataMapper\SqlServerDAO\SqlServerDaoFactory.cs" />
+    <Compile Include="DomainModel\Model1.cs" />
     <Compile Include="DomainModel\Auction.cs" />
     <Compile Include="DomainModel\AuctionHistory.cs" />
     <Compile Include="DomainModel\Category.cs" />
+    <Compile Include="DomainModel\CategoryParent.cs" />
     <Compile Include="DomainModel\Config.cs" />
-    <Compile Include="DomainModel\Model1.cs" />
     <Compile Include="DomainModel\Person.cs" />
     <Compile Include="DomainModel\Product.cs" />
     <Compile Include="DomainModel\ScoreHistory.cs" />

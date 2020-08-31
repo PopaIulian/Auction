@@ -1,12 +1,21 @@
-﻿
-using AuctionManagement.DomainModel;
-using AuctionManagement.DomainModel.Validator;
-using NUnit.Framework;
+﻿// <copyright file="PersonTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DomainModelTest
 {
-    class PersonTest
+    using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using NUnit.Framework;
+
+    /// <summary>
+    /// Defines the <see cref="PersonTest" />.
+    /// </summary>
+    internal class PersonTest
     {
+        /// <summary>
+        /// The TestPersonWithValidValues1.
+        /// </summary>
         [Test]
         public void TestPersonWithValidValues1()
         {
@@ -24,6 +33,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             Assert.IsTrue(isValid);
         }
+
+        /// <summary>
+        /// The TestPersonWithValidValues2.
+        /// </summary>
         [Test]
         public void TestPersonWithValidValues2()
         {
@@ -41,6 +54,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             Assert.IsFalse(isValid);
         }
+
+        /// <summary>
+        /// The TestPersonWithValidValues3.
+        /// </summary>
         [Test]
         public void TestPersonWithValidValues3()
         {
@@ -58,6 +75,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestPersonWithValidValues4.
+        /// </summary>
         [Test]
         public void TestPersonWithValidValues4()
         {
@@ -77,6 +97,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestPersonWithValidValues5.
+        /// </summary>
         [Test]
         public void TestPersonWithValidValues5()
         {
@@ -93,6 +116,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestPersonWithValidValues6.
+        /// </summary>
         [Test]
         public void TestPersonWithValidValues6()
         {
@@ -111,6 +137,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsTrue(isValid);
         }
 
+        /// <summary>
+        /// The TestPersonProperty1.
+        /// </summary>
         [Test]
         public void TestPersonProperty1()
         {
@@ -125,6 +154,10 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(test.Username, "name");
             Assert.AreEqual(test.PersonRole, "applicant");
         }
+
+        /// <summary>
+        /// The TestPersonProperty2.
+        /// </summary>
         [Test]
         public void TestPersonProperty2()
         {
@@ -138,10 +171,6 @@ namespace AuctionTests.DomainModelTest
             Assert.AreNotEqual(test.IdPerson, 45);
             Assert.AreNotEqual(test.Username, "name_v2");
             Assert.AreNotEqual(test.PersonRole, "jcr");
-
         }
-
     }
-
 }
-

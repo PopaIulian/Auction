@@ -146,6 +146,12 @@
     <Compile Include="Test\DomainModelTest\ConfigTest.cs" />
     <Compile Include="Test\DomainModelTest\PersonTest.cs" />
     <Compile Include="Test\DomainModelTest\ScoreHistoryTest.cs" />
+    <Compile Include="Test\ServicesTest\AuctionHistoryServicesTest.cs" />
+    <Compile Include="Test\ServicesTest\AuctionServicesTest.cs" />
+    <Compile Include="Test\ServicesTest\CategoryServicesTest.cs" />
+    <Compile Include="Test\ServicesTest\ConfigServicesTest.cs" />
+    <Compile Include="Test\ServicesTest\PersonServicesTest.cs" />
+    <Compile Include="Test\ServicesTest\ScoreHistoryServicesTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

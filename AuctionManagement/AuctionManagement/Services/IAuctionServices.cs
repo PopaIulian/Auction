@@ -4,8 +4,8 @@
 
 namespace AuctionManagement.Services
 {
-    using AuctionManagement.DomainModel;
     using System.Collections.Generic;
+    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="IAuctionServices" />.

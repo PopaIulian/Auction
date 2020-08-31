@@ -1,22 +1,25 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="PersonServicesTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace PersonManagement.Test.ServicesTest
 {
-       using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
     using System.Collections.Generic;
-    using AuctionManagement.DomainModel;
 
-    class PersonServicesTest
+    /// <summary>
+    /// Defines the <see cref="PersonServicesTest" />.
+    /// </summary>
+    internal class PersonServicesTest
     {
+        /// <summary>
+        /// The TestAddPersonWithValidData.
+        /// </summary>
         [Test]
         public void TestAddPersonWithValidData()
         {
@@ -25,7 +28,6 @@ namespace PersonManagement.Test.ServicesTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "bidder"
-
             };
 
             IPersonServices PersonServices = new PersonServices();
@@ -34,6 +36,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestAddPersonWithInvalidData.
+        /// </summary>
         [Test]
         public void TestAddPersonWithInvalidData()
         {
@@ -45,6 +50,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestDeletePersonWithValidData.
+        /// </summary>
         [Test]
         public void TestDeletePersonWithValidData()
         {
@@ -53,7 +61,6 @@ namespace PersonManagement.Test.ServicesTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "bidder"
-
             };
 
             IPersonServices personServices = new PersonServices();
@@ -66,6 +73,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestDeletePersonWithInvalidData.
+        /// </summary>
         [Test]
         public void TestDeletePersonWithInvalidData()
         {
@@ -77,6 +87,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestUpdateReaderWithValidData.
+        /// </summary>
         [Test]
         public void TestUpdateReaderWithValidData()
         {
@@ -94,6 +107,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestUpdatePersonWithInvalidData.
+        /// </summary>
         [Test]
         public void TestUpdatePersonWithInvalidData()
         {
@@ -105,6 +121,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestGetListOfPersons.
+        /// </summary>
         [Test]
         public void TestGetListOfPersons()
         {
@@ -118,7 +137,6 @@ namespace PersonManagement.Test.ServicesTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "bidder"
-
             }
         });
 
@@ -129,6 +147,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.AreEqual((result as List<Person>).Count, 1);
         }
 
+        /// <summary>
+        /// The TestGetPersonById.
+        /// </summary>
         [Test]
         public void TestGetPersonById()
         {
@@ -150,6 +171,9 @@ namespace PersonManagement.Test.ServicesTest
             Assert.AreEqual((result as Person).IdPerson, 10);
         }
 
+        /// <summary>
+        /// The TestGetPersonByIdWithInvalidId.
+        /// </summary>
         [Test]
         public void TestGetPersonByIdWithInvalidId()
         {

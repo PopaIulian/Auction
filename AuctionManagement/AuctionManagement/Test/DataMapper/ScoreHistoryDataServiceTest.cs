@@ -1,15 +1,22 @@
-﻿
+﻿// <copyright file="ScoreHistoryDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DataMapper
 {
-    using Moq;
-    using NUnit.Framework;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
-    class ScoreHistoryDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="ScoreHistoryDataServiceTest" />.
+    /// </summary>
+    internal class ScoreHistoryDataServiceTest
     {
-
+        /// <summary>
+        /// The AddScoreHistoryTest.
+        /// </summary>
         [Test]
         public void AddScoreHistoryTest()
         {
@@ -24,6 +31,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.AddScoreHistory(scoreHistory), Times.Once());
         }
 
+        /// <summary>
+        /// The DeleteScoreHistoryTest.
+        /// </summary>
         [Test]
         public void DeleteScoreHistoryTest()
         {
@@ -38,6 +48,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.DeleteScoreHistory(scoreHistory), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdateScoreHistoryTest.
+        /// </summary>
         [Test]
         public void UpdateScoreHistoryTest()
         {
@@ -52,8 +65,11 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.UpdateScoreHistory(scoreHistory), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllScoreHistoriesTest.
+        /// </summary>
         [Test]
-        public void GetAllScoreHistorysTest()
+        public void GetAllScoreHistoriesTest()
         {
             Mock<IScoreHistoryDataServices> mock = new Mock<IScoreHistoryDataServices>();
             mock.Setup(m => m.GetAllScoreHistories());
@@ -64,6 +80,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllScoreHistories(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetScoreHistoryByIdTest.
+        /// </summary>
         [Test]
         public void GetScoreHistoryByIdTest()
         {

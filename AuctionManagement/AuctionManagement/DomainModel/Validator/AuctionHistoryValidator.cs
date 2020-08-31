@@ -1,12 +1,19 @@
-﻿
+﻿// <copyright file="AuctionHistoryValidator.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.DomainModel.Validator
 {
     using FluentValidation;
 
+    /// <summary>
+    /// Defines the <see cref="AuctionHistoryValidator" />.
+    /// </summary>
     public class AuctionHistoryValidator : AbstractValidator<AuctionHistory>
     {
-        /// <summary>Initializes a new instance of the <see cref="PublishingHouseValidator"/> class.</summary>
+        /// <summary>
+        /// Initializes a new instance of the <see cref="AuctionHistoryValidator"/> class.
+        /// </summary>
         public AuctionHistoryValidator()
         {
             RuleFor(x => x.IdAuctionHistory).NotEmpty().WithErrorCode("This field is required.");
@@ -16,13 +23,22 @@ namespace AuctionManagement.DomainModel.Validator
             RuleFor(x => x.Price).NotEmpty().WithErrorCode("This field is required.");
         }
 
+        /// <summary>
+        /// The InsertAuctionHistoryValidator.
+        /// </summary>
+        /// <param name="lastModify">The lastModify<see cref="AuctionHistory"/>.</param>
         public void InsertAuctionHistoryValidator(AuctionHistory lastModify)
         {
             RuleFor(x => x).Must(args => this.CompareNewPrice(lastModify.Price, args.Price)).WithErrorCode("The price is not ok.");
             RuleFor(x => x.Currency).Equal(lastModify.Currency).WithErrorCode("The currency is different.");
-            
         }
 
+        /// <summary>
+        /// The CompareNewPrice.
+        /// </summary>
+        /// <param name="oldPrice">The oldPrice<see cref="double"/>.</param>
+        /// <param name="newPrice">The newPrice<see cref="double"/>.</param>
+        /// <returns>The <see cref="bool"/>.</returns>
         private bool CompareNewPrice(double oldPrice, double newPrice)
         {
             if (oldPrice > newPrice || (newPrice - oldPrice) > (oldPrice / 10))

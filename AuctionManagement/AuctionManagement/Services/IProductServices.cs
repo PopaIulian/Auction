@@ -4,9 +4,8 @@
 
 namespace AuctionManagement.Services
 {
-    using AuctionManagement.DomainModel;
-    using System;
     using System.Collections.Generic;
+    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="IProductServices" />.
@@ -18,7 +17,7 @@ namespace AuctionManagement.Services
         /// </summary>
         /// <param name="product">The product<see cref="Product"/>.</param>
         /// <returns>The <see cref="bool"/>.</returns>
-        bool AddProduct( Product product);
+        bool AddProduct(Product product);
 
         /// <summary>
         /// The GetProductById.

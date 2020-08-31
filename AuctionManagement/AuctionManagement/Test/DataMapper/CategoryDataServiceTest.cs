@@ -1,15 +1,22 @@
-﻿
+﻿// <copyright file="CategoryDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DataMapper
 {
-      using Moq;
-    using NUnit.Framework;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
-    class CategoryDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="CategoryDataServiceTest" />.
+    /// </summary>
+    internal class CategoryDataServiceTest
     {
-
+        /// <summary>
+        /// The AddCategoryTest.
+        /// </summary>
         [Test]
         public void AddCategoryTest()
         {
@@ -24,6 +31,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.AddCategory(category), Times.Once());
         }
 
+        /// <summary>
+        /// The DeleteCategoryTest.
+        /// </summary>
         [Test]
         public void DeleteCategoryTest()
         {
@@ -38,6 +48,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.DeleteCategory(category), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdateCategoryTest.
+        /// </summary>
         [Test]
         public void UpdateCategoryTest()
         {
@@ -52,6 +65,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.UpdateCategory(category), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllCategorysTest.
+        /// </summary>
         [Test]
         public void GetAllCategorysTest()
         {
@@ -64,6 +80,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllCategories(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetCategoryByIdTest.
+        /// </summary>
         [Test]
         public void GetCategoryByIdTest()
         {

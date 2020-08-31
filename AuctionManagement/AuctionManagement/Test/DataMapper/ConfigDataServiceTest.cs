@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="ConfigDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DataMapper
 {
-          using Moq;
-    using NUnit.Framework;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
-    class ConfigDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="ConfigDataServiceTest" />.
+    /// </summary>
+    internal class ConfigDataServiceTest
     {
-
+        /// <summary>
+        /// The AddConfigTest.
+        /// </summary>
         [Test]
         public void AddConfigTest()
         {
@@ -28,6 +31,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.AddConfig(config), Times.Once());
         }
 
+        /// <summary>
+        /// The DeleteConfigTest.
+        /// </summary>
         [Test]
         public void DeleteConfigTest()
         {
@@ -42,6 +48,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.DeleteConfig(config), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdateConfigTest.
+        /// </summary>
         [Test]
         public void UpdateConfigTest()
         {
@@ -56,6 +65,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.UpdateConfig(config), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllConfigsTest.
+        /// </summary>
         [Test]
         public void GetAllConfigsTest()
         {
@@ -68,6 +80,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllConfigurations(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetConfigByIdTest.
+        /// </summary>
         [Test]
         public void GetConfigByIdTest()
         {

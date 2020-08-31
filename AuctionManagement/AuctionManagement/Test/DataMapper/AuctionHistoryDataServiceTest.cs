@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="AuctionHistoryDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.Test.DataMapper
 {
-    using Moq;
-    using NUnit.Framework;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
-    class AuctionHistoryDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="AuctionHistoryDataServiceTest" />.
+    /// </summary>
+    internal class AuctionHistoryDataServiceTest
     {
-
+        /// <summary>
+        /// The AddAuctionHistoryTest.
+        /// </summary>
         [Test]
         public void AddAuctionHistoryTest()
         {
@@ -28,6 +31,9 @@ namespace AuctionManagement.Test.DataMapper
             mock.Verify(o => o.AddAuctionHistory(auctionHistory), Times.Once());
         }
 
+        /// <summary>
+        /// The DeleteAuctionHistoryTest.
+        /// </summary>
         [Test]
         public void DeleteAuctionHistoryTest()
         {
@@ -42,6 +48,9 @@ namespace AuctionManagement.Test.DataMapper
             mock.Verify(o => o.DeleteAuctionHistory(auctionHistory), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdateAuctionHistoryTest.
+        /// </summary>
         [Test]
         public void UpdateAuctionHistoryTest()
         {
@@ -56,6 +65,9 @@ namespace AuctionManagement.Test.DataMapper
             mock.Verify(o => o.UpdateAuctionHistory(auctionHistory), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllAuctionHistorysTest.
+        /// </summary>
         [Test]
         public void GetAllAuctionHistorysTest()
         {
@@ -68,6 +80,9 @@ namespace AuctionManagement.Test.DataMapper
             mock.Verify(o => o.GetAllAuctionsHistory(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAuctionHistoryByIdTest.
+        /// </summary>
         [Test]
         public void GetAuctionHistoryByIdTest()
         {

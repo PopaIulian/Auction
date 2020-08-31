@@ -1,12 +1,9 @@
-﻿using AuctionManagement.DomainModel;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace AuctionManagement.Const
 {
+    using System;
+    using System.Collections.Generic;
+    using AuctionManagement.DomainModel;
     class Configuration
     {
         public const string AVERAGE_NUMBER_SCORE = "avg_number_score";

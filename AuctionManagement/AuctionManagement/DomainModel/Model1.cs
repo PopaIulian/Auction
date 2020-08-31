@@ -9,7 +9,7 @@ namespace AuctionManagement.DomainModel
     /// <summary>
     /// Defines the <see cref="Model1" />.
     /// </summary>
-    public  class Model1 : DbContext
+    public class Model1 : DbContext
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="Model1"/> class.

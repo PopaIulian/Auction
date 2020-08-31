@@ -1,15 +1,22 @@
-﻿
+﻿// <copyright file="ProductDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DataMapper
 {
-   
-       using Moq;
-    using NUnit.Framework;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
-    class ProductDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="ProductDataServiceTest" />.
+    /// </summary>
+    internal class ProductDataServiceTest
     {
+        /// <summary>
+        /// The AddProductTest.
+        /// </summary>
         [Test]
         public void AddProductTest()
         {
@@ -24,6 +31,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.AddObject(product), Times.Once());
         }
 
+        /// <summary>
+        /// The DeleteProductTest.
+        /// </summary>
         [Test]
         public void DeleteProductTest()
         {
@@ -38,6 +48,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.DeleteObject(product), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdateProductTest.
+        /// </summary>
         [Test]
         public void UpdateProductTest()
         {
@@ -52,6 +65,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.UpdateObject(product), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllProductsTest.
+        /// </summary>
         [Test]
         public void GetAllProductsTest()
         {
@@ -64,6 +80,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllObjects(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetProductByIdTest.
+        /// </summary>
         [Test]
         public void GetProductByIdTest()
         {

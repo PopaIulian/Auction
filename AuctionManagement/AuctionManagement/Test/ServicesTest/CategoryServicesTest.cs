@@ -1,4 +1,6 @@
-﻿
+﻿// <copyright file="CategoryServicesTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.Test.ServicesTest
 {
@@ -8,11 +10,16 @@ namespace AuctionManagement.Test.ServicesTest
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System;
     using System.Collections.Generic;
 
-    class CategoryServicesTest
+    /// <summary>
+    /// Defines the <see cref="CategoryServicesTest" />.
+    /// </summary>
+    internal class CategoryServicesTest
     {
+        /// <summary>
+        /// The TestAddAuctionWithValidData.
+        /// </summary>
         [Test]
         public void TestAddAuctionWithValidData()
         {
@@ -30,6 +37,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestAddAuctionWithInvalidData.
+        /// </summary>
         [Test]
         public void TestAddAuctionWithInvalidData()
         {
@@ -41,6 +51,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestDeleteAuctionWithValidData.
+        /// </summary>
         [Test]
         public void TestDeleteAuctionWithValidData()
         {
@@ -62,6 +75,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestDeleteAuctionWithInvalidData.
+        /// </summary>
         [Test]
         public void TestDeleteAuctionWithInvalidData()
         {
@@ -73,6 +89,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestUpdateReaderWithValidData.
+        /// </summary>
         [Test]
         public void TestUpdateReaderWithValidData()
         {
@@ -90,6 +109,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestUpdateAuctionWithInvalidData.
+        /// </summary>
         [Test]
         public void TestUpdateAuctionWithInvalidData()
         {
@@ -101,6 +123,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestGetListOfAuctions.
+        /// </summary>
         [Test]
         public void TestGetListOfAuctions()
         {
@@ -125,6 +150,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.AreEqual((result as List<Auction>).Count, 1);
         }
 
+        /// <summary>
+        /// The TestGetAuctionById.
+        /// </summary>
         [Test]
         public void TestGetAuctionById()
         {
@@ -146,6 +174,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.AreEqual((result as Category).IdCategory, 10);
         }
 
+        /// <summary>
+        /// The TestGetAuctionByIdWithInvalidId.
+        /// </summary>
         [Test]
         public void TestGetAuctionByIdWithInvalidId()
         {

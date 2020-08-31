@@ -1,13 +1,22 @@
-﻿
-using AuctionManagement.DomainModel;
-using AuctionManagement.DomainModel.Validator;
-using NUnit.Framework;
-using System;
+﻿// <copyright file="ScoreHistoryTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DomainModelTest
 {
-    class ScoreHistoryTest
+    using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using NUnit.Framework;
+    using System;
+
+    /// <summary>
+    /// Defines the <see cref="ScoreHistoryTest" />.
+    /// </summary>
+    internal class ScoreHistoryTest
     {
+        /// <summary>
+        /// The TestScoreHistoryWithValidValues1.
+        /// </summary>
         [Test]
         public void TestScoreHistoryWithValidValues1()
         {
@@ -25,6 +34,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsTrue(isValid);
         }
+
+        /// <summary>
+        /// The TestScoreHistoryWithValidValues2.
+        /// </summary>
         [Test]
         public void TestScoreHistoryWithValidValues2()
         {
@@ -41,12 +54,16 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsFalse(isValid);
         }
+
+        /// <summary>
+        /// The TestScoreHistoryWithValidValues3.
+        /// </summary>
         [Test]
         public void TestScoreHistoryWithValidValues3()
         {
             ScoreHistory test = new ScoreHistory()
             {
-               IdScoreHistory = 1,
+                IdScoreHistory = 1,
                 DateScore = DateTime.Now,
 
             };
@@ -57,6 +74,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsFalse(isValid);
         }
+
+        /// <summary>
+        /// The TestScoreHistoryWithValidValues4.
+        /// </summary>
         [Test]
         public void TestScoreHistoryWithValidValues4()
         {
@@ -74,6 +95,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsFalse(isValid);
         }
+
+        /// <summary>
+        /// The TestScoreHistoryProperty1.
+        /// </summary>
         [Test]
         public void TestScoreHistoryProperty1()
         {
@@ -89,6 +114,10 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(test.PersonId, 2);
             Assert.AreEqual(test.Score, 56);
         }
+
+        /// <summary>
+        /// The TestScoreHistoryProperty2.
+        /// </summary>
         [Test]
         public void TestScoreHistoryProperty2()
         {
@@ -102,12 +131,7 @@ namespace AuctionTests.DomainModelTest
             };
             Assert.AreNotEqual(test.IdScoreHistory, 45);
             Assert.AreNotEqual(test.PersonId, 4);
-            Assert.AreNotEqual(test.Score, 56);
-
+            Assert.AreNotEqual(test.Score, 86);
         }
-
     }
-
-
 }
-

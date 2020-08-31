@@ -1,18 +1,22 @@
-﻿using AuctionManagement.DataMapper;
-using AuctionManagement.DomainModel;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="AuctionDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DataMapper
 {
-    class AuctionDataServiceTest
-    {
+    using AuctionManagement.DataMapper;
+    using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
+    /// <summary>
+    /// Defines the <see cref="AuctionDataServiceTest" />.
+    /// </summary>
+    internal class AuctionDataServiceTest
+    {
+        /// <summary>
+        /// The AddAuctionTest.
+        /// </summary>
         [Test]
         public void AddAuctionTest()
         {
@@ -27,6 +31,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.AddAuction(auction), Times.Once());
         }
 
+        /// <summary>
+        /// The DeleteAuctionTest.
+        /// </summary>
         [Test]
         public void DeleteAuctionTest()
         {
@@ -41,6 +48,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.DeleteAuction(auction), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdateAuctionTest.
+        /// </summary>
         [Test]
         public void UpdateAuctionTest()
         {
@@ -55,6 +65,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.UpdateAuction(auction), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllAuctionsTest.
+        /// </summary>
         [Test]
         public void GetAllAuctionsTest()
         {
@@ -67,6 +80,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllAuctions(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAuctionByIdTest.
+        /// </summary>
         [Test]
         public void GetAuctionByIdTest()
         {

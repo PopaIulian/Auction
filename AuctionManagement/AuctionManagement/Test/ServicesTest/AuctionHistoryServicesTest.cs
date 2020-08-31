@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿// <copyright file="AuctionHistoryServicesTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionManagement.Test.ServicesTest
 {
-
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
@@ -16,8 +13,14 @@ namespace AuctionManagement.Test.ServicesTest
     using System;
     using System.Collections.Generic;
 
-    class AuctionHistoryServicesTest
-    { 
+    /// <summary>
+    /// Defines the <see cref="AuctionHistoryServicesTest" />.
+    /// </summary>
+    internal class AuctionHistoryServicesTest
+    {
+        /// <summary>
+        /// The TestAddAuctionHistoryWithValidData.
+        /// </summary>
         [Test]
         public void TestAddAuctionHistoryWithValidData()
         {
@@ -37,6 +40,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestAddAuctionHistoryWithInvalidData.
+        /// </summary>
         [Test]
         public void TestAddAuctionHistoryWithInvalidData()
         {
@@ -48,6 +54,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestDeleteAuctionHistoryWithValidData.
+        /// </summary>
         [Test]
         public void TestDeleteAuctionHistoryWithValidData()
         {
@@ -71,6 +80,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestDeleteAuctionHistoryWithInvalidData.
+        /// </summary>
         [Test]
         public void TestDeleteAuctionHistoryWithInvalidData()
         {
@@ -82,6 +94,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestUpdateReaderWithValidData.
+        /// </summary>
         [Test]
         public void TestUpdateReaderWithValidData()
         {
@@ -101,6 +116,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsTrue(result);
         }
 
+        /// <summary>
+        /// The TestUpdateAuctionHistoryWithInvalidData.
+        /// </summary>
         [Test]
         public void TestUpdateAuctionHistoryWithInvalidData()
         {
@@ -112,8 +130,11 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.IsFalse(result);
         }
 
+        /// <summary>
+        /// The TestGetListOfAuctionHistories.
+        /// </summary>
         [Test]
-        public void TestGetListOfAuctionHistorys()
+        public void TestGetListOfAuctionHistories()
         {
             IAuctionHistoryServices auctionHistoryServices = new AuctionHistoryServices();
             Mock<IAuctionHistoryDataServices> mock = new Mock<IAuctionHistoryDataServices>();
@@ -138,6 +159,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.AreEqual((result as List<AuctionHistory>).Count, 1);
         }
 
+        /// <summary>
+        /// The TestGetAuctionHistoryById.
+        /// </summary>
         [Test]
         public void TestGetAuctionHistoryById()
         {
@@ -162,6 +186,9 @@ namespace AuctionManagement.Test.ServicesTest
             Assert.AreEqual((result as AuctionHistory).IdAuctionHistory, 10);
         }
 
+        /// <summary>
+        /// The TestGetAuctionHistoryByIdWithInvalidId.
+        /// </summary>
         [Test]
         public void TestGetAuctionHistoryByIdWithInvalidId()
         {
@@ -182,6 +209,5 @@ namespace AuctionManagement.Test.ServicesTest
 
             Assert.AreEqual(result, null);
         }
-
     }
 }

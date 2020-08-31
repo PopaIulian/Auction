@@ -1,15 +1,22 @@
-﻿
+﻿// <copyright file="PersonDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DataMapper
 {
-    using Moq;
-    using NUnit.Framework;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
+    using Moq;
+    using NUnit.Framework;
 
-    class PersonDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="PersonDataServiceTest" />.
+    /// </summary>
+    internal class PersonDataServiceTest
     {
-
+        /// <summary>
+        /// The AddPersonTest.
+        /// </summary>
         [Test]
         public void AddPersonTest()
         {
@@ -24,6 +31,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.AddPerson(person), Times.Once());
         }
 
+        /// <summary>
+        /// The DeletePersonTest.
+        /// </summary>
         [Test]
         public void DeletePersonTest()
         {
@@ -38,6 +48,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.DeletePerson(person), Times.Once());
         }
 
+        /// <summary>
+        /// The UpdatePersonTest.
+        /// </summary>
         [Test]
         public void UpdatePersonTest()
         {
@@ -52,6 +65,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.UpdatePerson(person), Times.Once());
         }
 
+        /// <summary>
+        /// The GetAllPersonsTest.
+        /// </summary>
         [Test]
         public void GetAllPersonsTest()
         {
@@ -64,6 +80,9 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllPersons(), Times.Once());
         }
 
+        /// <summary>
+        /// The GetPersonByIdTest.
+        /// </summary>
         [Test]
         public void GetPersonByIdTest()
         {

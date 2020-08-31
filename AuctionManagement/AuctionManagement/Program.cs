@@ -1,14 +1,10 @@
-﻿using AuctionManagement.DomainModel;
-using AuctionManagement.Services;
-using AuctionManagement.Services.ServicesImplementation;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace AuctionManagement
 {
+    using System;
+    using AuctionManagement.DomainModel;
+    using AuctionManagement.Services;
+    using AuctionManagement.Services.ServicesImplementation;
     class Program
     {
         static void Main(string[] args)
@@ -22,7 +18,7 @@ namespace AuctionManagement
             auction.Currency = "ebfu3";
             auction.StartDate = DateTime.Now;
             auction.EndDate = DateTime.Now;
-// service.AddAuction(auction);
+
             AuctionHistory test = new AuctionHistory()
             {
                 IdAuctionHistory = 1,
@@ -35,7 +31,7 @@ namespace AuctionManagement
             };
             service.AddAuctionHistory(test);
 
-       
+
             Console.Read();
         }
     }

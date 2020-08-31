@@ -4,8 +4,8 @@
 
 namespace AuctionManagement.Services
 {
-    using AuctionManagement.DomainModel;
     using System.Collections.Generic;
+    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="IAuctionHistoryServices" />.
@@ -46,6 +46,11 @@ namespace AuctionManagement.Services
         /// <returns>The <see cref="bool"/>.</returns>
         bool DeleteAuctionHistory(AuctionHistory auctionHistory);
 
+        /// <summary>
+        /// The GetLastAuctionInfo.
+        /// </summary>
+        /// <param name="auctionId">The auctionId<see cref="int"/>.</param>
+        /// <returns>The <see cref="AuctionHistory"/>.</returns>
         AuctionHistory GetLastAuctionInfo(int auctionId);
     }
 }

@@ -1,15 +1,23 @@
-﻿
-using AuctionManagement.Const;
-using AuctionManagement.DomainModel;
-using AuctionManagement.DomainModel.Validator;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
+﻿// <copyright file="ConfigTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DomainModelTest
 {
-    class ConfigTest
+    using AuctionManagement.Const;
+    using AuctionManagement.DomainModel;
+    using AuctionManagement.DomainModel.Validator;
+    using NUnit.Framework;
+    using System.Collections.Generic;
+
+    /// <summary>
+    /// Defines the <see cref="ConfigTest" />.
+    /// </summary>
+    internal class ConfigTest
     {
+        /// <summary>
+        /// The TestConfigWithValidValues1.
+        /// </summary>
         [Test]
         public void TestConfigWithValidValues1()
         {
@@ -26,6 +34,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsTrue(isValid);
         }
+
+        /// <summary>
+        /// The TestConfigWithValidValues2.
+        /// </summary>
         [Test]
         public void TestConfigWithValidValues2()
         {
@@ -42,6 +54,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             NUnit.Framework.Assert.IsFalse(isValid);
         }
+
+        /// <summary>
+        /// The TestConfigWithValidValues3.
+        /// </summary>
         [Test]
         public void TestConfigWithValidValues3()
         {
@@ -57,6 +73,10 @@ namespace AuctionTests.DomainModelTest
             bool isValid = results.IsValid;
             Assert.IsFalse(isValid);
         }
+
+        /// <summary>
+        /// The TestConfigValues1.
+        /// </summary>
         [Test]
         public void TestConfigValues1()
         {
@@ -70,10 +90,13 @@ namespace AuctionTests.DomainModelTest
             list.Add(test);
 
             int value = Configuration.GetConfigValue(list, Configuration.AVERAGE_NUMBER_SCORE);
-         
-           Assert.AreEqual(value, test.ValueConfig);
+
+            Assert.AreEqual(value, test.ValueConfig);
         }
 
+        /// <summary>
+        /// The TestConfigValues2.
+        /// </summary>
         [Test]
         public void TestConfigValues2()
         {
@@ -91,6 +114,9 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(value, 0);
         }
 
+        /// <summary>
+        /// The TestConfigValues3.
+        /// </summary>
         public void TestConfigValues3()
         {
             Config test = new Config()
@@ -106,6 +132,10 @@ namespace AuctionTests.DomainModelTest
 
             Assert.AreNotEqual(value, 0);
         }
+
+        /// <summary>
+        /// The TestConfigValues4.
+        /// </summary>
         [Test]
         public void TestConfigValues4()
         {
@@ -123,6 +153,9 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(value, 0);
         }
 
+        /// <summary>
+        /// The TestConfigValues5.
+        /// </summary>
         [Test]
         public void TestConfigValues5()
         {
@@ -140,6 +173,9 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(value, test.ValueConfig);
         }
 
+        /// <summary>
+        /// The TestConfigProperty1.
+        /// </summary>
         [Test]
         public void TestConfigProperty1()
         {
@@ -152,6 +188,10 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(test.IdConfig, "text");
             Assert.AreEqual(test.ValueConfig, 5);
         }
+
+        /// <summary>
+        /// The TestConfigProperty2.
+        /// </summary>
         [Test]
         public void TestConfigProperty2()
         {
@@ -163,10 +203,6 @@ namespace AuctionTests.DomainModelTest
             };
             Assert.AreNotEqual(test.IdConfig, "t");
             Assert.AreNotEqual(test.ValueConfig, 7);
-
         }
-
     }
-
-
 }

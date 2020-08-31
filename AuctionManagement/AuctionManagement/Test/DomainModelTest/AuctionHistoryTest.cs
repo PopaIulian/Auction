@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="AuctionHistoryTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
 
 namespace AuctionTests.DomainModelTest
 {
-
-    using System;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
+    using System;
 
+    /// <summary>
+    /// Defines the <see cref="AuctionHistoryTest" />.
+    /// </summary>
     public class AuctionHistoryTest
     {
-
+        /// <summary>
+        /// The TestAuctionHistoryValidatorWithValidValues1.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryValidatorWithValidValues1()
         {
@@ -33,6 +37,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsTrue(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryValidatorWithValidValues2.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryValidatorWithValidValues2()
         {
@@ -53,6 +60,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsTrue(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryValidatorWithValidValues3.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryValidatorWithValidValues3()
         {
@@ -70,6 +80,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryValidatorWithValidValues4.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryValidatorWithValidValues4()
         {
@@ -86,6 +99,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryValidatorWithValidValues5.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryValidatorWithValidValues5()
         {
@@ -101,6 +117,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryValidatorWithValidValues6.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryValidatorWithValidValues6()
         {
@@ -121,6 +140,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsTrue(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryPropery1.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryPropery1()
         {
@@ -132,6 +154,9 @@ namespace AuctionTests.DomainModelTest
             Assert.AreEqual(test.IdAuctionHistory, 1);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryProperties2.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryProperties2()
         {
@@ -145,12 +170,15 @@ namespace AuctionTests.DomainModelTest
                 Currency = "ron"
             };
 
-            
+
             Assert.AreEqual(test.AuctionId, 1);
             Assert.AreEqual(test.Price, 100);
             Assert.AreEqual(test.Currency, "ron");
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryProperties3.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryProperties3()
         {

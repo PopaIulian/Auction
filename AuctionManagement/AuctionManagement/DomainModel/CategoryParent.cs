@@ -10,11 +10,11 @@ namespace AuctionManagement.DomainModel
     public partial class CategoryParent
     {
         [Key]
-        public int idCategoryParent { get; set; }
+        public int IdCategoryParent { get; set; }
 
-        public int categoryId { get; set; }
+        public int CategoryId { get; set; }
 
-        public int parentId { get; set; }
+        public int ParentId { get; set; }
 
         public virtual Category Category { get; set; }
 

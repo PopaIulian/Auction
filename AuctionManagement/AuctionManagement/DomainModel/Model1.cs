@@ -8,7 +8,7 @@ namespace AuctionManagement.DomainModel
     public partial class Model1 : DbContext
     {
         public Model1()
-            : base("name=AppContext")
+            : base("name=Model2")
         {
         }
 
@@ -49,13 +49,13 @@ namespace AuctionManagement.DomainModel
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.CategoryParents)
                 .WithRequired(e => e.Category)
-                .HasForeignKey(e => e.categoryId)
+                .HasForeignKey(e => e.CategoryId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.CategoryParents1)
                 .WithRequired(e => e.Category1)
-                .HasForeignKey(e => e.parentId)
+                .HasForeignKey(e => e.ParentId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()

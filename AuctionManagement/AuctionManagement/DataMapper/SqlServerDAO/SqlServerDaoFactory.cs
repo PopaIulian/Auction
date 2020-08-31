@@ -25,6 +25,11 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         public ICategoryDataServices CategoryDataServices { get => new SqlCategoryDataServices(); }
 
         /// <summary>
+        /// Gets the CategoryParentDataServices.
+        /// </summary>
+        public ICategoryParentDataServices CategoryParentDataServices { get => new SqlCategoryParentDataServices(); }
+
+        /// <summary>
         /// Gets the ConfigDataServices.
         /// </summary>
         public IConfigDataServices ConfigDataServices { get => new SqlConfigDataServices(); }

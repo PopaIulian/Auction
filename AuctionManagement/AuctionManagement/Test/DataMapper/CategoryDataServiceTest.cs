@@ -118,7 +118,7 @@ namespace AuctionTests.DataMapper
             Category newElem = new Category()
             {
                 IdCategory = 1,
-                CategoryName = "new_name",
+                CategoryName = "new_name"
             };
             service.UpdateCategory(newElem);
             service.UpdateCategory(test);

@@ -25,6 +25,11 @@ namespace AuctionManagement.DataMapper
         ICategoryDataServices CategoryDataServices { get; }
 
         /// <summary>
+        /// Gets the CategoryParentDataServices.
+        /// </summary>
+        ICategoryParentDataServices CategoryParentDataServices { get; }
+
+        /// <summary>
         /// Gets the ConfigDataServices.
         /// </summary>
         IConfigDataServices ConfigDataServices { get; }

@@ -4,10 +4,10 @@
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
-    using AuctionManagement.DomainModel;
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="SqlAuctionDataServices" />.

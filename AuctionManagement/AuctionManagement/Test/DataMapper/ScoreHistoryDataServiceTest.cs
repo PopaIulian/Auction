@@ -4,12 +4,12 @@
 
 namespace AuctionTests.DataMapper
 {
-    using System;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryDataServiceTest" />.
@@ -97,7 +97,6 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetAllScoresUser(1), Times.Once());
         }
 
-
         /// <summary>
         /// The GetScoreHistoryByIdTest.
         /// </summary>
@@ -144,6 +143,9 @@ namespace AuctionTests.DataMapper
             }
         }
 
+        /// <summary>
+        /// The GetAllUserScoreHistoriesImpTest.
+        /// </summary>
         [Test]
         public void GetAllUserScoreHistoriesImpTest()
         {

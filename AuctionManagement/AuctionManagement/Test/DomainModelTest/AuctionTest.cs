@@ -4,10 +4,10 @@
 
 namespace AuctionTests.DomainModelTest
 {
+    using System;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
-    using System;
     using System.Collections.Generic;
 
     /// <summary>
@@ -168,12 +168,11 @@ namespace AuctionTests.DomainModelTest
         {
             Auction auction = new Auction();
 
-                Product product= new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 };
+            Product product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 };
             auction.Product = product;
 
             Assert.AreEqual(auction.Product.IdProduct, 1);
             Assert.AreEqual(auction.Product.ObjectName, "obj_name");
-
         }
 
         /// <summary>

@@ -4,8 +4,8 @@
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
-    using AuctionManagement.DomainModel;
     using System.Collections.Generic;
+    using AuctionManagement.DomainModel;
     using System.Linq;
 
     /// <summary>

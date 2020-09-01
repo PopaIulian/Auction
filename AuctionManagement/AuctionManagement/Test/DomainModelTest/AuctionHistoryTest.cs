@@ -71,6 +71,9 @@ namespace AuctionTests.DomainModelTest
             Assert.IsFalse(isValid);
         }
 
+        /// <summary>
+        /// The TestAuctionHistoryUsingValidator2.
+        /// </summary>
         [Test]
         public void TestAuctionHistoryUsingValidator2()
         {

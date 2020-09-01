@@ -4,12 +4,12 @@
 
 namespace AuctionTests.DataMapper
 {
+    using System;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
-    using System;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryDataServiceTest" />.

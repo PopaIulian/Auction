@@ -50,10 +50,16 @@ namespace AuctionManagement.DomainModel.Validator
             RuleFor(x => x).Must(args => this.CompareNumberOfAuction(maxOpenAuction, allOpenedAuction.Count)).WithErrorCode("The number is too big.");
 
             int maxOpenAuctionCat = Configuration.GetConfigValue(configurations, Configuration.MaxRangeAuctionCategoryPerson);
-            RuleFor(x => x).Must(args => this.CompareNrAuctionSameCat(maxOpenAuctionCat,args.Product.CategoryName, allOpenedAuction)).WithErrorCode("Can not insert.");
+            RuleFor(x => x).Must(args => this.CompareNrAuctionSameCat(maxOpenAuctionCat, args.Product.CategoryName, allOpenedAuction)).WithErrorCode("Can not insert.");
         }
 
-
+        /// <summary>
+        /// The CompareNrAuctionSameCat.
+        /// </summary>
+        /// <param name="maxOpenAuction">The maxOpenAuction<see cref="int"/>.</param>
+        /// <param name="actualCat">The actualCat<see cref="int?"/>.</param>
+        /// <param name="allOpenedAuction">The allOpenedAuction<see cref="IList{Auction}"/>.</param>
+        /// <returns>The <see cref="bool"/>.</returns>
         private bool CompareNrAuctionSameCat(int maxOpenAuction, int? actualCat, IList<Auction> allOpenedAuction)
         {
             if (actualCat == null)

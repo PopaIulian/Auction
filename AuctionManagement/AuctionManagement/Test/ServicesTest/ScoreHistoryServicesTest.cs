@@ -2,16 +2,16 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
+    using System;
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryServicesTest" />.
@@ -19,10 +19,10 @@ namespace AuctionManagement.Test.ServicesTest
     internal class ScoreHistoryServicesTest
     {
         /// <summary>
-        /// The TestAddAuctionWithValidData.
+        /// The TestAddScoreHistoryWithValidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionWithValidData()
+        public void TestAddScoreHistoryWithValidData()
         {
             ScoreHistory test = new ScoreHistory()
             {
@@ -39,10 +39,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestAddAuctionWithInvalidData.
+        /// The TestAddScoreHistoryWithInvalidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionWithInvalidData()
+        public void TestAddScoreHistoryWithInvalidData()
         {
             ScoreHistory test = new ScoreHistory();
 
@@ -53,10 +53,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestDeleteAuctionWithValidData.
+        /// The TestDeleteScoreHistoryWithValidData.
         /// </summary>
         [Test]
-        public void TestDeleteAuctionWithValidData()
+        public void TestDeleteScoreHistoryWithValidData()
         {
             ScoreHistory test = new ScoreHistory()
             {
@@ -77,10 +77,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestDeleteAuctionWithInvalidData.
+        /// The TestDeleteScoreHistoryWithInvalidData.
         /// </summary>
         [Test]
-        public void TestDeleteAuctionWithInvalidData()
+        public void TestDeleteScoreHistoryWithInvalidData()
         {
             ScoreHistory test = new ScoreHistory();
 
@@ -102,7 +102,6 @@ namespace AuctionManagement.Test.ServicesTest
                 DateScore = DateTime.Now,
                 PersonId = 2,
                 Score = 56
-
             };
 
             IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
@@ -112,10 +111,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestUpdateAuctionWithInvalidData.
+        /// The TestUpdateScoreHistoryWithInvalidData.
         /// </summary>
         [Test]
-        public void TestUpdateAuctionWithInvalidData()
+        public void TestUpdateScoreHistoryWithInvalidData()
         {
             ScoreHistory test = new ScoreHistory();
 
@@ -126,10 +125,10 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestGetListOfAuctions.
+        /// The TestGetListOfScoreHistories.
         /// </summary>
         [Test]
-        public void TestGetListOfAuctions()
+        public void TestGetListOfScoreHistories()
         {
             IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
             Mock<IScoreHistoryDataServices> mock = new Mock<IScoreHistoryDataServices>();
@@ -142,7 +141,6 @@ namespace AuctionManagement.Test.ServicesTest
                 DateScore = DateTime.Now,
                 PersonId = 2,
                 Score = 56
-
             }
         });
 
@@ -150,14 +148,14 @@ namespace AuctionManagement.Test.ServicesTest
             var result = scoreHistoryServices.GetListOfScoreHistories();
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as List<Auction>).Count, 1);
+            Assert.AreEqual((result as List<ScoreHistory>).Count, 1);
         }
 
         /// <summary>
-        /// The TestGetAuctionById.
+        /// The TestGetScoreHistoryById.
         /// </summary>
         [Test]
-        public void TestGetAuctionById()
+        public void TestGetScoreHistoryById()
         {
             IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
             Mock<IScoreHistoryDataServices> mock = new Mock<IScoreHistoryDataServices>();
@@ -175,14 +173,14 @@ namespace AuctionManagement.Test.ServicesTest
             var result = scoreHistoryServices.GetScoreHistoryById(1);
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as ScoreHistory).IdScoreHistory, 10);
+            Assert.AreEqual((result as ScoreHistory).IdScoreHistory, 1);
         }
 
         /// <summary>
-        /// The TestGetAuctionByIdWithInvalidId.
+        /// The TestGetScoreHistoryByIdWithInvalidId.
         /// </summary>
         [Test]
-        public void TestGetAuctionByIdWithInvalidId()
+        public void TestGetScoreHistoryByIdWithInvalidId()
         {
             IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
             Mock<IScoreHistoryDataServices> mock = new Mock<IScoreHistoryDataServices>();
@@ -198,6 +196,39 @@ namespace AuctionManagement.Test.ServicesTest
             var result = scoreHistoryServices.GetScoreHistoryById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullScoreHistory.
+        /// </summary>
+        [Test]
+        public void TestAddNullScoreHistory()
+        {
+            ScoreHistory test = null;
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { scoreHistoryServices.AddScoreHistory(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullScoreHistory.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullScoreHistory()
+        {
+            ScoreHistory test = null;
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { scoreHistoryServices.DeleteScoreHistory(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullScoreHistory.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullScoreHistory()
+        {
+            ScoreHistory test = null;
+            IScoreHistoryServices scoreHistoryServices = new ScoreHistoryServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { scoreHistoryServices.UpdateScoreHistory(test); });
         }
     }
 }

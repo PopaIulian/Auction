@@ -2,16 +2,16 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
     using System;
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryServicesTest" />.
@@ -22,22 +22,22 @@ namespace AuctionManagement.Test.ServicesTest
         /// The TestAddAuctionHistoryWithValidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionHistoryWithValidData()
+        public void TestAddAuctionHistoryWithLowPrice()
         {
             AuctionHistory auctionHistory = new AuctionHistory()
             {
-                IdAuctionHistory = 5,
+                IdAuctionHistory = 1,
                 UserId = 6,
                 AuctionDate = DateTime.Now.AddDays(3),
-                AuctionId = 1,
-                Price = 1030,
-                Currency = "euro"
+                AuctionId = 2,
+                Price = 1040,
+                Currency = "ron"
             };
 
             IAuctionHistoryServices auctionHistoryServices = new AuctionHistoryServices();
             bool result = auctionHistoryServices.AddAuctionHistory(auctionHistory);
 
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
 
         /// <summary>
@@ -168,7 +168,6 @@ namespace AuctionManagement.Test.ServicesTest
             IAuctionHistoryServices auctionHistoryServices = new AuctionHistoryServices();
             Mock<IAuctionHistoryDataServices> mock = new Mock<IAuctionHistoryDataServices>();
             mock.Setup(m => m.GetAuctionHistoryById(1)).Returns(
-
             new AuctionHistory()
             {
                 IdAuctionHistory = 5,
@@ -208,6 +207,39 @@ namespace AuctionManagement.Test.ServicesTest
             var result = auctionHistoryServices.GetAuctionHistoryById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullAuction.
+        /// </summary>
+        [Test]
+        public void TestAddNullAuction()
+        {
+            AuctionHistory test = null;
+            IAuctionHistoryServices auctionServices = new AuctionHistoryServices();
+            Assert.Throws(typeof(NullReferenceException), delegate { auctionServices.AddAuctionHistory(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullAuction.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullAuction()
+        {
+            AuctionHistory test = null;
+            IAuctionHistoryServices auctionServices = new AuctionHistoryServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { auctionServices.DeleteAuctionHistory(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullDomain.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullDomain()
+        {
+            AuctionHistory test = null;
+            IAuctionHistoryServices auctionServices = new AuctionHistoryServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { auctionServices.UpdateAuctionHistory(test); });
         }
     }
 }

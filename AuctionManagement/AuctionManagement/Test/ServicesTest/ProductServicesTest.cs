@@ -2,15 +2,15 @@
 // Popa Iulian
 // </copyright>
 
-namespace ProductManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="ProductServicesTest" />.
@@ -27,7 +27,7 @@ namespace ProductManagement.Test.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
 
             IProductServices productServices = new ProductServices();
@@ -60,7 +60,7 @@ namespace ProductManagement.Test.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
 
             IProductServices productServices = new ProductServices();
@@ -97,7 +97,7 @@ namespace ProductManagement.Test.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
 
             IProductServices productServices = new ProductServices();
@@ -135,7 +135,7 @@ namespace ProductManagement.Test.ServicesTest
             {
                  IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             }
         });
 
@@ -159,7 +159,7 @@ namespace ProductManagement.Test.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             });
 
             ProductServices.DataServices = mock.Object;
@@ -181,13 +181,46 @@ namespace ProductManagement.Test.ServicesTest
             new Product()
             {
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             });
 
             ProductServices.DataServices = mock.Object;
             var result = productServices.GetProductById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullProduct.
+        /// </summary>
+        [Test]
+        public void TestAddNullProduct()
+        {
+            Product test = null;
+            IProductServices productServices = new ProductServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { productServices.AddProduct(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullProduct.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullProduct()
+        {
+            Product test = null;
+            IProductServices productServices = new ProductServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { productServices.DeleteProduct(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullProduct.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullProduct()
+        {
+            Product test = null;
+            IProductServices productServices = new ProductServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { productServices.UpdateProduct(test); });
         }
     }
 }

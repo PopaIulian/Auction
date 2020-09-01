@@ -2,12 +2,14 @@
 // Popa Iulian
 // </copyright>
 
-namespace ScoreHistoryTests.DataMapper
+namespace AuctionTests.DataMapper
 {
+    using System;
+    using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
+    using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
-    using AuctionManagement.DataMapper;
-    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="ScoreHistoryDataServiceTest" />.
@@ -95,34 +97,35 @@ namespace ScoreHistoryTests.DataMapper
             mock.Verify(o => o.GetScoreHistoryById(1), Times.Once());
         }
 
-        //[Test]
-        //public void TestAllScoreHistoryOperation()
-        //{
-        //    ScoreHistory test = new ScoreHistory()
-        //    {
-        //        IdScoreHistory = 1,
-        //        DateScore = DateTime.Now,
-        //        PersonId = 2,
-        //        Score = 56
-        //    };
+        /// <summary>
+        /// The ImpAuctionHistoryTest.
+        /// </summary>
+        [Test]
+        public void ImpAuctionHistoryTest()
+        {
+            ScoreHistory score = new ScoreHistory()
+            {
+                IdScoreHistory = 1,
+                Score = 34,
+                DateScore = DateTime.Now,
+                Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
+                PersonId = 2
+            };
 
-        //    IScoreHistoryDataServices service = new SqlScoreHistoryServices();
-
-        //    service.AddScoreHistory(test);
-
-        //    ScoreHistory elem = service.GetScoreHistoryById(1);
-        //    Assert.AreEqual(elem.PersonId, test.PersonId);
-
-        //    var elems = service.GetAllScoreHistories();
-        //    Assert.IsNotEmpty(elems);
-
-        //    ScoreHistory newElem = new ScoreHistory()
-        //    {
-        //        IdScoreHistory = 1,
-        //        Score = 59
-        //    };
-        //    service.UpdateScoreHistory(newElem);
-        //    service.DeleteScoreHistory(test);
-        //}
+            SqlScoreHistoryServices service = new SqlScoreHistoryServices();
+            try
+            {
+                service.AddScoreHistory(score);
+                score.Score = 40;
+                service.UpdateScoreHistory(score);
+                var people = service.GetAllScoreHistories();
+                var samePerson = service.GetScoreHistoryById(score.IdScoreHistory);
+                service.DeleteScoreHistory(score);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

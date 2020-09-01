@@ -1,5 +1,8 @@
-﻿
-namespace AuctionManagement.Test.DataMapper
+﻿// <copyright file="CategoryParentDataServiceTest.cs" company="Transilvania University of Brasov">
+// Popa Iulian
+// </copyright>
+
+namespace AuctionTests.DataMapper
 {
     using AuctionManagement.DataMapper;
     using AuctionManagement.DataMapper.SqlServerDAO;
@@ -7,7 +10,10 @@ namespace AuctionManagement.Test.DataMapper
     using Moq;
     using NUnit.Framework;
 
-    internal class CategoryParentParentDataServiceTest
+    /// <summary>
+    /// Defines the <see cref="CategoryParentDataServiceTest" />.
+    /// </summary>
+    internal class CategoryParentDataServiceTest
     {
         /// <summary>
         /// The AddCategoryParentTest.
@@ -90,6 +96,9 @@ namespace AuctionManagement.Test.DataMapper
             mock.Verify(o => o.GetCategoryParentById(1), Times.Once());
         }
 
+        /// <summary>
+        /// The TestAllAuctionOperation.
+        /// </summary>
         [Test]
         public void TestAllAuctionOperation()
         {
@@ -117,6 +126,37 @@ namespace AuctionManagement.Test.DataMapper
             };
             service.UpdateCategoryParent(newElem);
             service.UpdateCategoryParent(test);
+        }
+
+        /// <summary>
+        /// The TestAllCategoryParentOperation.
+        /// </summary>
+        [Test]
+        public void TestAllCategoryParentOperation()
+        {
+            CategoryParent category = new CategoryParent
+            {
+                IdCategoryParent = 1,
+                CategoryId = 2,
+                ParentId = 3,
+                Category = new Category { IdCategory = 2, CategoryName = "cat_name" },
+                Category1 = new Category { IdCategory = 3, CategoryName = "parent_name" },
+            };
+
+            SqlCategoryParentDataServices service = new SqlCategoryParentDataServices();
+            try
+            {
+                service.AddCategoryParent(category);
+                category.CategoryId = 7;
+                service.UpdateCategoryParent(category);
+                var people = service.GetAllCategoriesParent();
+                var samePerson = service.GetCategoryParentById(category.IdCategoryParent);
+                service.DeleteCategoryParent(category);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

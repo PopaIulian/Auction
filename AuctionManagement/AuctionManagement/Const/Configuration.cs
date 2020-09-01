@@ -67,7 +67,9 @@ namespace AuctionManagement.Const
         {
             foreach (var config in configuration)
                 if (config.IdConfig == textValue)
+                {
                     return config.ValueConfig;
+                }
             return 0;
         }
     }

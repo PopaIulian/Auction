@@ -2,7 +2,7 @@
 // Popa Iulian
 // </copyright>
 
-namespace CategoryManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
     using System.Collections.Generic;
     using AuctionManagement.DataMapper;
@@ -132,7 +132,6 @@ namespace CategoryManagement.Test.ServicesTest
             {
                 IdCategory = 1,
                 CategoryName = "name"
-
             }
         });
 
@@ -152,7 +151,6 @@ namespace CategoryManagement.Test.ServicesTest
             ICategoryServices categoryServices = new CategoryServices();
             Mock<ICategoryDataServices> mock = new Mock<ICategoryDataServices>();
             mock.Setup(m => m.GetCategoryById(1)).Returns(
-
             new Category()
             {
                 IdCategory = 1,
@@ -184,6 +182,39 @@ namespace CategoryManagement.Test.ServicesTest
             var result = categoryServices.GetCategoryById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullCategory.
+        /// </summary>
+        [Test]
+        public void TestAddNullCategory()
+        {
+            Category test = null;
+            ICategoryServices categoryServices = new CategoryServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { categoryServices.AddCategory(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullCategory.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullCategory()
+        {
+            Category test = null;
+            ICategoryServices categoryServices = new CategoryServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { categoryServices.DeleteCategory(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullCategory.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullCategory()
+        {
+            Category test = null;
+            ICategoryServices categoryServices = new CategoryServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { categoryServices.UpdateCategory(test); });
         }
     }
 }

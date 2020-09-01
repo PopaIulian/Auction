@@ -4,14 +4,14 @@
 
 namespace AuctionTests.ServicesTest
 {
+    using System;
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="AuctionServicesTest" />.
@@ -22,7 +22,7 @@ namespace AuctionTests.ServicesTest
         /// The TestAddAuctionWithValidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionWithValidData()
+        public void TestAddAuctionWithInValidData()
         {
             Auction auction = new Auction()
             {
@@ -38,7 +38,7 @@ namespace AuctionTests.ServicesTest
             IAuctionServices auctionServices = new AuctionServices();
             bool result = auctionServices.AddAuction(auction);
 
-            Assert.IsTrue(result);
+            Assert.IsFalse(result);
         }
 
         /// <summary>
@@ -88,10 +88,10 @@ namespace AuctionTests.ServicesTest
         [Test]
         public void TestDeleteAuctionWithInvalidData()
         {
-            Auction Auction = new Auction();
+            Auction auction = new Auction();
 
             IAuctionServices auctionServices = new AuctionServices();
-            bool result = auctionServices.DeleteAuction(Auction);
+            bool result = auctionServices.DeleteAuction(auction);
 
             Assert.IsFalse(result);
         }
@@ -172,7 +172,6 @@ namespace AuctionTests.ServicesTest
             IAuctionServices auctionServices = new AuctionServices();
             Mock<IAuctionDataServices> mock = new Mock<IAuctionDataServices>();
             mock.Setup(m => m.GetAuctionById(1)).Returns(
-
             new Auction()
             {
                 IdAuction = 1,
@@ -214,6 +213,39 @@ namespace AuctionTests.ServicesTest
             var result = auctionServices.GetAuctionById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullAuction.
+        /// </summary>
+        [Test]
+        public void TestAddNullAuction()
+        {
+            Auction test = null;
+            IAuctionServices auctionServices = new AuctionServices();
+            Assert.Throws(typeof(NullReferenceException), delegate { auctionServices.AddAuction(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullAuction.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullAuction()
+        {
+            Auction test = null;
+            IAuctionServices auctionServices = new AuctionServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { auctionServices.DeleteAuction(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullDomain.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullDomain()
+        {
+            Auction test = null;
+            IAuctionServices auctionServices = new AuctionServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { auctionServices.UpdateAuction(test); });
         }
     }
 }

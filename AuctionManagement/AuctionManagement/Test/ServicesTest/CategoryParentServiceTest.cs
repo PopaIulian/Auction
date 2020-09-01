@@ -2,20 +2,21 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
+    using System;
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
-    /// Defines the <see cref="CategoryParentParentServiceTest" />.
+    /// Defines the <see cref="CategoryParentServiceTest" />.
     /// </summary>
-    internal class CategoryParentParentServiceTest
+    internal class CategoryParentServiceTest
     {
         /// <summary>
         /// The TestAddCategoryParentWithValidData.
@@ -155,7 +156,6 @@ namespace AuctionManagement.Test.ServicesTest
             ICategoryParentServices categoryParentServices = new CategoryParentServices();
             Mock<ICategoryParentDataServices> mock = new Mock<ICategoryParentDataServices>();
             mock.Setup(m => m.GetCategoryParentById(1)).Returns(
-
             new CategoryParent()
             {
                 IdCategoryParent = 1,
@@ -189,6 +189,39 @@ namespace AuctionManagement.Test.ServicesTest
             var result = categoryParentServices.GetCategoryParentById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullCategory.
+        /// </summary>
+        [Test]
+        public void TestAddNullCategory()
+        {
+            CategoryParent test = null;
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { categoryParentServices.AddCategoryParent(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullCategory.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullCategory()
+        {
+            CategoryParent test = null;
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { categoryParentServices.DeleteCategoryParent(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullCategory.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullCategory()
+        {
+            CategoryParent test = null;
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            Assert.Throws(typeof(ArgumentNullException), delegate { categoryParentServices.UpdateCategoryParent(test); });
         }
     }
 }

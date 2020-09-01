@@ -96,33 +96,33 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetObjectById(1), Times.Once());
         }
 
+        /// <summary>
+        /// The TestAllAuctionOperation.
+        /// </summary>
         [Test]
         public void TestAllAuctionOperation()
         {
-            Product test = new Product()
+            Product product = new Product()
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
 
-            IProductDataServices service = new SqlProductDataServices();
-
-            service.AddObject(test);
-
-            Product elem = service.GetObjectById(1);
-            Assert.AreEqual(elem.ObjectName, test.ObjectName);
-
-            var elems = service.GetAllObjects();
-            Assert.IsNotEmpty(elems);
-
-            Product newElem = new Product()
+            SqlProductDataServices service = new SqlProductDataServices();
+            try
             {
-                IdProduct = 1,
-                ObjectName = "new_name",
-            };
-            service.UpdateObject(newElem);
-            service.DeleteObject(test);
+                service.AddObject(product);
+                product.ObjectName = "new_name";
+                service.UpdateObject(product);
+                var people = service.GetAllObjects();
+                var sameProduct = service.GetObjectById(product.IdProduct);
+                service.DeleteObject(product);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

@@ -4,6 +4,7 @@
 
 namespace AuctionTests.DataMapper
 {
+    using System;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
@@ -82,6 +83,21 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
+        /// The GetAllAuctionsOpenTest.
+        /// </summary>
+        [Test]
+        public void GetAllAuctionsUserTest()
+        {
+            Mock<IAuctionDataServices> mock = new Mock<IAuctionDataServices>();
+            mock.Setup(m => m.GetAllOpenAuction(1));
+
+            IAuctionDataServices obj = mock.Object;
+            obj.GetAllOpenAuction(1);
+
+            mock.Verify(o => o.GetAllOpenAuction(1), Times.Once());
+        }
+
+        /// <summary>
         /// The GetAuctionByIdTest.
         /// </summary>
         [Test]
@@ -97,36 +113,69 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
-        /// The TestAllAuctionOperation.
+        /// The AddAuctionImplementationTest.
         /// </summary>
         [Test]
-        public void TestAllAuctionOperation()
+        public void AddAuctionImplementationTest()
         {
-            Auction test = new Auction()
+            Auction auction = new Auction()
             {
                 IdAuction = 1,
+                Price = 34,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(5),
+                Currency = "ron",
+                Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryId = 2 },
                 ObjectId = 1,
                 UserId = 2,
-                Price = 34
             };
 
             SqlAuctionDataServices service = new SqlAuctionDataServices();
+            try
+            {
+                service.AddAuction(auction);
+                auction.Price = 40;
+                service.UpdateAuction(auction);
+                var people = service.GetAllAuctions();
+                var samePerson = service.GetAuctionById(auction.IdAuction);
+                service.DeleteAuction(auction);
+            }
+            catch
+            {
+                throw;
+            }
+        }
 
-            service.AddAuction(test);
-
-            Auction elem = service.GetAuctionById(1);
-            Assert.AreEqual(elem.Price, test.Price);
-
-            var elems = service.GetAllAuctions();
-            Assert.IsNotEmpty(elems);
-
-            Auction newElem = new Auction()
+        /// <summary>
+        /// The AddAuctionImplementationTest.
+        /// </summary>
+        [Test]
+        public void AddAuctionOoenUserImplementationTest()
+        {
+            Auction auction = new Auction()
             {
                 IdAuction = 1,
-                ObjectId = 2
+                Price = 34,
+                StartDate = DateTime.Now,
+                EndDate = DateTime.Now.AddDays(5),
+                Currency = "ron",
+                Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryId = 2 },
+                ObjectId = 1,
+                UserId = 2,
             };
-            service.UpdateAuction(newElem);
-            service.DeleteAuction(test);
+
+            SqlAuctionDataServices service = new SqlAuctionDataServices();
+            try
+            {
+                service.AddAuction(auction);
+                var sameAuction = service.GetAllOpenAuction(auction.UserId);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

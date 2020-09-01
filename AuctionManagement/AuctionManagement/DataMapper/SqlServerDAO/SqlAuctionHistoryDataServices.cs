@@ -93,7 +93,17 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         {
             using (Model1 context = new Model1())
             {
-                return context.AuctionHistories.Select(auctionHistory => auctionHistory).ToList().Last();
+                var auctionList = context.AuctionHistories.Select(auctionHistory => auctionHistory).ToList();
+                AuctionHistory lastAuction = auctionList[0];
+                foreach (var auctionHistory in auctionList)
+                {
+                    if (auctionHistory.AuctionId == auctionId && lastAuction.AuctionDate > auctionHistory.AuctionDate)
+                    {
+                        lastAuction = auctionHistory;
+                    }
+                }
+                return lastAuction;
+              
                 /*var res2= context.AuctionHistories.Where(auctionHistory => auctionHistory.AuctionId == auctionId);
                 return res.Last();*/
             }

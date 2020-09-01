@@ -2,15 +2,15 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
+    using System.Collections.Generic;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DomainModel;
     using AuctionManagement.Services;
     using AuctionManagement.Services.ServicesImplementation;
     using Moq;
     using NUnit.Framework;
-    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="ConfigServicesTest" />.
@@ -18,29 +18,10 @@ namespace AuctionManagement.Test.ServicesTest
     internal class ConfigServicesTest
     {
         /// <summary>
-        /// The TestAddAuctionWithValidData.
-        /// </summary>
-        [Test]
-        public void TestAddAuctionWithValidData()
-        {
-            Config test = new Config()
-            {
-                IdConfig = "text",
-                ValueConfig = 3
-
-            };
-
-            IConfigServices configServices = new ConfigServices();
-            bool result = configServices.AddConfig(test);
-
-            Assert.IsTrue(result);
-        }
-
-        /// <summary>
         /// The TestAddAuctionWithInvalidData.
         /// </summary>
         [Test]
-        public void TestAddAuctionWithInvalidData()
+        public void TestAddConfigWithInvalidData()
         {
             Config test = new Config();
 
@@ -54,7 +35,7 @@ namespace AuctionManagement.Test.ServicesTest
         /// The TestDeleteAuctionWithValidData.
         /// </summary>
         [Test]
-        public void TestDeleteAuctionWithValidData()
+        public void TestDeleteConfigWithValidData()
         {
             Config test = new Config()
             {
@@ -76,7 +57,7 @@ namespace AuctionManagement.Test.ServicesTest
         /// The TestDeleteAuctionWithInvalidData.
         /// </summary>
         [Test]
-        public void TestDeleteAuctionWithInvalidData()
+        public void TestDeleteConfigWithInvalidData()
         {
             Config test = new Config();
 
@@ -108,7 +89,7 @@ namespace AuctionManagement.Test.ServicesTest
         /// The TestUpdateAuctionWithInvalidData.
         /// </summary>
         [Test]
-        public void TestUpdateAuctionWithInvalidData()
+        public void TestUpdateConfigWithInvalidData()
         {
             Config test = new Config();
 
@@ -122,7 +103,7 @@ namespace AuctionManagement.Test.ServicesTest
         /// The TestGetListOfAuctions.
         /// </summary>
         [Test]
-        public void TestGetListOfAuctions()
+        public void TestGetListOfConfigs()
         {
             IConfigServices configServices = new ConfigServices();
             Mock<IConfigDataServices> mock = new Mock<IConfigDataServices>();
@@ -140,19 +121,18 @@ namespace AuctionManagement.Test.ServicesTest
             var result = configServices.GetListOfConfigurations();
 
             Assert.AreNotEqual(result, null);
-            Assert.AreEqual((result as List<Auction>).Count, 1);
+            Assert.AreEqual((result as List<Config>).Count, 1);
         }
 
         /// <summary>
         /// The TestGetAuctionById.
         /// </summary>
         [Test]
-        public void TestGetAuctionById()
+        public void TestGetConfigById()
         {
             IConfigServices configServices = new ConfigServices();
             Mock<IConfigDataServices> mock = new Mock<IConfigDataServices>();
             mock.Setup(m => m.GetConfigById("id")).Returns(
-
             new Config()
             {
                 IdConfig = "text",
@@ -167,23 +147,36 @@ namespace AuctionManagement.Test.ServicesTest
         }
 
         /// <summary>
-        /// The TestGetAuctionByIdWithInvalidId.
+        /// The TestAddNullConfig.
         /// </summary>
         [Test]
-        public void TestGetAuctionByIdWithInvalidId()
+        public void TestAddNullConfig()
         {
+            Config test = null;
             IConfigServices configServices = new ConfigServices();
-            Mock<IConfigDataServices> mock = new Mock<IConfigDataServices>();
-            mock.Setup(m => m.GetConfigById("id")).Returns(
-            new Config()
-            {
-                ValueConfig = 3
-            });
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { configServices.AddConfig(test); });
+        }
 
-            ConfigServices.DataServices = mock.Object;
-            var result = configServices.GetConfigById("id");
+        /// <summary>
+        /// The TestDeleteNullConfig.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullConfig()
+        {
+            Config test = null;
+            IConfigServices configServices = new ConfigServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { configServices.DeleteConfig(test); });
+        }
 
-            Assert.AreEqual(result, null);
+        /// <summary>
+        /// The TestUpdateNullConfig.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullConfig()
+        {
+            Config test = null;
+            IConfigServices configServices = new ConfigServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { configServices.UpdateConfig(test); });
         }
     }
 }

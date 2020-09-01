@@ -2,7 +2,7 @@
 // Popa Iulian
 // </copyright>
 
-namespace PersonManagement.Test.ServicesTest
+namespace AuctionTests.ServicesTest
 {
     using System.Collections.Generic;
     using AuctionManagement.DataMapper;
@@ -98,7 +98,6 @@ namespace PersonManagement.Test.ServicesTest
                 IdPerson = 1,
                 Username = "name",
                 PersonRole = "bidder"
-
             };
 
             IPersonServices personServices = new PersonServices();
@@ -156,7 +155,6 @@ namespace PersonManagement.Test.ServicesTest
             IPersonServices personServices = new PersonServices();
             Mock<IPersonDataServices> mock = new Mock<IPersonDataServices>();
             mock.Setup(m => m.GetPersonById(1)).Returns(
-
             new Person()
             {
                 IdPerson = 1,
@@ -190,6 +188,39 @@ namespace PersonManagement.Test.ServicesTest
             var result = personServices.GetPersonById(1);
 
             Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
+        /// The TestAddNullPerson.
+        /// </summary>
+        [Test]
+        public void TestAddNullPerson()
+        {
+            Person test = null;
+            IPersonServices personServices = new PersonServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { personServices.AddPerson(test); });
+        }
+
+        /// <summary>
+        /// The TestDeleteNullPerson.
+        /// </summary>
+        [Test]
+        public void TestDeleteNullPerson()
+        {
+            Person test = null;
+            IPersonServices personServices = new PersonServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { personServices.DeletePerson(test); });
+        }
+
+        /// <summary>
+        /// The TestUpdateNullPerson.
+        /// </summary>
+        [Test]
+        public void TestUpdateNullPerson()
+        {
+            Person test = null;
+            IPersonServices personServices = new PersonServices();
+            Assert.Throws(typeof(System.ArgumentNullException), delegate { personServices.UpdatePerson(test); });
         }
     }
 }

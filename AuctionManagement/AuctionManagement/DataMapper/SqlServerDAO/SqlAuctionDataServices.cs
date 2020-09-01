@@ -4,9 +4,10 @@
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
+    using AuctionManagement.DomainModel;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="SqlAuctionDataServices" />.
@@ -81,6 +82,19 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
                     context.Entry(toBeUpdated).CurrentValues.SetValues(auction);
                     context.SaveChanges();
                 }
+            }
+        }
+
+        /// <summary>
+        /// The GetAllOpenAuction.
+        /// </summary>
+        /// <param name="userId">The userId<see cref="int"/>.</param>
+        /// <returns>The <see cref="IList{Auction}"/>.</returns>
+        public IList<Auction> GetAllOpenAuction(int userId)
+        {
+            using (Model1 context = new Model1())
+            {
+                return context.Auctions.Where(auction => auction.UserId == userId && auction.EndDate != null && auction.EndDate > DateTime.Now).ToList();
             }
         }
     }

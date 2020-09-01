@@ -4,6 +4,7 @@
 
 namespace AuctionTests.DataMapper
 {
+    using System;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
@@ -96,33 +97,35 @@ namespace AuctionTests.DataMapper
             mock.Verify(o => o.GetPersonById(1), Times.Once());
         }
 
+        /// <summary>
+        /// The TestAllAPersonOperation.
+        /// </summary>
         [Test]
-        public void TestAllAuctionOperation()
+        public void TestAllAPersonOperation()
         {
-            Person test = new Person()
+            Person person = new Person()
             {
                 IdPerson = 1,
                 Username = "name",
-                PersonRole = "bidder"
+                PersonRole = "bidder",
+                Score = 34,
+                DateWrongScore = DateTime.Now.AddDays(-29)
             };
 
-            IPersonDataServices service = new SqlPersonDataServices();
-
-            service.AddPerson(test);
-
-            Person elem = service.GetPersonById(1);
-            Assert.AreEqual(elem.Username, test.Username);
-
-            var elems = service.GetAllPersons();
-            Assert.IsNotEmpty(elems);
-
-            Person newElem = new Person()
+            SqlPersonDataServices service = new SqlPersonDataServices();
+            try
             {
-                IdPerson = 1,
-                Username = "new_name"
-            };
-            service.UpdatePerson(newElem);
-            service.DeletePerson(test);
+                service.AddPerson(person);
+                person.Score = 7;
+                service.UpdatePerson(person);
+                var people = service.GetAllPersons();
+                var samePerson = service.GetPersonById(person.IdPerson);
+                service.DeletePerson(person);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

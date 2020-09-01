@@ -16,11 +16,11 @@ namespace AuctionManagement.DomainModel.Validator
         /// </summary>
         public AuctionHistoryValidator()
         {
-            RuleFor(x => x.IdAuctionHistory).NotEmpty().WithErrorCode("This field is required.");
-            RuleFor(x => x.AuctionId).NotEmpty().WithErrorCode("This field is required.");
-            RuleFor(x => x.UserId).NotEmpty().WithErrorCode("This field is required.");
-            RuleFor(x => x.AuctionDate).NotEmpty().WithErrorCode("This field is required.");
-            RuleFor(x => x.Price).NotEmpty().WithErrorCode("This field is required.");
+            RuleFor(x => x.IdAuctionHistory).NotEmpty().WithErrorCode("Id  field is required.");
+            RuleFor(x => x.AuctionId).NotEmpty().WithErrorCode("Auction id field is required.");
+            RuleFor(x => x.UserId).NotEmpty().WithErrorCode("User id field is required.");
+            RuleFor(x => x.AuctionDate).NotEmpty().WithErrorCode("Auction data field is required.");
+            RuleFor(x => x.Price).NotEmpty().WithErrorCode("Price field is required.");
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace AuctionManagement.DomainModel.Validator
         /// <returns>The <see cref="bool"/>.</returns>
         private bool CompareNewPrice(double oldPrice, double newPrice)
         {
-            return oldPrice > newPrice || (newPrice - oldPrice) > (oldPrice / 10);
+            return oldPrice > newPrice && (newPrice - oldPrice) > (oldPrice / 10);
         }
     }
 }

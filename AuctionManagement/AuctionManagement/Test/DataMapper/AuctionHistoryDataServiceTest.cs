@@ -2,9 +2,11 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.DataMapper
+namespace AuctionTests.DataMapper
 {
+    using System;
     using AuctionManagement.DataMapper;
+    using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
@@ -95,36 +97,49 @@ namespace AuctionManagement.Test.DataMapper
             mock.Verify(o => o.GetAuctionHistoryById(1), Times.Once());
         }
 
-        //[Test]
-        //public void TestAllAuctionOperation()
-        //{
-        //    AuctionHistory test = new AuctionHistory()
-        //    {
-        //        UserId = 6,
-        //        Auctiondate = DateTime.Now.AddDays(3),
-        //        AuctionId = 1,
-        //        Price = 1030,
-        //        Currency = "euro"
-        //    };
+        /// <summary>
+        /// The ImpAuctionHistoryTest.
+        /// </summary>
+        [Test]
+        public void ImpAuctionHistoryTest()
+        {
+            AuctionHistory auction = new AuctionHistory()
+            {
+                IdAuctionHistory = 1,
+                Price = 34,
+                AuctionDate = DateTime.Now,
+                Currency = "ron",
+                Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
+                Auction = new Auction
+                {
+                    IdAuction = 1,
+                    Price = 34,
+                    StartDate = DateTime.Now,
+                    EndDate = DateTime.Now.AddDays(5),
+                    Currency = "ron",
+                    Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
+                    Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryId = 2 },
+                    ObjectId = 1,
+                    UserId = 2,
+                },
+                AuctionId = 1,
+                UserId = 2,
+            };
 
-        //    SqlAuctionHistoryDataServices service = new SqlAuctionHistoryDataServices();
-
-        //    service.AddAuctionHistory(test);
-
-        //    AuctionHistory elem = service.GetAuctionHistoryById(1);
-        //    Assert.AreEqual(elem.Price, test.Price);
-
-        //    var elems = service.GetAllAuctionsHistory();
-        //    Assert.IsNotEmpty(elems);
-
-        //    AuctionHistory newElem = new AuctionHistory()
-        //    {
-        //        UserId = 6,
-        //        AuctionId = 145,
-               
-        //    };
-        //    service.UpdateAuctionHistory(newElem);
-        //    service.DeleteAuctionHistory(test);
-        //}
+            SqlAuctionHistoryDataServices service = new SqlAuctionHistoryDataServices();
+            try
+            {
+                service.AddAuctionHistory(auction);
+                auction.Price = 40;
+                service.UpdateAuctionHistory(auction);
+                var people = service.GetAllAuctionsHistory();
+                var samePerson = service.GetAuctionHistoryById(auction.IdAuctionHistory);
+                service.DeleteAuctionHistory(auction);
+            }
+            catch
+            {
+                throw;
+            }
+        }
     }
 }

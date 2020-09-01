@@ -107,7 +107,7 @@ namespace AuctionManagement.DomainModel
             modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
                 .WithOptional(e => e.Category)
-                .HasForeignKey(e => e.CategoryName);
+                .HasForeignKey(e => e.CategoryId);
 
             modelBuilder.Entity<Config>()
                 .Property(e => e.IdConfig)

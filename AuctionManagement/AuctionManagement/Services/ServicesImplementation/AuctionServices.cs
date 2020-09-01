@@ -33,7 +33,7 @@ namespace AuctionManagement.Services.ServicesImplementation
         public bool AddAuction(Auction auction)
         {
             var validator = new AuctionValidator();
-            validator.InsertAuctionValidator();
+            validator.InsertAuctionValidator(DataServices.GetAllOpenAuction(auction.UserId));
             ValidationResult results = validator.Validate(auction);
 
             bool isValid = results.IsValid;

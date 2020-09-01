@@ -97,34 +97,29 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
-        /// The TestAllAuctionOperation.
+        /// The TestAllConfigOperation.
         /// </summary>
         [Test]
-        public void TestAllAuctionOperation()
+        public void TestAllConfigOperation()
         {
-            Config test = new Config()
+            Config config = new Config()
             {
-                IdConfig = "text",
+                IdConfig = "initial_number",
                 ValueConfig = 5
             };
 
             SqlConfigDataServices service = new SqlConfigDataServices();
-
-            service.AddConfig(test);
-
-            Config elem = service.GetConfigById("test");
-            Assert.AreEqual(elem.ValueConfig, test.ValueConfig);
-
-            var elems = service.GetAllConfigurations();
-            Assert.IsNotEmpty(elems);
-
-            Config newElem = new Config()
+            try
             {
-                IdConfig = "text",
-                ValueConfig = 55
-            };
-            service.UpdateConfig(newElem);
-            service.DeleteConfig(test);
+                service.AddConfig(config);
+                var people = service.GetAllConfigurations();
+                var samePerson = service.GetConfigById(config.IdConfig);
+                service.DeleteConfig(config);
+            }
+            catch
+            {
+                throw;
+            }
         }
     }
 }

@@ -2,7 +2,7 @@
 // Popa Iulian
 // </copyright>
 
-namespace AuctionManagement.Test.DomainModelTest
+namespace AuctionTests.DomainModelTest
 {
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
@@ -23,7 +23,7 @@ namespace AuctionManagement.Test.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
 
             ProductValidator validator = new ProductValidator();
@@ -43,7 +43,7 @@ namespace AuctionManagement.Test.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name toooooooooooooooooooo long",
-                CategoryName = 2
+                CategoryId = 2
             };
 
             ProductValidator validator = new ProductValidator();
@@ -81,12 +81,12 @@ namespace AuctionManagement.Test.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
 
             Assert.AreEqual(test.IdProduct, 1);
             Assert.AreEqual(test.ObjectName, "name");
-            Assert.AreEqual(test.CategoryName, 2);
+            Assert.AreEqual(test.CategoryId, 2);
         }
 
         /// <summary>
@@ -99,11 +99,11 @@ namespace AuctionManagement.Test.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryName = 2
+                CategoryId = 2
             };
             Assert.AreNotEqual(test.IdProduct, 45);
             Assert.AreNotEqual(test.ObjectName, "name_v2");
-            Assert.AreNotEqual(test.CategoryName, 5);
+            Assert.AreNotEqual(test.CategoryId, 5);
         }
     }
 }

@@ -4,8 +4,8 @@
 
 namespace AuctionManagement.DataMapper
 {
-    using System.Collections.Generic;
     using AuctionManagement.DomainModel;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="IAuctionDataServices" />.
@@ -42,5 +42,12 @@ namespace AuctionManagement.DataMapper
         /// </summary>
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         void DeleteAuction(Auction auction);
+
+        /// <summary>
+        /// The GetAllOpenAuction.
+        /// </summary>
+        /// <param name="userId">The userId<see cref="int"/>.</param>
+        /// <returns>The <see cref="IList{Auction}"/>.</returns>
+        IList<Auction> GetAllOpenAuction(int userId);
     }
 }

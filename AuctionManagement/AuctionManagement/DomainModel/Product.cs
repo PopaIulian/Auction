@@ -38,7 +38,7 @@ namespace AuctionManagement.DomainModel
         /// <summary>
         /// Gets or sets the CategoryName.
         /// </summary>
-        public int? CategoryName { get; set; }
+        public int CategoryId { get; set; }
 
         /// <summary>
         /// Gets or sets the Auctions.

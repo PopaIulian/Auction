@@ -83,6 +83,22 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
+        /// The GetAllUserScoreHistoriesTest.
+        /// </summary>
+        [Test]
+        public void GetAllUserScoreHistoriesTest()
+        {
+            Mock<IScoreHistoryDataServices> mock = new Mock<IScoreHistoryDataServices>();
+            mock.Setup(m => m.GetAllScoresUser(1));
+
+            IScoreHistoryDataServices obj = mock.Object;
+            obj.GetAllScoresUser(1);
+
+            mock.Verify(o => o.GetAllScoresUser(1), Times.Once());
+        }
+
+
+        /// <summary>
         /// The GetScoreHistoryByIdTest.
         /// </summary>
         [Test]
@@ -121,6 +137,20 @@ namespace AuctionTests.DataMapper
                 var people = service.GetAllScoreHistories();
                 var samePerson = service.GetScoreHistoryById(score.IdScoreHistory);
                 service.DeleteScoreHistory(score);
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        [Test]
+        public void GetAllUserScoreHistoriesImpTest()
+        {
+            SqlScoreHistoryServices service = new SqlScoreHistoryServices();
+            try
+            {
+                var score = service.GetAllScoresUser(1);
             }
             catch
             {

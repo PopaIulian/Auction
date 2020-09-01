@@ -4,8 +4,8 @@
 
 namespace AuctionManagement.DataMapper
 {
-    using System.Collections.Generic;
     using AuctionManagement.DomainModel;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="IScoreHistoryDataServices" />.
@@ -42,5 +42,12 @@ namespace AuctionManagement.DataMapper
         /// </summary>
         /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         void DeleteScoreHistory(ScoreHistory scoreHistory);
+
+        /// <summary>
+        /// The GetAllScores.
+        /// </summary>
+        /// <param name="userId">The userId<see cref="int"/>.</param>
+        /// <returns>The <see cref="IList{ScoreHistory}"/>.</returns>
+        IList<ScoreHistory> GetAllScoresUser(int userId);
     }
 }

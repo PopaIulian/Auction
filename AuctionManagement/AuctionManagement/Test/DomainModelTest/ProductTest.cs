@@ -105,5 +105,33 @@ namespace AuctionTests.DomainModelTest
             Assert.AreNotEqual(test.ObjectName, "name_v2");
             Assert.AreNotEqual(test.CategoryName, 5);
         }
+
+        /// <summary>
+        /// The TestProductProperty3.
+        /// </summary>
+        [Test]
+        public void TestProductProperty3()
+        {
+            Product test = new Product();
+            Category category = new Category() { IdCategory = 2, CategoryName = "cat_name" };
+            test.Category = category;
+
+            Assert.AreEqual(test.Category.IdCategory, 2);
+            Assert.AreEqual(test.Category.CategoryName, "cat_name");
+        }
+
+        /// <summary>
+        /// The TestProductProperty5.
+        /// </summary>
+        [Test]
+        public void TestProductProperty5()
+        {
+            Product test = new Product();
+            Category category = new Category() { IdCategory = 5, CategoryName = "cat_name" };
+            test.Category = category;
+
+            Assert.AreNotEqual(test.Category.IdCategory, 6);
+            Assert.AreNotEqual(test.Category.CategoryName, "another_cat_name");
+        }
     }
 }

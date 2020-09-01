@@ -4,8 +4,8 @@
 
 namespace AuctionManagement.Services
 {
-    using System.Collections.Generic;
     using AuctionManagement.DomainModel;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="IScoreHistoryServices" />.

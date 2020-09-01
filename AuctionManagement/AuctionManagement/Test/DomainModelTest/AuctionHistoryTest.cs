@@ -4,10 +4,10 @@
 
 namespace AuctionTests.DomainModelTest
 {
-    using System;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryTest" />.
@@ -35,6 +35,71 @@ namespace AuctionTests.DomainModelTest
 
             bool isValid = results.IsValid;
             Assert.IsTrue(isValid);
+        }
+
+        /// <summary>
+        /// The TestAuctionHistoryUsingValidator.
+        /// </summary>
+        [Test]
+        public void TestAuctionHistoryUsingValidator()
+        {
+            AuctionHistory test = new AuctionHistory()
+            {
+                IdAuctionHistory = 1,
+                UserId = 2,
+                AuctionDate = DateTime.Now,
+                AuctionId = 1,
+                Price = 100,
+                Currency = "ron"
+            };
+
+            AuctionHistory lastAuct = new AuctionHistory()
+            {
+                IdAuctionHistory = 1,
+                UserId = 2,
+                AuctionDate = DateTime.Now.AddDays(-4),
+                AuctionId = 1,
+                Price = 100,
+                Currency = "ron"
+            };
+
+            AuctionHistoryValidator validator = new AuctionHistoryValidator();
+            validator.InsertAuctionHistoryValidator(lastAuct);
+            var results = validator.Validate(test);
+
+            bool isValid = results.IsValid;
+            Assert.IsFalse(isValid);
+        }
+
+        [Test]
+        public void TestAuctionHistoryUsingValidator2()
+        {
+            AuctionHistory test = new AuctionHistory()
+            {
+                IdAuctionHistory = 1,
+                UserId = 2,
+                AuctionDate = DateTime.Now,
+                AuctionId = 1,
+                Price = 100,
+                Currency = "ron"
+            };
+
+            AuctionHistory lastAuct = new AuctionHistory()
+            {
+                IdAuctionHistory = 1,
+                UserId = 3,
+                AuctionDate = DateTime.Now.AddHours(-2),
+                AuctionId = 1,
+                Price = 102,
+                Currency = "ron"
+            };
+
+            AuctionHistoryValidator validator = new AuctionHistoryValidator();
+            validator.InsertAuctionHistoryValidator(lastAuct);
+            var results = validator.Validate(test);
+
+            bool isValid = results.IsValid;
+            Assert.IsFalse(isValid);
         }
 
         /// <summary>

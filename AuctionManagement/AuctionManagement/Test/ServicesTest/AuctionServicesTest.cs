@@ -19,43 +19,6 @@ namespace AuctionTests.ServicesTest
     internal class AuctionServicesTest
     {
         /// <summary>
-        /// The TestAddAuctionWithValidData.
-        /// </summary>
-        [Test]
-        public void TestAddAuctionWithInValidData()
-        {
-            Auction auction = new Auction()
-            {
-                IdAuction = 1,
-                ObjectId = 1,
-                Currency = "ron",
-                StartDate = DateTime.Now.AddHours(2),
-                EndDate = DateTime.Now.AddMonths(1),
-                UserId = 2,
-                Price = 34
-            };
-
-            IAuctionServices auctionServices = new AuctionServices();
-            bool result = auctionServices.AddAuction(auction);
-
-            Assert.IsFalse(result);
-        }
-
-        /// <summary>
-        /// The TestAddAuctionWithInvalidData.
-        /// </summary>
-        [Test]
-        public void TestAddAuctionWithInvalidData()
-        {
-            Auction auction = new Auction();
-
-            IAuctionServices readerServices = new AuctionServices();
-            bool result = readerServices.AddAuction(auction);
-
-            Assert.IsFalse(result);
-        }
-
-        /// <summary>
         /// The TestDeleteAuctionWithValidData.
         /// </summary>
         [Test]

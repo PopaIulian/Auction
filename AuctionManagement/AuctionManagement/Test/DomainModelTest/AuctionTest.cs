@@ -4,11 +4,11 @@
 
 namespace AuctionTests.DomainModelTest
 {
-    using System;
-    using System.Collections.Generic;
     using AuctionManagement.DomainModel;
     using AuctionManagement.DomainModel.Validator;
     using NUnit.Framework;
+    using System;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Defines the <see cref="AuctionTest" />.
@@ -49,6 +49,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuction = 1,
                 ObjectId = 1,
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 Currency = "ron",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddMonths(7),
@@ -74,6 +75,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuction = 1,
                 ObjectId = 1,
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 Currency = "ron",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddMonths(-3),
@@ -99,6 +101,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuction = 1,
                 ObjectId = 1,
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 Currency = "ron",
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddMonths(3),
@@ -125,6 +128,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuction = 1,
                 ObjectId = 1,
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 Currency = "ron",
                 StartDate = DateTime.Now.AddDays(-1),
                 EndDate = DateTime.Now.AddMonths(3),
@@ -142,6 +146,37 @@ namespace AuctionTests.DomainModelTest
         }
 
         /// <summary>
+        /// The TestPropPerson.
+        /// </summary>
+        [Test]
+        public void TestPropPerson()
+        {
+            Auction auction = new Auction();
+            Person person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) };
+
+            auction.Person = person;
+
+            Assert.AreEqual(auction.Person.Username, "user");
+            Assert.AreEqual(auction.Person.PersonRole, "bidder");
+        }
+
+        /// <summary>
+        /// The TestPropProduct
+        /// </summary>
+        [Test]
+        public void TestPropProduct()
+        {
+            Auction auction = new Auction();
+
+                Product product= new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 };
+            auction.Product = product;
+
+            Assert.AreEqual(auction.Product.IdProduct, 1);
+            Assert.AreEqual(auction.Product.ObjectName, "obj_name");
+
+        }
+
+        /// <summary>
         /// The TestAuctionValidatorWithInvalidValues6.
         /// </summary>
         [Test]
@@ -152,6 +187,7 @@ namespace AuctionTests.DomainModelTest
                 IdAuction = 1,
                 ObjectId = 1,
                 Currency = "ron",
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 StartDate = DateTime.Now.AddDays(2),
                 EndDate = DateTime.Now.AddDays(30),
                 UserId = 20,
@@ -178,6 +214,7 @@ namespace AuctionTests.DomainModelTest
                 IdAuction = 1,
                 ObjectId = 1,
                 Currency = "ron",
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 StartDate = DateTime.Now.AddDays(2),
                 EndDate = DateTime.Now.AddDays(30),
                 UserId = 20,
@@ -206,6 +243,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuction = 1,
                 ObjectId = 1,
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 StartDate = DateTime.Now,
                 EndDate = DateTime.Now.AddMonths(3),
                 UserId = 2,
@@ -266,6 +304,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdAuction = 1,
                 ObjectId = 1,
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 Currency = "ron",
                 UserId = 2,
                 Price = 34

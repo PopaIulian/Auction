@@ -4,9 +4,9 @@
 
 namespace AuctionManagement.DataMapper.SqlServerDAO
 {
+    using AuctionManagement.DomainModel;
     using System.Collections.Generic;
     using System.Linq;
-    using AuctionManagement.DomainModel;
 
     /// <summary>
     /// Defines the <see cref="SqlScoreHistoryServices" />.
@@ -81,6 +81,19 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
                     context.Entry(toBeUpdated).CurrentValues.SetValues(scoreHistory);
                     context.SaveChanges();
                 }
+            }
+        }
+
+        /// <summary>
+        /// The GetAllScores.
+        /// </summary>
+        /// <param name="userId">The userId<see cref="int"/>.</param>
+        /// <returns>The <see cref="IList{ScoreHistory}"/>.</returns>
+        public IList<ScoreHistory> GetAllScoresUser(int userId)
+        {
+            using (Model1 context = new Model1())
+            {
+                return context.ScoreHistories.Where(score => score.PersonId == userId).ToList();
             }
         }
     }

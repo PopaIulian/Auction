@@ -192,6 +192,27 @@ namespace AuctionTests.ServicesTest
         }
 
         /// <summary>
+        /// The TestGetCategoryParentUsingIdWithInvalidId.
+        /// </summary>
+        [Test]
+        public void TestGetCategoryParentUsingIdWithInvalidId()
+        {
+            ICategoryParentServices categoryParentServices = new CategoryParentServices();
+            Mock<ICategoryParentDataServices> mock = new Mock<ICategoryParentDataServices>();
+            mock.Setup(m => m.GetCategoryParentById(10)).Returns(
+            new CategoryParent()
+            {
+                CategoryId = 4,
+                ParentId = 5
+            });
+
+            CategoryParentServices.DataServices = mock.Object;
+            var result = categoryParentServices.GetCategoryParentById(1);
+
+            Assert.AreEqual(result, null);
+        }
+
+        /// <summary>
         /// The TestAddNullCategory.
         /// </summary>
         [Test]

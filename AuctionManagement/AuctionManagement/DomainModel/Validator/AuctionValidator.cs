@@ -47,22 +47,25 @@ namespace AuctionManagement.DomainModel.Validator
             RuleFor(x => x).Must(args => this.CompareStartPrice(minPrice, args.Price)).WithErrorCode("The price is too low.");
 
             int maxOpenAuction = Configuration.GetConfigValue(configurations, Configuration.MaxRangeAuctionPerson);
-            RuleFor(x => x).Must(args => this.CompareNumberOfAuction(maxOpenAuction, allOpenedAuction.Count)).WithErrorCode("The price is too low.");
+            RuleFor(x => x).Must(args => this.CompareNumberOfAuction(maxOpenAuction, allOpenedAuction.Count)).WithErrorCode("The number is too big.");
 
-            ///int maxOpenAuctionCat = Configuration.GetConfigValue(configurations, Configuration.MaxRangeAuctionCategoryPerson);
-            ///RuleFor(x => x).Must(args => this.CompareNrAuctionSameCat(maxOpenAuctionCat,args.Product.CategoryName, allOpenedAuction)).WithErrorCode("The price is too low.");
+            int maxOpenAuctionCat = Configuration.GetConfigValue(configurations, Configuration.MaxRangeAuctionCategoryPerson);
+            RuleFor(x => x).Must(args => this.CompareNrAuctionSameCat(maxOpenAuctionCat,args.Product.CategoryName, allOpenedAuction)).WithErrorCode("Can not insert.");
         }
 
-       
-        //private bool CompareNrAuctionSameCat(int maxOpenAuction, int actualCat, IList<Auction> allOpenedAuction)
-        //{
-        //    int openedNrAucion = 0;
-        //    foreach (var auction in allOpenedAuction)
-        //        if (actualCat == auction.Product.CategoryName)
-        //            openedNrAucion++;
 
-        //    return openedNrAucion < maxOpenAuction;
-        //}
+        private bool CompareNrAuctionSameCat(int maxOpenAuction, int? actualCat, IList<Auction> allOpenedAuction)
+        {
+            if (actualCat == null)
+                return true;
+
+            int openedNrAuction = 0;
+            foreach (var auction in allOpenedAuction)
+                if (actualCat == auction.Product.CategoryName)
+                    openedNrAuction++;
+
+            return openedNrAuction < maxOpenAuction;
+        }
 
         /// <summary>
         /// The CompareNumberOfAuction.

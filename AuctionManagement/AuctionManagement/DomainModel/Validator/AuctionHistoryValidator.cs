@@ -31,6 +31,7 @@ namespace AuctionManagement.DomainModel.Validator
         {
             RuleFor(x => x).Must(args => this.CompareNewPrice(lastModify.Price, args.Price)).WithErrorCode("The price is not ok.");
             RuleFor(x => x.Currency).Equal(lastModify.Currency).WithErrorCode("The currency is different.");
+            RuleFor(x => x.UserId).Equal(lastModify.UserId).WithErrorCode("The currency is different.");
         }
 
         /// <summary>

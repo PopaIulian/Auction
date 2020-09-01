@@ -4,12 +4,12 @@
 
 namespace AuctionTests.DataMapper
 {
-    using System;
     using AuctionManagement.DataMapper;
     using AuctionManagement.DataMapper.SqlServerDAO;
     using AuctionManagement.DomainModel;
     using Moq;
     using NUnit.Framework;
+    using System;
 
     /// <summary>
     /// Defines the <see cref="AuctionHistoryDataServiceTest" />.
@@ -31,6 +31,21 @@ namespace AuctionTests.DataMapper
             obj.AddAuctionHistory(auctionHistory);
 
             mock.Verify(o => o.AddAuctionHistory(auctionHistory), Times.Once());
+        }
+
+        /// <summary>
+        /// The GetAllAuctionHistoriesTest.
+        /// </summary>
+        [Test]
+        public void GetAllAuctionHistoriesTest()
+        {
+            Mock<IAuctionHistoryDataServices> mock = new Mock<IAuctionHistoryDataServices>();
+            mock.Setup(m => m.GetLastAuctionInfo(1));
+
+            IAuctionHistoryDataServices obj = mock.Object;
+            obj.GetLastAuctionInfo(1);
+
+            mock.Verify(o => o.GetLastAuctionInfo(1), Times.Once());
         }
 
         /// <summary>
@@ -68,10 +83,10 @@ namespace AuctionTests.DataMapper
         }
 
         /// <summary>
-        /// The GetAllAuctionHistoriesTest.
+        /// The GetLastAuctionHistoriesTest.
         /// </summary>
         [Test]
-        public void GetAllAuctionHistoriesTest()
+        public void GetAuctionLastHistoriesTest()
         {
             Mock<IAuctionHistoryDataServices> mock = new Mock<IAuctionHistoryDataServices>();
             mock.Setup(m => m.GetAllAuctionsHistory());

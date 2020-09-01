@@ -40,33 +40,29 @@ namespace AuctionManagement.DomainModel.Validator
         /// <param name="allOpenedAuction">The allOpenedAuction<see cref="IList{Auction}"/>.</param>
         public void InsertAuctionValidator(IList<Auction> allOpenedAuction)
         {
+            var configurations = ConfigServices.GetAllConfigurations();
             RuleFor(x => x).Must(args => this.CompareDate(args.StartDate, args.EndDate)).WithErrorCode("The dates are not corect.");
 
-            int minPrice = Configuration.GetConfigValue(ConfigServices.GetAllConfigurations(), Configuration.InitialScore);
+            int minPrice = Configuration.GetConfigValue(configurations, Configuration.InitialScore);
             RuleFor(x => x).Must(args => this.CompareStartPrice(minPrice, args.Price)).WithErrorCode("The price is too low.");
 
-            int maxOpenAuction = Configuration.GetConfigValue(ConfigServices.GetAllConfigurations(), Configuration.MaxRangeAuctionPerson);
+            int maxOpenAuction = Configuration.GetConfigValue(configurations, Configuration.MaxRangeAuctionPerson);
             RuleFor(x => x).Must(args => this.CompareNumberOfAuction(maxOpenAuction, allOpenedAuction.Count)).WithErrorCode("The price is too low.");
 
-            int maxOpenAuctionCat = Configuration.GetConfigValue(ConfigServices.GetAllConfigurations(), Configuration.MaxRangeAuctionCategoryPerson);
-            RuleFor(x => x).Must(args => this.CompareNrAuctionSameCat(maxOpenAuctionCat,args.Product.CategoryId, allOpenedAuction)).WithErrorCode("The price is too low.");
+            ///int maxOpenAuctionCat = Configuration.GetConfigValue(configurations, Configuration.MaxRangeAuctionCategoryPerson);
+            ///RuleFor(x => x).Must(args => this.CompareNrAuctionSameCat(maxOpenAuctionCat,args.Product.CategoryName, allOpenedAuction)).WithErrorCode("The price is too low.");
         }
 
-        /// <summary>
-        /// The CompareNrAuctionSameCat.
-        /// </summary>
-        /// <param name="maxOpenAuction">The maxOpenAuction<see cref="int"/>.</param>
-        /// <param name="allOpenedAuction">The allOpenedAuction<see cref="IList{Auction}"/>.</param>
-        /// <returns>The <see cref="bool"/>.</returns>
-        private bool CompareNrAuctionSameCat(int maxOpenAuction, int actualCat, IList<Auction> allOpenedAuction)
-        {
-            int openedNrAucion = 0;
-            foreach (var auction in allOpenedAuction)
-                if (actualCat == auction.Product.CategoryId)
-                    openedNrAucion++;
+       
+        //private bool CompareNrAuctionSameCat(int maxOpenAuction, int actualCat, IList<Auction> allOpenedAuction)
+        //{
+        //    int openedNrAucion = 0;
+        //    foreach (var auction in allOpenedAuction)
+        //        if (actualCat == auction.Product.CategoryName)
+        //            openedNrAucion++;
 
-            return openedNrAucion < maxOpenAuction;
-        }
+        //    return openedNrAucion < maxOpenAuction;
+        //}
 
         /// <summary>
         /// The CompareNumberOfAuction.

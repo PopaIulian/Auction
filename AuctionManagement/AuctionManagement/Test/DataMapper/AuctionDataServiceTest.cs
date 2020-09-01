@@ -126,7 +126,7 @@ namespace AuctionTests.DataMapper
                 EndDate = DateTime.Now.AddDays(5),
                 Currency = "ron",
                 Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
-                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryId = 2 },
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 ObjectId = 1,
                 UserId = 2,
             };
@@ -161,7 +161,7 @@ namespace AuctionTests.DataMapper
                 EndDate = DateTime.Now.AddDays(5),
                 Currency = "ron",
                 Person = new Person { IdPerson = 2, Username = "user", PersonRole = "bidder", Score = 34, DateWrongScore = DateTime.Now.AddDays(-39) },
-                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryId = 2 },
+                Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 ObjectId = 1,
                 UserId = 2,
             };

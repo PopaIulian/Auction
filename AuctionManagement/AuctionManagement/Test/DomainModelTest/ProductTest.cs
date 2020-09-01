@@ -23,7 +23,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             ProductValidator validator = new ProductValidator();
@@ -43,7 +43,7 @@ namespace AuctionTests.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name toooooooooooooooooooo long",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             ProductValidator validator = new ProductValidator();
@@ -81,12 +81,12 @@ namespace AuctionTests.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             Assert.AreEqual(test.IdProduct, 1);
             Assert.AreEqual(test.ObjectName, "name");
-            Assert.AreEqual(test.CategoryId, 2);
+            Assert.AreEqual(test.CategoryName, 2);
         }
 
         /// <summary>
@@ -99,11 +99,11 @@ namespace AuctionTests.DomainModelTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
             Assert.AreNotEqual(test.IdProduct, 45);
             Assert.AreNotEqual(test.ObjectName, "name_v2");
-            Assert.AreNotEqual(test.CategoryId, 5);
+            Assert.AreNotEqual(test.CategoryName, 5);
         }
     }
 }

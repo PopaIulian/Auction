@@ -106,7 +106,7 @@ namespace AuctionTests.DataMapper
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             SqlProductDataServices service = new SqlProductDataServices();

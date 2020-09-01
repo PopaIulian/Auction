@@ -27,7 +27,7 @@ namespace AuctionTests.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             IProductServices productServices = new ProductServices();
@@ -60,7 +60,7 @@ namespace AuctionTests.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             IProductServices productServices = new ProductServices();
@@ -97,7 +97,7 @@ namespace AuctionTests.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             };
 
             IProductServices productServices = new ProductServices();
@@ -135,7 +135,7 @@ namespace AuctionTests.ServicesTest
             {
                  IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             }
         });
 
@@ -159,7 +159,7 @@ namespace AuctionTests.ServicesTest
             {
                 IdProduct = 1,
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             });
 
             ProductServices.DataServices = mock.Object;
@@ -181,7 +181,7 @@ namespace AuctionTests.ServicesTest
             new Product()
             {
                 ObjectName = "name",
-                CategoryId = 2
+                CategoryName = 2
             });
 
             ProductServices.DataServices = mock.Object;

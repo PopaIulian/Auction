@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         public void AddScoreHistory(ScoreHistory scoreHistory)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 context.ScoreHistories.Add(scoreHistory);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         public void DeleteScoreHistory(ScoreHistory scoreHistory)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 ScoreHistory toBeDeleted = new ScoreHistory { IdScoreHistory = scoreHistory.IdScoreHistory };
                 context.ScoreHistories.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="ScoreHistory"/>.</returns>
         public ScoreHistory GetScoreHistoryById(int id)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.ScoreHistories.Where(scoreHistory => scoreHistory.IdScoreHistory == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{ScoreHistory}"/>.</returns>
         public IList<ScoreHistory> GetAllScoreHistories()
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.ScoreHistories.Select(scoreHistory => scoreHistory).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="scoreHistory">The scoreHistory<see cref="ScoreHistory"/>.</param>
         public void UpdateScoreHistory(ScoreHistory scoreHistory)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 ScoreHistory toBeUpdated = context.ScoreHistories.Find(scoreHistory.IdScoreHistory);
 
@@ -91,7 +91,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{ScoreHistory}"/>.</returns>
         public IList<ScoreHistory> GetAllScoresUser(int userId)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.ScoreHistories.Where(score => score.PersonId == userId).ToList();
             }

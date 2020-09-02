@@ -52,7 +52,7 @@ namespace AuctionTests.DomainModelTest
                 Product = new Product { IdProduct = 1, ObjectName = "obj_name", CategoryName = 2 },
                 Currency = "ron",
                 StartDate = DateTime.Now,
-                EndDate = DateTime.Now.AddMonths(7),
+                EndDate = DateTime.Now.AddMonths(3),
                 UserId = 2,
                 Price = 34
             };

@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="categoryParent">The categoryParent<see cref="CategoryParent"/>.</param>
         public void AddCategoryParent(CategoryParent categoryParent)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 context.CategoryParents.Add(categoryParent);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="categoryParent">The categoryParent<see cref="CategoryParent"/>.</param>
         public void DeleteCategoryParent(CategoryParent categoryParent)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 CategoryParent toBeDeleted = new CategoryParent { IdCategoryParent = categoryParent.IdCategoryParent };
                 context.CategoryParents.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="CategoryParent"/>.</returns>
         public CategoryParent GetCategoryParentById(int id)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.CategoryParents.Where(category => category.IdCategoryParent == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{CategoryParent}"/>.</returns>
         public IList<CategoryParent> GetAllCategoriesParent()
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.CategoryParents.Select(categoryParent => categoryParent).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="categoryParent">The categoryParent<see cref="CategoryParent"/>.</param>
         public void UpdateCategoryParent(CategoryParent categoryParent)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Category toBeUpdated = context.Categories.Find(categoryParent.IdCategoryParent);
 

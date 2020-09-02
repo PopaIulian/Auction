@@ -117,7 +117,7 @@ namespace AuctionTests.DomainModelTest
                 UserId = 2,
                 AuctionDate = DateTime.Now,
                 AuctionId = 1,
-                Price = 1000,
+                Price = 1009898987,
                 Currency = "euro"
             };
 

@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="config">The config<see cref="Config"/>.</param>
         public void AddConfig(Config config)
         {
-            using (DomainModel.Model1 context = new DomainModel.Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 context.Configs.Add(config);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="config">The config<see cref="Config"/>.</param>
         public void DeleteConfig(Config config)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Config toBeDeleted = new Config { IdConfig = config.IdConfig };
                 context.Configs.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Config"/>.</returns>
         public Config GetConfigById(string id)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.Configs.Where(config => config.IdConfig == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Config}"/>.</returns>
         public IList<Config> GetAllConfigurations()
         {
-            using (DomainModel.Model1 context = new DomainModel.Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 return context.Configs.Select(config => config).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="config">The config<see cref="Config"/>.</param>
         public void UpdateConfig(Config config)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Config toBeUpdated = context.Configs.Find(config.IdConfig);
 

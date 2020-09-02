@@ -20,7 +20,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void AddAuction(Auction auction)
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 context.Auctions.Add(auction);
                 context.SaveChanges();
@@ -33,7 +33,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void DeleteAuction(Auction auction)
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 Auction toBeDeleted = new Auction { IdAuction = auction.IdAuction };
                 context.Auctions.Attach(toBeDeleted);
@@ -49,7 +49,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Auction"/>.</returns>
         public Auction GetAuctionById(int id)
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 return context.Auctions.Where(auction => auction.IdAuction == id).SingleOrDefault();
             }
@@ -61,7 +61,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Auction}"/>.</returns>
         public IList<Auction> GetAllAuctions()
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 return context.Auctions.Select(auction => auction).ToList();
             }
@@ -73,7 +73,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="auction">The auction<see cref="Auction"/>.</param>
         public void UpdateAuction(Auction auction)
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 Auction toBeUpdated = context.Auctions.Find(auction.IdAuction);
 
@@ -92,7 +92,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Auction}"/>.</returns>
         public IList<Auction> GetAllOpenAuction(int userId)
         {
-            using (Model1 context = new Model1())
+            using (DomainModel.AppContext context = new DomainModel.AppContext())
             {
                 return context.Auctions.Where(auction => auction.UserId == userId && auction.EndDate != null && auction.EndDate > DateTime.Now).ToList();
             }

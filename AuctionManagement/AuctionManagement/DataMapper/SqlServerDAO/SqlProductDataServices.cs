@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="product">The product<see cref="Product"/>.</param>
         public void AddObject(Product product)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 context.Products.Add(product);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="product">The product<see cref="Product"/>.</param>
         public void DeleteObject(Product product)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Product toBeDeleted = new Product { IdProduct = product.IdProduct };
                 context.Products.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Product"/>.</returns>
         public Product GetObjectById(int id)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.Products.Where(product => product.IdProduct == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Product}"/>.</returns>
         public IList<Product> GetAllObjects()
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.Products.Select(product => product).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="product">The product<see cref="Product"/>.</param>
         public void UpdateObject(Product product)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Product toBeUpdated = context.Products.Find(product.IdProduct);
 

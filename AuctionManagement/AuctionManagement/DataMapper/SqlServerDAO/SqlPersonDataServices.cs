@@ -19,7 +19,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="person">The person<see cref="Person"/>.</param>
         public void AddPerson(Person person)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 context.People.Add(person);
                 context.SaveChanges();
@@ -32,7 +32,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="person">The person<see cref="Person"/>.</param>
         public void DeletePerson(Person person)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Person toBeDeleted = new Person { IdPerson = person.IdPerson };
                 context.People.Attach(toBeDeleted);
@@ -48,7 +48,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="Person"/>.</returns>
         public Person GetPersonById(int id)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.People.Where(person => person.IdPerson == id).SingleOrDefault();
             }
@@ -60,7 +60,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <returns>The <see cref="IList{Person}"/>.</returns>
         public IList<Person> GetAllPersons()
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 return context.People.Select(person => person).ToList();
             }
@@ -72,7 +72,7 @@ namespace AuctionManagement.DataMapper.SqlServerDAO
         /// <param name="person">The person<see cref="Person"/>.</param>
         public void UpdatePerson(Person person)
         {
-            using (Model1 context = new Model1())
+            using (AppContext context = new AppContext())
             {
                 Person toBeUpdated = context.People.Find(person.IdPerson);
 

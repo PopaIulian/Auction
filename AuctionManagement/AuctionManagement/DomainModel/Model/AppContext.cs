@@ -7,14 +7,14 @@ namespace AuctionManagement.DomainModel
     using System.Data.Entity;
 
     /// <summary>
-    /// Defines the <see cref="Model1" />.
+    /// Defines the <see cref="AppContext" />.
     /// </summary>
-    public partial class Model1 : DbContext
+    public partial class AppContext : DbContext
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="Model1"/> class.
+        /// Initializes a new instance of the <see cref="AppContext"/> class.
         /// </summary>
-        public Model1()
+        public AppContext()
             : base("name=Model2")
         {
         }
